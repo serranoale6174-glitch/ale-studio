@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALE STUDIO — Finanzas personales</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--text:#101522;--muted:#697386;--line:#e5e9f1;--accent:#635bff;--accent2:#8b5cf6;--good:#149447;--bad:#d33b50;--shadow:0 12px 35px #17255412}
+[data-theme=dark]{--bg:#0b0e15;--panel:#121722;--text:#f5f7fb;--muted:#9aa5b5;--line:#252d3c;--shadow:0 12px 35px #0008}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#8b5cf61a,transparent 35%),var(--bg);color:var(--text);font:14px Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{display:flex;min-height:100vh}.side{width:245px;padding:22px 16px;border-right:1px solid var(--line);background:color-mix(in srgb,var(--panel) 92%,transparent);position:sticky;top:0;height:100vh}.brand{font-size:22px;font-weight:900;letter-spacing:.08em;margin:4px 10px 25px}.brand span{color:var(--accent)}nav button{width:100%;padding:12px 13px;margin:3px 0;border-radius:12px;background:transparent;color:var(--muted);text-align:left}nav button.active,nav button:hover{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--text)}.main{flex:1;padding:26px;max-width:1500px;margin:auto;width:100%}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.top h1{margin:0;font-size:28px}.actions{display:flex;gap:8px}.btn{padding:10px 14px;border-radius:11px;background:var(--panel);border:1px solid var(--line);color:var(--text)}.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:0;font-weight:700}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.label{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.value{font-size:27px;font-weight:850;margin-top:8px;letter-spacing:-.02em}.card[onclick]:hover .value{transform:translateY(-1px)}.sub{color:var(--muted);font-size:12px;margin-top:5px}.two{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-top:14px}.section{margin-top:20px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;outline:none}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:12px 9px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.table th{color:var(--muted);font-size:12px}.empty{text-align:center;padding:45px 20px;color:var(--muted)}.pill{padding:5px 8px;border-radius:99px;background:#635bff18;color:var(--accent);font-weight:700;font-size:11px}.danger{color:var(--bad)}.good{color:var(--good)}.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:10px}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.modalbox{width:min(680px,100%);max-height:90vh;overflow:auto;background:var(--panel);border-radius:20px;padding:20px}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.full{grid-column:1/-1}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.modalhead h2{margin:0}.chart{height:230px;position:relative}.chart svg{width:100%;height:100%}.legend{display:flex;gap:15px;color:var(--muted);font-size:12px}.fab{position:fixed;right:24px;bottom:24px;border-radius:99px;padding:14px 18px;box-shadow:var(--shadow)}.chat{display:grid;grid-template-rows:1fr auto;height:calc(100vh - 140px);max-width:850px}.messages{overflow:auto;display:flex;flex-direction:column;gap:10px;padding:8px}.msg{max-width:80%;padding:12px 14px;border-radius:15px;background:var(--line)}.msg.me{align-self:flex-end;background:var(--accent);color:white}.chatbar{display:flex;gap:8px;margin-top:10px}.chatbar input{flex:1;padding:13px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text)}.settings{max-width:700px}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%);background:#111827;color:#fff;padding:11px 15px;border-radius:10px;display:none;z-index:30}.toast.show{display:block}@media(max-width:900px){.side{width:72px;padding:18px 8px}.brand{font-size:0}.brand span{font-size:22px}.side nav button{font-size:0;text-align:center}.side nav button::first-letter{font-size:18px}.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:600px){.side{position:fixed;z-index:8;bottom:0;top:auto;width:100%;height:auto;border-right:0;border-top:1px solid var(--line);padding:5px}.brand{display:none}nav{display:flex;overflow:auto}nav button{min-width:74px;text-align:center;padding:9px 5px;font-size:10px!important}.main{padding:18px 14px 85px}.grid{grid-template-columns:1fr 1fr}.value{font-size:21px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.top h1{font-size:23px}.actions .hide-mobile{display:none}}
+
+.authgate{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 80% -10%,#8b5cf633,transparent 35%),var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}.authcard{width:min(460px,100%);background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 25px 80px #0003}.authbrand{font-size:28px;font-weight:950;letter-spacing:.08em}.authbrand span{color:var(--accent)}.authsub{color:var(--muted);line-height:1.5;margin:8px 0 22px}.authtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px}.authtabs button{padding:9px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:10px}.authtabs button.active{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--text);font-weight:800}.authproviders{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.authbtn{width:100%;padding:11px 12px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-weight:750}.authbtn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:0}.authdivider{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin:14px 0}.authdivider:before,.authdivider:after{content:"";height:1px;background:var(--line);flex:1}.autherror{color:var(--bad);background:#d33b5012;border:1px solid #d33b5030;padding:10px;border-radius:10px;margin-bottom:10px;display:none}.authfoot{font-size:11px;color:var(--muted);margin-top:15px}.profilechip{display:flex;align-items:center;gap:8px}.profilechip button{font-size:11px;padding:7px 9px}.authhide{display:none!important}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div id="authgate" class="authgate"></div>
+<div class="app"><aside class="side"><div class="brand">ALE <span>STUDIO</span></div><nav id="nav"></nav></aside><main class="main"><div id="view"></div></main></div>
+<div class="modal" id="modal"><div class="modalbox" id="modalbox"></div></div><div class="toast" id="toast"></div>
+<script>
+const SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_PUBLISHABLE_KEY="YOUR_SUPABASE_PUBLISHABLE_KEY";
+const AUTH_READY=SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && SUPABASE_PUBLISHABLE_KEY && !SUPABASE_PUBLISHABLE_KEY.includes("YOUR_");
+const sb=AUTH_READY?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY):null;
+let session=null,currentUser=null;
+const BASE_STATE={movements:[],accounts:[],budgets:[],goals:[],settings:{theme:"light",contrast:false,currency:"USD",notifications:true},dashboard:{period:"all",cards:{wealth:{title:"Patrimonio Líquido",desc:"Capital = Disponible"},capital:{title:"Capital",desc:"Indicador principal"},outflow:{title:"Flujo de Salida",desc:"Gastos acumulados"},income:{title:"Ingresos",desc:"Ingresos registrados"}}}};
+let state=structuredClone(BASE_STATE);
+const defaultDash={wealth:{title:"Patrimonio Líquido",desc:"Capital = Disponible"},capital:{title:"Capital",desc:"Indicador principal"},outflow:{title:"Flujo de Salida",desc:"Gastos acumulados"},income:{title:"Ingresos",desc:"Ingresos registrados"}};
+for(const k in defaultDash) state.dashboard.cards[k]=Object.assign({},defaultDash[k],state.dashboard.cards[k]||{});
+let page=location.hash.slice(1)||"dashboard"; let editing=null;
+const $=s=>document.querySelector(s);
+const money=n=>new Intl.NumberFormat("en-US",{style:"currency",currency:state.settings.currency||"USD"}).format(Number(n)||0);
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+function escAuth(v){return String(v??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
+function authUI(tab="email",msg=""){const gate=$("#authgate");gate.innerHTML=`<div class="authcard"><div class="authbrand">ALE <span>STUDIO</span></div><div class="authsub">Tu espacio financiero es privado. Inicia sesión para acceder a Dashboard, Movimientos, Presupuestos, Metas, Cuentas, Patrimonio, Historial y ALE AI.</div><div class="autherror" id="autherror" style="display:${msg?"block":"none"}">${escAuth(msg)}</div><div class="authproviders"><button class="authbtn" onclick="oauth('google')">G Continuar con Google</button><button class="authbtn" onclick="oauth('apple')"> Continuar con Apple</button></div><div class="authdivider">o continúa con tu cuenta</div><div class="authtabs"><button class="${tab==='email'?'active':''}" onclick="authUI('email')">Correo</button><button class="${tab==='username'?'active':''}" onclick="authUI('username')">Usuario</button><button class="${tab==='phone'?'active':''}" onclick="authUI('phone')">Teléfono</button></div>${tab==='phone'?`<form onsubmit="phoneLogin(event)" class="formgrid"><div class="field full"><label>Número de teléfono</label><input name="phone" placeholder="+507 6000 0000" required></div><div class="full"><button class="authbtn primary">Enviar código SMS</button></div></form>`:`<form onsubmit="passwordLogin(event,'${tab}')" class="formgrid"><div class="field full"><label>${tab==='email'?'Correo electrónico':'Nombre de usuario'}</label><input name="identity" type="${tab==='email'?'email':'text'}" required autocomplete="${tab==='email'?'email':'username'}"></div><div class="field full"><label>Contraseña</label><input name="password" type="password" minlength="8" required autocomplete="current-password"></div><div class="full"><button class="authbtn primary">Iniciar sesión</button></div></form><button class="authbtn" style="margin-top:8px" onclick="showSignup('${tab}')">Crear cuenta</button>`}<div class="authfoot">Sin sesión no hay acceso a la aplicación. Cada usuario recibe un workspace separado. Los datos se guardan vinculados a su cuenta cuando Supabase está configurado.</div></div>`}
+function authError(msg,tab){authUI(tab,msg)}
+async function passwordLogin(e,mode){e.preventDefault();if(!AUTH_READY)return authError("La autenticación segura todavía no está conectada. Configura Supabase antes de publicar la app.",mode);const f=Object.fromEntries(new FormData(e.target));const email=mode==='email'?f.identity:`${f.identity.toLowerCase().replace(/[^a-z0-9._-]/g,'')}@username.ale-studio.local`;const {data,error}=await sb.auth.signInWithPassword({email,password:f.password});if(error)return authError(error.message,mode);await onSignedIn(data.session)}
+async function showSignup(mode){const gate=$("#authgate");gate.innerHTML=`<div class="authcard"><div class="authbrand">ALE <span>STUDIO</span></div><div class="authsub">Crea tu espacio privado.</div><form onsubmit="signup(event,'${mode}')" class="formgrid">${mode==='email'?'<div class="field full"><label>Correo electrónico</label><input name="email" type="email" required></div>':'<div class="field full"><label>Nombre de usuario</label><input name="username" pattern="[A-Za-z0-9._-]{3,30}" required></div>'}<div class="field full"><label>Contraseña</label><input name="password" type="password" minlength="8" required></div><div class="field full"><label>Nombre</label><input name="name" required></div><div class="full"><button class="authbtn primary">Crear mi cuenta</button></div></form><button class="authbtn" onclick="authUI('${mode}')">Volver</button></div>`}
+async function signup(e,mode){e.preventDefault();if(!AUTH_READY)return authError("La autenticación segura todavía no está conectada. Configura Supabase antes de publicar la app.",mode);const f=Object.fromEntries(new FormData(e.target));const email=mode==='email'?f.email:`${f.username.toLowerCase()}@username.ale-studio.local`;const {data,error}=await sb.auth.signUp({email,password:f.password,options:{data:{name:f.name,username:mode==='username'?f.username:null}}});if(error)return authError(error.message,mode);if(data.session)return onSignedIn(data.session);authError("Cuenta creada. Confirma la cuenta si tu proyecto exige verificación y luego inicia sesión.",mode)}
+async function phoneLogin(e){e.preventDefault();if(!AUTH_READY)return authError("La autenticación segura todavía no está conectada. Configura Supabase antes de publicar la app.","phone");const f=Object.fromEntries(new FormData(e.target));const {error}=await sb.auth.signInWithOtp({phone:f.phone});if(error)return authError(error.message,"phone");gateOtp(f.phone)}
+function gateOtp(phone){$("#authgate").innerHTML=`<div class="authcard"><div class="authbrand">ALE <span>STUDIO</span></div><div class="authsub">Introduce el código que enviamos a <b>${escAuth(phone)}</b>.</div><form onsubmit="verifyPhone(event)" class="formgrid"><div class="field full"><label>Código SMS</label><input name="token" inputmode="numeric" autocomplete="one-time-code" required></div><div class="full"><button class="authbtn primary">Verificar y entrar</button></div></form></div>`}
+async function verifyPhone(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));const phone=document.querySelector("#authgate .authsub b")?.textContent;const {data,error}=await sb.auth.verifyOtp({phone,token:f.token,type:'sms'});if(error)return authError(error.message,"phone");await onSignedIn(data.session)}
+async function oauth(provider){if(!AUTH_READY)return authError("La autenticación segura todavía no está conectada. Configura Supabase y los proveedores Google/Apple.","email");const {error}=await sb.auth.signInWithOAuth({provider,options:{redirectTo:location.origin+location.pathname}});if(error)authError(error.message,"email")}
+async function onSignedIn(s){session=s;currentUser=s.user;await loadWorkspace();$("#authgate").classList.add("authhide");render()}
+async function loadWorkspace(){state=structuredClone(BASE_STATE);if(sb&&currentUser){const {data,error}=await sb.from("workspaces").select("data").eq("user_id",currentUser.id).maybeSingle();if(error){toast("No se pudo cargar tu workspace: "+error.message);return}if(data?.data)state=Object.assign(structuredClone(BASE_STATE),data.data);state.dashboard=Object.assign(structuredClone(BASE_STATE.dashboard),state.dashboard||{});state.dashboard.cards=Object.assign(structuredClone(BASE_STATE.dashboard.cards),state.dashboard.cards||{})}}
+async function logout(){if(sb)await sb.auth.signOut();session=null;currentUser=null;state=structuredClone(BASE_STATE);page="dashboard";location.hash="dashboard";$("#authgate").classList.remove("authhide");authUI()}
+async function bootAuth(){if(!AUTH_READY){authUI();return}const {data}=await sb.auth.getSession();if(data.session)await onSignedIn(data.session);else authUI();sb.auth.onAuthStateChange(async(_event,s)=>{if(s&&!currentUser)await onSignedIn(s)})}
+function recalculateFinancials(){const t=totals();return {capital:t.balance,patrimonioLiquido:t.balance,disponible:t.balance,flujoSalida:t.expense,ingresos:t.income};}
+async function save(){if(!currentUser){return}if(sb){const {error}=await sb.from("workspaces").upsert({user_id:currentUser.id,data:state,updated_at:new Date().toISOString()},{onConflict:"user_id"});if(error){toast("No se pudo guardar: "+error.message);return}}render()}
+function totals(){let income=0,expense=0;state.movements.forEach(m=>m.type==="income"?income+=+m.amount: m.type==="expense"?expense+=+m.amount:0);return{income,expense,balance:income-expense}}
+function toast(t){$("#toast").textContent=t;$("#toast").classList.add("show");setTimeout(()=>$("#toast").classList.remove("show"),1800)}
+function nav(){let items=[["dashboard","⌂","Dashboard"],["movements","↕","Movimientos"],["budgets","◫","Presupuestos"],["goals","◎","Metas"],["accounts","▣","Cuentas"],["wealth","◇","Patrimonio"],["history","☷","Historial"],["calculator","∑","Calculadora"],["ai","✦","ALE AI"],["settings","⚙","Configuración"]];$("#nav").innerHTML=items.map(x=>`<button class="${page===x[0]?'active':''}" onclick="go('${x[0]}')">${x[1]} <span>${x[2]}</span></button>`).join("")}
+function go(p){page=p;location.hash=p;render()}
+function header(title,actions=""){let u=currentUser?.user_metadata?.name||currentUser?.email||"Cuenta";return `<div class="top"><h1>${title}</h1><div class="actions"><span class="profilechip"><span class="sub">${esc(u)}</span><button class="btn" onclick="logout()">Cerrar sesión</button></span>${actions}</div></div>`}
+function empty(text,btn){return `<div class="empty"><b>${text}</b><div class="sub">${btn?`<br><button class="btn primary" onclick="${btn}">+ Registrar</button>`:""}</div></div>`}
+function openFinancialEditor(key){
+let t=totals();
+let labels={wealth:"Patrimonio Líquido",capital:"Capital",outflow:"Flujo de Salida",income:"Ingresos"};
+let current=key==="wealth"||key==="capital"?t.balance:key==="outflow"?t.expense:t.income;
+let type=key==="outflow"?"expense":"income";
+let title=labels[key]||"Valor";
+let note=key==="outflow"?"Al guardar se registrará un gasto real para que el Dashboard se actualice automáticamente."
+  :"Al guardar se registrará un movimiento real para conservar la fuente única de datos.";
+$("#modalbox").innerHTML=`<div class="modalhead"><h2>Editar ${title}</h2><button class="btn" onclick="closeModal()">×</button></div>
+<div class="card" style="margin-bottom:12px"><div class="label">Valor actual</div><div class="value">${money(current)}</div></div>
+<p class="sub">${note}</p>
+<form onsubmit="saveFinancialDigit(event,'${key}')" class="formgrid">
+<div class="field"><label>Nuevo valor (USD)</label><input name="amount" type="number" min="0" step="0.01" value="${Number(current).toFixed(2)}" required></div>
+<div class="field"><label>Fecha</label><input name="date" type="date" value="${new Date().toISOString().slice(0,10)}" required></div>
+<div class="field full"><label>Descripción</label><input name="description" value="Ajuste desde Dashboard" required></div>
+<div class="full"><button class="btn" type="button" onclick="closeModal()">Cancelar</button> <button class="btn primary">Guardar cambio</button></div>
+</form>`;
+$("#modal").classList.add("open");
+}
+function saveFinancialDigit(e,key){
+e.preventDefault();
+let f=Object.fromEntries(new FormData(e.target));
+let amount=+f.amount;
+if(!Number.isFinite(amount)||amount<0)return toast("Importe inválido");
+let t=totals();
+let current=key==="wealth"||key==="capital"?t.balance:key==="outflow"?t.expense:t.income;
+let delta=amount-current;
+if(Math.abs(delta)<0.005){closeModal();toast("El valor ya está actualizado");return}
+let movement={
+id:crypto.randomUUID(),
+type:delta>=0?"income":"expense",
+amount:Math.abs(delta),
+date:f.date,
+time:"",
+category:key==="outflow"?"Ajuste de gastos":"Ajuste de capital",
+sub:"",
+description:f.description,
+account:"",
+method:"Ajuste Dashboard",
+tags:"",
+notes:"Cambio realizado desde el valor numérico del Dashboard."
+};
+state.movements.push(movement);
+closeModal();
+save();
+toast("Valor actualizado y guardado");
+}
+function dashboard(){
+let t=totals();
+let period=state.dashboard.period||"all";
+let now=new Date();
+let filtered=state.movements.filter(m=>{
+  if(period==="all") return true;
+  let d=new Date(m.date+"T00:00:00");
+  if(period==="month") return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth();
+  if(period==="year") return d.getFullYear()===now.getFullYear();
+  return true;
+});
+let income=filtered.filter(m=>m.type==="income").reduce((a,m)=>a+ +m.amount,0);
+let expense=filtered.filter(m=>m.type==="expense").reduce((a,m)=>a+ +m.amount,0);
+let balance=income-expense;
+let c=state.dashboard.cards;
+return header("Dashboard",`<button class="btn primary" onclick="openMove()">+ Movimiento</button>`)
++`<div class="toolbar">
+<div class="field"><label>Periodo</label><select onchange="setDashPeriod(this.value)">
+<option value="all" ${period==="all"?"selected":""}>Todo el periodo</option>
+<option value="month" ${period==="month"?"selected":""}>Este mes</option>
+<option value="year" ${period==="year"?"selected":""}>Este año</option></select></div>
+<span class="sub" style="align-self:end">Los dígitos se recalculan automáticamente desde tus movimientos reales.</span>
+</div>
+<div class="grid">
+${card(c.wealth.title,money(balance),c.wealth.desc,"wealth")}
+${card(c.capital.title,money(balance),c.capital.desc,"capital")}
+${card(c.outflow.title,money(expense),c.outflow.desc,"outflow")}
+${card(c.income.title,money(income),c.income.desc,"income")}
+</div>
+<div class="two">
+<div class="card"><div class="label">Evolución del capital</div><div class="chart">${lineChart(filtered)}</div></div>
+<div class="card"><div class="label">Ingresos vs. gastos</div><div class="chart">${barChart(income,expense)}</div></div>
+</div>
+<div class="section grid">
+<div class="card"><div class="label">Balance actual</div><div class="value ${balance<0?'danger':'good'}">${money(balance)}</div><div class="sub">Actualización automática</div></div>
+<div class="card"><div class="label">Número de movimientos</div><div class="value">${filtered.length}</div><div class="sub">Actualizado automáticamente</div></div>
+<div class="card"><div class="label">Categoría con mayor gasto</div><div class="value">${esc(topCategory(filtered))}</div><div class="sub">Basado en gastos reales</div></div>
+<div class="card"><div class="label">Estado</div><div class="value">${filtered.length?"Activo":"Listo"}</div><div class="sub">Fuente de verdad sincronizada</div></div>
+</div>
+<div class="section card">
+<div class="label">Movimientos recientes</div>
+${movementTable(filtered.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6))}
+</div>
+<div class="section card">
+<div class="label">Accesos rápidos</div>
+<div class="toolbar">
+<button class="btn primary" onclick="openMove()">+ Registrar movimiento</button>
+<button class="btn" onclick="openBudget()">+ Presupuesto</button>
+<button class="btn" onclick="openGoal()">+ Meta</button>
+<button class="btn" onclick="openAccount()">+ Cuenta</button>
+<button class="btn" onclick="go('ai')">✦ Consultar ALE AI</button>
+</div>
+</div>`;
+}
+function card(a,b,c,key){
+return `<div class="card" onclick="openFinancialEditor('${key}')" style="cursor:pointer" title="Haz clic para editar este valor">
+<div class="label">${esc(a)} <span style="float:right;font-size:10px;opacity:.65">EDITAR</span></div>
+<div class="value">${b}</div><div class="sub">${esc(c)}</div></div>`}
+function topCategory(ms=state.movements){let x={};ms.filter(m=>m.type==="expense").forEach(m=>x[m.category]=(x[m.category]||0)+ +m.amount);let k=Object.keys(x).sort((a,b)=>x[b]-x[a])[0];return k||"—"}
+function lineChart(input){let ms=(input||state.movements).slice().sort((a,b)=>a.date.localeCompare(b.date));if(!ms.length)return `<div class="empty">Aún no hay datos para mostrar.</div>`;let bal=0,pts=[];ms.forEach(m=>{if(m.type==="income")bal+=+m.amount;if(m.type==="expense")bal-=+m.amount;pts.push(bal)});let max=Math.max(...pts,0),min=Math.min(...pts,0),range=max-min||1;let p=pts.map((v,i)=>`${(i/(Math.max(pts.length-1,1))*96+2).toFixed(1)},${(94-(v-min)/range*82).toFixed(1)}`).join(" ");return `<svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline fill="none" stroke="currentColor" stroke-width="1.8" points="${p}"/><line x1="2" y1="94" x2="98" y2="94" stroke="currentColor" opacity=".15"/></svg>`}
+function barChart(i,e){if(!i&&!e)return `<div class="empty">Sin movimientos.</div>`;let mx=Math.max(i,e)||1;return `<svg viewBox="0 0 100 100"><rect x="20" y="${95-i/mx*80}" width="22" height="${i/mx*80}" rx="3" fill="currentColor" opacity=".75"/><rect x="58" y="${95-e/mx*80}" width="22" height="${e/mx*80}" rx="3" fill="currentColor" opacity=".35"/><text x="22" y="99" font-size="6">Ingresos</text><text x="60" y="99" font-size="6">Gastos</text></svg>`}
+function movementTable(ms){if(!ms.length)return empty("Aún no tienes movimientos","openMove()");return `<div class="tablewrap"><table class="table"><thead><tr><th>Fecha</th><th>Tipo</th><th>Categoría</th><th>Cuenta</th><th>Importe</th><th></th></tr></thead><tbody>${ms.map(m=>`<tr><td>${esc(m.date)}</td><td><span class="pill">${m.type==="income"?"Ingreso":m.type==="expense"?"Gasto":"Transferencia"}</span></td><td>${esc(m.category||"—")}</td><td>${esc(m.type==="transfer"?((m.account||"—")+" → "+(m.destination||"—")):(m.account||"—"))}</td><td class="${m.type==="expense"?'danger':'good'}">${m.type==="expense"?"-":"+"}${money(m.amount)}</td><td><button class="btn" onclick="openMove('${m.id}')">Editar</button> <button class="btn" onclick="delMove('${m.id}')">Eliminar</button></td></tr>`).join("")}</tbody></table></div>`}
+function setDashPeriod(v){state.dashboard.period=v;save();toast("Periodo del Dashboard guardado")}
+function openDashboardEditor(){
+let c=state.dashboard.cards;
+$("#modalbox").innerHTML=`<div class="modalhead"><h2>Personalizar Dashboard</h2><button class="btn" onclick="closeModal()">×</button></div>
+<p class="sub">Puedes editar los nombres y descripciones de las funciones visuales. Los valores financieros siguen siendo automáticos y nunca se editan manualmente.</p>
+<form onsubmit="saveDashboard(event)" class="formgrid">
+${Object.entries(c).map(([k,v])=>`<div class="field full"><label>${k==="wealth"?"Patrimonio Líquido":k==="capital"?"Capital":k==="outflow"?"Flujo de Salida":"Ingresos"}</label><input name="${k}_title" value="${esc(v.title)}" required><input name="${k}_desc" value="${esc(v.desc)}" placeholder="Descripción"></div>`).join("")}
+<div class="full"><button class="btn" type="button" onclick="closeModal()">Cancelar</button> <button class="btn primary">Guardar cambios</button></div></form>`;
+$("#modal").classList.add("open")
+}
+function openDashCard(key){
+let c=state.dashboard.cards[key];
+$("#modalbox").innerHTML=`<div class="modalhead"><h2>Editar función del Dashboard</h2><button class="btn" onclick="closeModal()">×</button></div>
+<p class="sub">El importe se calcula desde los movimientos reales. Solo puedes personalizar la presentación.</p>
+<form onsubmit="saveDashCard(event,'${key}')" class="formgrid"><div class="field full"><label>Nombre</label><input name="title" value="${esc(c.title)}" required></div><div class="field full"><label>Descripción</label><input name="desc" value="${esc(c.desc)}"></div><div class="full"><button class="btn" type="button" onclick="closeModal()">Cancelar</button> <button class="btn primary">Guardar cambios</button></div></form>`;
+$("#modal").classList.add("open")
+}
+function saveDashCard(e,key){e.preventDefault();let f=Object.fromEntries(new FormData(e.target));state.dashboard.cards[key]={title:f.title,desc:f.desc};closeModal();save();toast("Cambios guardados en el Dashboard")}
+function saveDashboard(e){e.preventDefault();let f=Object.fromEntries(new FormData(e.target));for(const k of Object.keys(state.dashboard.cards)){state.dashboard.cards[k].title=f[k+"_title"];state.dashboard.cards[k].desc=f[k+"_desc"]}closeModal();save();toast("Dashboard personalizado y guardado")}
+function movements(){return header("Movimientos",`<button class="btn primary" onclick="openMove()">+ Movimiento</button>`)+`<div class="toolbar"><input class="field" id="search" placeholder="Buscar…" oninput="renderMovements()"><select id="typeFilter" onchange="renderMovements()"><option value="">Todos</option><option value="income">Ingresos</option><option value="expense">Gastos</option></select><input type="date" id="dateFilter" onchange="renderMovements()"></div><div class="card" id="movetable"></div>`}
+function renderMovements(){let q=($("#search")?.value||"").toLowerCase(),f=$("#typeFilter")?.value||"",d=$("#dateFilter")?.value||"";let ms=state.movements.filter(m=>(!q||JSON.stringify(m).toLowerCase().includes(q))&&(!f||m.type===f)&&(!d||m.date===d));$("#movetable").innerHTML=movementTable(ms)}
+function budgets(){return header("Presupuestos",`<button class="btn primary" onclick="openBudget()">+ Presupuesto</button>`)+`<div class="grid">${state.budgets.length?state.budgets.map(b=>{let spent=state.movements.filter(m=>m.type==="expense"&&m.category===b.category&&m.date.slice(0,7)===b.period).reduce((s,m)=>s+ +m.amount,0),pct=Math.min(100,spent/b.amount*100);return `<div class="card"><b>${esc(b.category)}</b><div class="sub">${esc(b.period)}</div><div class="progress"><i style="width:${pct}%"></i></div><p>${money(spent)} de ${money(b.amount)} · ${pct.toFixed(0)}%</p><span class="${spent>b.amount?'danger':'good'}">${spent>b.amount?'Excedido':pct>=80?'Próximo al límite':'Normal'}</span><br><button class="btn" style="margin-top:10px" onclick="delBudget('${b.id}')">Eliminar</button></div>`}).join(""):empty("Aún no tienes presupuestos","openBudget()")}</div>`}
+function goals(){return header("Metas",`<button class="btn primary" onclick="openGoal()">+ Meta</button>`)+`<div class="grid">${state.goals.length?state.goals.map(g=>{let pct=Math.min(100,g.current/g.target*100);return `<div class="card"><b>${esc(g.name)}</b><div class="sub">Objetivo ${money(g.target)} · ${esc(g.date||"Sin fecha")}</div><div class="progress"><i style="width:${pct}%"></i></div><p>${money(g.current)} · ${pct.toFixed(0)}% · Restante ${money(Math.max(0,g.target-g.current))}</p><button class="btn" onclick="delGoal('${g.id}')">Eliminar</button></div>`}).join(""):empty("Aún no tienes metas","openGoal()")}</div>`}
+function accounts(){return header("Cuentas",`<button class="btn primary" onclick="openAccount()">+ Cuenta</button>`)+`<div class="grid">${state.accounts.length?state.accounts.map(a=>{let bal=state.movements.reduce((s,m)=>m.type==="income"&&m.account===a.name?s+ +m.amount:m.type==="expense"&&m.account===a.name?s- +m.amount:m.type==="transfer"&&m.account===a.name?s- +m.amount:m.type==="transfer"&&m.destination===a.name?s+ +m.amount:s,0);return `<div class="card"><span class="pill">${esc(a.type)}</span><h3>${esc(a.name)}</h3><div class="value">${money(bal)}</div><button class="btn" onclick="delAccount('${a.id}')">Eliminar</button></div>`}).join(""):empty("Aún no tienes cuentas","openAccount()")}</div>`}
+function wealth(){let t=totals();return header("Patrimonio")+`<div class="grid">${card("Patrimonio Líquido",money(t.balance),"Siempre igual a Capital")}${card("Capital",money(t.balance),"Fuente de verdad")}${card("Activos",money(t.balance),"Derivado del modelo actual")}${card("Pasivos",money(0),"No registrados")}</div><div class="section card"><h3>Patrimonio neto</h3><div class="value">${money(t.balance)}</div><div class="sub">Patrimonio Líquido = Capital = Disponible</div></div>`}
+function history(){return header("Historial")+`<div class="card">${movementTable(state.movements.slice().sort((a,b)=>b.date.localeCompare(a.date)))}</div>`}
+let calc="";function calculator(){return header("Calculadora científica")+`<div class="card" style="max-width:620px"><input id="calc" value="${esc(calc)}" oninput="calc=this.value" style="width:100%;font-size:25px;padding:15px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text)"><div class="toolbar">${["7","8","9","/","sqrt(","4","5","6","*","^","1","2","3","-","(", "0",".",")","+","%","sin(","cos(","tan(","log(","ln(","π","e","!","⌫","="].map(x=>`<button class="btn" onclick="key('${x}')">${x}</button>`).join("")}</div><div class="sub">Parser seguro: solo acepta números, operadores y funciones matemáticas permitidas.</div></div>`}
+function key(k){if(k==="="){try{calc=String(safeEval(calc))}catch{toast("Expresión no válida")}}else if(k==="⌫")calc=calc.slice(0,-1);else calc+=k;render()}
+function safeEval(s){s=s.replaceAll("π","PI").replaceAll("^","**").replace(/\be\b/g,"E");if(!/^[0-9+\-*/().,%\sA-Za-z_*!]+$/.test(s))throw Error();let f=s.replace(/sqrt/g,"Math.sqrt").replace(/sin/g,"Math.sin").replace(/cos/g,"Math.cos").replace(/tan/g,"Math.tan").replace(/log/g,"Math.log10").replace(/ln/g,"Math.log").replace(/\bPI\b/g,"Math.PI").replace(/\bE\b/g,"Math.E");if(!/^(?:[0-9+\-*/().,%\s]|Math\.(?:sqrt|sin|cos|tan|log10|log|PI|E)|Math\.)+$/.test(f))throw Error();if(/Math\.(?!sqrt|sin|cos|tan|log10|log|PI|E)/.test(f))throw Error();return Function('"use strict";return ('+f+')')()}
+function ai(){return header("ALE AI")+`<div class="card chat"><div class="messages" id="messages"><div class="msg"><b>ALE AI</b><br>Hola. Puedo analizar los datos que ya existen en ALE STUDIO. No inventaré cifras.</div></div><div class="chatbar"><input id="aiq" placeholder="Ej.: ¿cuánto he gastado?"><button class="btn primary" onclick="askAI()">Enviar</button></div></div>`}
+function askAI(){let q=$("#aiq").value.trim();if(!q)return;$("#messages").insertAdjacentHTML("beforeend",`<div class="msg me">${esc(q)}</div>`);let t=totals(),l=q.toLowerCase(),ans=l.includes("gast")?`Tus gastos acumulados son ${money(t.expense)}.`:l.includes("ingres")?`Tus ingresos registrados son ${money(t.income)}.`:l.includes("capital")||l.includes("patrimonio")?`Tu Capital y Patrimonio Líquido actuales son ${money(t.balance)}.`:l.includes("movimiento")?`Tienes ${state.movements.length} movimientos registrados.`:`Con los datos actuales: Capital/Patrimonio Líquido ${money(t.balance)}, ingresos ${money(t.income)} y gastos ${money(t.expense)}. Si necesitas un análisis específico, pregúntame por gastos, ingresos, capital, categorías o movimientos.`;$("#messages").insertAdjacentHTML("beforeend",`<div class="msg"><b>ALE AI</b><br>${esc(ans)}</div>`);$("#aiq").value="";$("#messages").scrollTop=99999}
+function settings(){return header("Configuración")+`<div class="card settings"><div class="field"><label>Tema</label><select onchange="state.settings.theme=this.value;save()"><option ${state.settings.theme==="light"?"selected":""} value="light">Claro</option><option ${state.settings.theme==="dark"?"selected":""} value="dark">Oscuro</option></select></div><br><div class="field"><label>Contraste</label><select onchange="state.settings.contrast=this.value==='high';save()"><option ${!state.settings.contrast?"selected":""}>Normal</option><option value="high" ${state.settings.contrast?"selected":""}>Alto</option></select></div><br><div class="field"><label>Moneda principal</label><select onchange="state.settings.currency=this.value;save()"><option ${state.settings.currency==="USD"?"selected":""}>USD</option><option ${state.settings.currency==="EUR"?"selected":""}>EUR</option><option ${state.settings.currency==="PAB"?"selected":""}>PAB</option></select></div><br><label><input type="checkbox" ${state.settings.notifications?"checked":""} onchange="state.settings.notifications=this.checked;save()"> Notificaciones</label><hr><button class="btn" onclick="exportData()">Exportar datos</button> <label class="btn">Importar<input type="file" accept=".json" hidden onchange="importData(event)"></label> <button class="btn danger" onclick="resetData()">Restablecer datos</button></div>`}
+function exportData(){let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"}));a.download="ale-studio-datos.json";a.click()}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.movements||!x.accounts)throw Error();state=x;save();toast("Datos importados")}catch{toast("Archivo inválido")}};r.readAsText(f)}
+function resetData(){if(confirm("¿Eliminar todos los datos? Esta acción no se puede deshacer.")){state={movements:[],accounts:[],budgets:[],goals:[],settings:{theme:"light",contrast:false,currency:"USD",notifications:true},dashboard:{period:"all",cards:JSON.parse(JSON.stringify(defaultDash))}};save();toast("Datos restablecidos")}}
+function openMove(id){editing=id||null;let m=state.movements.find(x=>x.id===id)||{type:"expense",amount:"",date:new Date().toISOString().slice(0,10),category:"",sub:"",description:"",account:"",method:"",tags:"",notes:""};$("#modalbox").innerHTML=`<div class="modalhead"><h2>${id?"Editar":"Nuevo"} movimiento</h2><button class="btn" onclick="closeModal()">×</button></div><form onsubmit="submitMove(event)" class="formgrid"><div class="field"><label>Tipo</label><select name="type" onchange="toggleTransferFields(this.value)"><option value="expense" ${m.type==="expense"?"selected":""}>Gasto</option><option value="income" ${m.type==="income"?"selected":""}>Ingreso</option><option value="transfer" ${m.type==="transfer"?"selected":""}>Transferencia</option></select></div><div class="field"><label>Importe</label><input name="amount" type="number" min="0.01" step="0.01" value="${m.amount}" required></div><div class="field"><label>Fecha</label><input name="date" type="date" value="${m.date}" required></div><div class="field"><label>Hora</label><input name="time" type="time" value="${m.time||""}"></div><div class="field"><label>Categoría</label><input name="category" value="${esc(m.category)}"></div><div class="field"><label>Subcategoría</label><input name="sub" value="${esc(m.sub)}"></div><div class="field"><label>Cuenta</label><input name="account" value="${esc(m.account)}"></div><div class="field"><label>Método de pago</label><input name="method" value="${esc(m.method)}"></div><div class="field transfer-only" style="display:${m.type==="transfer"?"flex":"none"}"><label>Cuenta de destino</label><input name="destination" value="${esc(m.destination||"")}"></div><div class="field full"><label>Descripción</label><input name="description" value="${esc(m.description)}"></div><div class="field full"><label>Etiquetas</label><input name="tags" value="${esc(m.tags)}"></div><div class="field full"><label>Notas</label><textarea name="notes">${esc(m.notes)}</textarea></div><div class="full"><button class="btn" type="button" onclick="closeModal()">Cancelar</button> <button class="btn primary">Guardar</button></div></form>`;$("#modal").classList.add("open")}
+function toggleTransferFields(type){
+document.querySelectorAll(".transfer-only").forEach(x=>x.style.display=type==="transfer"?"flex":"none");
+}
+function submitMove(e){
+e.preventDefault();
+let f=new FormData(e.target),o=Object.fromEntries(f);
+o.amount=+o.amount;o.id=editing||crypto.randomUUID();
+if(!o.amount||o.amount<=0)return toast("El importe debe ser mayor que $0");
+if(o.type==="transfer" && (!o.account||!o.destination||o.account===o.destination))return toast("Indica cuentas de origen y destino diferentes");
+let i=state.movements.findIndex(x=>x.id===o.id);
+if(i>=0)state.movements[i]=o;else state.movements.push(o);
+closeModal();save();toast("Movimiento guardado. Dashboard actualizado");
+}
+function delMove(id){if(confirm("¿Eliminar este movimiento?")){state.movements=state.movements.filter(m=>m.id!==id);save();toast("Movimiento eliminado")}}
+function openBudget(){editing=null;$("#modalbox").innerHTML=`<div class="modalhead"><h2>Nuevo presupuesto</h2><button class="btn" onclick="closeModal()">×</button></div><form onsubmit="submitBudget(event)" class="formgrid"><div class="field"><label>Categoría</label><input name="category" required></div><div class="field"><label>Importe máximo</label><input name="amount" type="number" min=".01" step=".01" required></div><div class="field"><label>Mes</label><input name="period" type="month" required value="${new Date().toISOString().slice(0,7)}"></div><div class="full"><button class="btn" type="button" onclick="closeModal()">Cancelar</button> <button class="btn primary">Guardar</button></div></form>`;$("#modal").classList.add("open")}
+function submitBudget(e){e.preventDefault();let f=Object.fromEntries(new FormData(e.target));f.amount=+f.amount;f.id=crypto.randomUUID();state.budgets.push(f);closeModal();save()}
+function delBudget(id){if(confirm("¿Eliminar presupuesto?")){state.budgets=state.budgets.filter(x=>x.id!==id);save()}}
+function openGoal(){editing=null;$("#modalbox").innerHTML=`<div class="modalhead"><h2>Nueva meta</h2><button class="btn" onclick="closeModal()">×</button></div><form onsubmit="submitGoal(event)" class="formgrid"><div class="field"><label>Nombre</label><input name="name" required></div><div class="field"><label>Importe objetivo</label><input name="target" type="number" min=".01" step=".01" required></div><div class="field"><label>Importe actual</label><input name="current" type="number" min="0" step=".01" value="0"></div><div class="field"><label>Fecha objetivo</label><input name="date" type="date"></div><div class="field full"><label>Descripción</label><textarea name="description"></textarea></div><div class="full"><button class="btn" type="button" onclick="closeModal()">Cancelar</button> <button class="btn primary">Guardar</button></div></form>`;$("#modal").classList.add("open")}
+function submitGoal(e){e.preventDefault();let f=Object.fromEntries(new FormData(e.target));f.target=+f.target;f.current=+f.current;f.id=crypto.randomUUID();state.goals.push(f);closeModal();save()}
+function delGoal(id){if(confirm("¿Eliminar meta?")){state.goals=state.goals.filter(x=>x.id!==id);save()}}
+function openAccount(){editing=null;$("#modalbox").innerHTML=`<div class="modalhead"><h2>Nueva cuenta</h2><button class="btn" onclick="closeModal()">×</button></div><form onsubmit="submitAccount(event)" class="formgrid"><div class="field"><label>Nombre</label><input name="name" required></div><div class="field"><label>Tipo</label><select name="type"><option>Efectivo</option><option>Cuenta bancaria</option><option>Tarjeta</option><option>Billetera digital</option><option>Personalizada</option></select></div><div class="full"><button class="btn" type="button" onclick="closeModal()">Cancelar</button> <button class="btn primary">Guardar</button></div></form>`;$("#modal").classList.add("open")}
+function submitAccount(e){e.preventDefault();let f=Object.fromEntries(new FormData(e.target));if(state.accounts.some(a=>a.name.toLowerCase()===f.name.toLowerCase()))return toast("Ya existe una cuenta con ese nombre");f.id=crypto.randomUUID();state.accounts.push(f);closeModal();save()}
+function delAccount(id){if(confirm("¿Eliminar cuenta? Los movimientos asociados se conservarán, pero quedarán sin cuenta.")){let n=state.accounts.find(a=>a.id===id)?.name;state.accounts=state.accounts.filter(a=>a.id!==id);state.movements.forEach(m=>{if(m.account===n)m.account=""});save()}}
+function closeModal(){$("#modal").classList.remove("open")}
+$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+function render(){document.documentElement.dataset.theme=state.settings.theme;document.documentElement.style.filter=state.settings.contrast?"contrast(1.12)":"";nav();let v={dashboard:dashboard,movements:movements,budgets:budgets,goals:goals,accounts:accounts,wealth:wealth,history:history,calculator:calculator,ai:ai,settings:settings}[page]||dashboard;$("#view").innerHTML=v();if(page==="movements")renderMovements()}
+window.addEventListener("hashchange",()=>{page=location.hash.slice(1)||"dashboard";if(currentUser)render()});bootAuth();
+</script></body></html>
