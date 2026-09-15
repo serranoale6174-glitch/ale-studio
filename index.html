@@ -19,8 +19,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{di
 <div class="app"><aside class="side"><div class="brand">ALE <span>STUDIO</span></div><nav id="nav"></nav></aside><main class="main"><div id="view"></div></main></div>
 <div class="modal" id="modal"><div class="modalbox" id="modalbox"></div></div><div class="toast" id="toast"></div>
 <script>
-const SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_PUBLISHABLE_KEY="YOUR_SUPABASE_PUBLISHABLE_KEY";
+const SUPABASE_URL="https://aqrbpwjvsymhcrwwepjm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_yw7_LklXOjEuuz9lEGJF6w_T7yV5ATw";
 const AUTH_READY=SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && SUPABASE_PUBLISHABLE_KEY && !SUPABASE_PUBLISHABLE_KEY.includes("YOUR_");
 const sb=AUTH_READY?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY):null;
 let session=null,currentUser=null;
