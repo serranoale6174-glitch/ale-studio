@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ALE STUDIO — Gestión Financiera Personal</title>
+
+  <meta name="description"
+        content="ALE STUDIO es una plataforma de gestión financiera personal para organizar capital, patrimonio, ingresos, gastos, presupuestos, metas y movimientos.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #08070d;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #d4af37, #8e6b18);
+      color: #08070d;
+      font-weight: 900;
+      box-shadow: 0 0 25px rgba(212,175,55,0.25);
+    }
+
+    main {
+      padding: 90px 0 70px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 30px;
+      color: #e5c75a;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, #ffffff, #e5c75a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: auto;
+      color: #b9b6c5;
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .features {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: left;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .card h2 {
+      color: #e5c75a;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #aaa7b5;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .actions {
+      margin-top: 55px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .primary {
+      background: linear-gradient(135deg, #d4af37, #9f791c);
+      color: #08070d;
+    }
+
+    .secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ffffff;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0;
+      text-align: center;
+      color: #777482;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #bfa64b;
+      text-decoration: none;
+    }
+
+    @media (max-width: 750px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">A</div>
+        <span>ALE STUDIO</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="badge">GESTIÓN FINANCIERA PERSONAL</div>
+
+      <h1>Tu capital.<br>Tu control.</h1>
+
+      <p class="subtitle">
+        ALE STUDIO es una plataforma diseñada para ayudarte a organizar
+        y comprender tus finanzas personales desde un solo lugar.
+      </p>
+
+      <div class="features">
+
+        <div class="card">
+          <h2>Patrimonio y capital</h2>
+          <p>
+            Consulta y organiza tu patrimonio líquido, capital disponible
+            y evolución financiera.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Movimientos</h2>
+          <p>
+            Registra ingresos, gastos y movimientos financieros para
+            mantener una visión clara de tus recursos.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Presupuestos y metas</h2>
+          <p>
+            Organiza tus presupuestos y establece objetivos financieros
+            para llevar un mejor control de tus decisiones.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Historial</h2>
+          <p>
+            Consulta la evolución de tus movimientos y mantén organizada
+            tu información financiera.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Asistente ALE AI</h2>
+          <p>
+            Cuenta con un asistente inteligente integrado para conversar,
+            analizar información y ayudarte con tus finanzas.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Privacidad</h2>
+          <p>
+            Cada usuario dispone de su propio espacio de trabajo y sus
+            datos financieros deben permanecer aislados de otros usuarios.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <a class="button primary"
+           href="https://serranoale6174-glitch.github.io/ale-studio/">
+          Acceder a ALE STUDIO
+        </a>
+
+        <a class="button secondary"
+           href="privacy.html">
+          Política de privacidad
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 ALE STUDIO ·
+      <a href="privacy.html">Política de privacidad</a>
+    </div>
+  </footer>
+
+</body>
+</html>
