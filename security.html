@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALE STUDIO — Security Center</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root{
+  --bg:#070707;
+  --panel:#111111;
+  --panel2:#171717;
+  --border:#292929;
+  --gold:#d8b36a;
+  --gold2:#f1d28d;
+  --text:#f5f5f5;
+  --muted:#9c9c9c;
+  --green:#42d392;
+  --red:#ff5f5f;
+  --blue:#62b5ff;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top right,rgba(216,179,106,.10),transparent 30%),
+    radial-gradient(circle at bottom left,rgba(98,181,255,.06),transparent 28%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(7,7,7,.90);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+  max-width:1400px;
+  margin:auto;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  object-fit:cover;
+  border:1px solid rgba(216,179,106,.45);
+}
+
+.brand-title{
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.brand-sub{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:2px;
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--green);
+  font-size:13px;
+  font-weight:700;
+}
+
+.status-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 14px rgba(66,211,146,.7);
+}
+
+main{
+  max-width:1400px;
+  margin:auto;
+  padding:32px 24px 60px;
+}
+
+.hero{
+  margin-bottom:28px;
+}
+
+.hero h1{
+  font-size:clamp(28px,4vw,46px);
+  line-height:1.05;
+  letter-spacing:-1.5px;
+}
+
+.hero h1 span{
+  color:var(--gold2);
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+  max-width:720px;
+  line-height:1.6;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:28px;
+}
+
+.card{
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
+}
+
+.card-label{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.card-value{
+  font-size:31px;
+  font-weight:800;
+  margin-top:9px;
+}
+
+.card-value.green{
+  color:var(--green);
+}
+
+.card-value.blue{
+  color:var(--blue);
+}
+
+.card-value.gold{
+  color:var(--gold2);
+}
+
+.section{
+  margin-top:28px;
+}
+
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:14px;
+}
+
+.section-title{
+  font-size:21px;
+  font-weight:800;
+}
+
+.section-sub{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:4px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+button{
+  border:1px solid var(--border);
+  background:#161616;
+  color:var(--text);
+  padding:10px 15px;
+  border-radius:11px;
+  cursor:pointer;
+  font-weight:700;
+  transition:.2s;
+}
+
+button:hover{
+  border-color:rgba(216,179,106,.6);
+  transform:translateY(-1px);
+}
+
+button.primary{
+  background:linear-gradient(135deg,#d8b36a,#a97b31);
+  color:#080808;
+  border:none;
+}
+
+.table-wrap{
+  overflow:auto;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:#0d0d0d;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+
+th,td{
+  padding:14px 16px;
+  text-align:left;
+  border-bottom:1px solid #202020;
+  font-size:13px;
+}
+
+th{
+  color:var(--gold2);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  background:#121212;
+}
+
+td{
+  color:#dedede;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+.badge{
+  display:inline-flex;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.badge.green{
+  background:rgba(66,211,146,.12);
+  color:var(--green);
+}
+
+.badge.red{
+  background:rgba(255,95,95,.12);
+  color:var(--red);
+}
+
+.badge.blue{
+  background:rgba(98,181,255,.12);
+  color:var(--blue);
+}
+
+.empty{
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.loading{
+  padding:30px;
+  text-align:center;
+  color:var(--gold2);
+}
+
+.error{
+  padding:18px;
+  border:1px solid rgba(255,95,95,.35);
+  background:rgba(255,95,95,.08);
+  border-radius:14px;
+  color:#ffb0b0;
+  margin-bottom:20px;
+}
+
+.admin-box{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.admin-email{
+  color:var(--gold2);
+  font-weight:700;
+  margin-top:5px;
+}
+
+.system-list{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.system-item{
+  border:1px solid var(--border);
+  background:#101010;
+  padding:15px;
+  border-radius:13px;
+}
+
+.system-item strong{
+  display:block;
+  margin-bottom:6px;
+}
+
+.system-ok{
+  color:var(--green);
+  font-size:13px;
+  font-weight:700;
+}
+
+footer{
+  max-width:1400px;
+  margin:auto;
+  padding:20px 24px 40px;
+  color:#666;
+  font-size:12px;
+}
+
+@media(max-width:1000px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .system-list{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .header-inner,
+  main,
+  footer{
+    padding-left:15px;
+    padding-right:15px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <div class="brand">
+      <img src="logo-as.png" alt="ALE STUDIO">
+      <div>
+        <div class="brand-title">ALE STUDIO</div>
+        <div class="brand-sub">Security Center</div>
+      </div>
+    </div>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Sistema protegido
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <div id="errorBox"></div>
+
+  <section class="hero">
+    <h1>Security <span>Center</span></h1>
+    <p>
+      Centro privado de administración y seguridad de ALE STUDIO.
+      El acceso y los datos administrativos están protegidos por
+      Supabase y el backend de seguridad.
+    </p>
+  </section>
+
+  <section class="card">
+    <div class="admin-box">
+
+      <div>
+        <div class="card-label">Administrador autorizado</div>
+        <div class="admin-email" id="adminEmail">
+          Comprobando sesión...
+        </div>
+      </div>
+
+      <div class="actions">
+        <button onclick="loadAll()">Actualizar</button>
+        <button class="primary" onclick="loadUsers()">Usuarios</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-label">Usuarios registrados</div>
+        <div class="card-value gold" id="usersTotal">—</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Usuarios activos</div>
+        <div class="card-value green" id="usersActive">—</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Eventos de seguridad</div>
+        <div class="card-value blue" id="eventsTotal">—</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Estado</div>
+        <div class="card-value green">ACTIVO</div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="section-head">
+      <div>
+        <div class="section-title">Usuarios</div>
+        <div class="section-sub">
+          Usuarios registrados en ALE STUDIO
+        </div>
+      </div>
+
+      <div class="actions">
+        <button onclick="loadUsers()">Actualizar usuarios</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div id="usersContainer" class="loading">
+        Cargando usuarios...
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="section-head">
+      <div>
+        <div class="section-title">Actividad de seguridad</div>
+        <div class="section-sub">
+          Eventos registrados por el sistema
+        </div>
+      </div>
+
+      <div class="actions">
+        <button onclick="loadEvents()">Actualizar eventos</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div id="eventsContainer" class="loading">
+        Cargando eventos...
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <div class="section-head">
+      <div>
+        <div class="section-title">Sistema</div>
+        <div class="section-sub">
+          Estado de los componentes de seguridad
+        </div>
+      </div>
+    </div>
+
+    <div class="system-list">
+
+      <div class="system-item">
+        <strong>Supabase Auth</strong>
+        <span class="system-ok">● OPERATIVO</span>
+      </div>
+
+      <div class="system-item">
+        <strong>Security API</strong>
+        <span class="system-ok">● OPERATIVO</span>
+      </div>
+
+      <div class="system-item">
+        <strong>Administrador</strong>
+        <span class="system-ok">● AUTORIZADO</span>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  ALE STUDIO Security Center · Área administrativa protegida
+</footer>
+
+<script>
+const SUPABASE_URL =
+  "https://aqrbpwjvsymhcrwwepjm.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_yw7_LklXOjEuuz9lEGJF6w_T7yV5ATw";
+
+const sb = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const errorBox =
+  document.getElementById("errorBox");
+
+function showError(message){
+  errorBox.innerHTML = `
+    <div class="error">
+      <strong>Acceso / sistema</strong><br>
+      ${escapeHtml(message)}
+    </div>
+  `;
+}
+
+function clearError(){
+  errorBox.innerHTML = "";
+}
+
+function escapeHtml(value){
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function formatDate(value){
+  if(!value) return "—";
+
+  try{
+    return new Date(value).toLocaleString(
+      "es-PA",
+      {
+        dateStyle:"medium",
+        timeStyle:"short"
+      }
+    );
+  }catch{
+    return value;
+  }
+}
+
+async function securityCall(action, extra = {}){
+
+  const { data, error } =
+    await sb.functions.invoke(
+      "clever-api",
+      {
+        body:{
+          action,
+          ...extra
+        }
+      }
+    );
+
+  if(error){
+    throw error;
+  }
+
+  if(!data?.authorized){
+    throw new Error(
+      data?.error || "Acceso denegado"
+    );
+  }
+
+  return data;
+}
+
+async function checkAdmin(){
+
+  try{
+
+    const {
+      data: sessionData
+    } = await sb.auth.getSession();
+
+    const session =
+      sessionData?.session;
+
+    if(!session){
+      throw new Error(
+        "No existe una sesión iniciada."
+      );
+    }
+
+    const data =
+      await securityCall("authorize");
+
+    document.getElementById(
+      "adminEmail"
+    ).textContent =
+      session.user?.email ||
+      "Administrador autorizado";
+
+    return true;
+
+  }catch(error){
+
+    document.getElementById(
+      "adminEmail"
+    ).textContent =
+      "Acceso no autorizado";
+
+    showError(
+      error.message ||
+      "No se pudo verificar el acceso."
+    );
+
+    return false;
+  }
+}
+
+async function loadOverview(){
+
+  const data =
+    await securityCall("overview");
+
+  const summary =
+    data.summary || {};
+
+  document.getElementById(
+    "usersTotal"
+  ).textContent =
+    summary.users_total ?? 0;
+
+  document.getElementById(
+    "usersActive"
+  ).textContent =
+    summary.users_active ?? 0;
+
+  document.getElementById(
+    "eventsTotal"
+  ).textContent =
+    summary.security_events ?? 0;
+}
+
+async function loadUsers(){
+
+  const container =
+    document.getElementById(
+      "usersContainer"
+    );
+
+  container.innerHTML =
+    `<div class="loading">Cargando usuarios...</div>`;
+
+  try{
+
+    const data =
+      await securityCall(
+        "users",
+        {
+          page:1,
+          perPage:100
+        }
+      );
+
+    const users =
+      data.users || [];
+
+    if(!users.length){
+
+      container.innerHTML =
+        `<div class="empty">
+          No hay usuarios registrados.
+        </div>`;
+
+      return;
+    }
+
+    let html = `
+      <table>
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>ID</th>
+            <th>Correo</th>
+            <th>Proveedor</th>
+            <th>Registro</th>
+            <th>Último acceso</th>
+            <th>Confirmación</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    users.forEach(user => {
+
+      const providers =
+        Array.isArray(
+          user.identities
+        )
+        ? user.identities
+            .map(i => i.provider)
+            .join(", ")
+        : "—";
+
+      const confirmed =
+        user.email_confirmed_at ||
+        user.phone_confirmed_at;
+
+      const displayName =
+        user.user_metadata?.full_name ||
+        user.user_metadata?.name ||
+        user.email ||
+        "Usuario";
+
+      html += `
+        <tr>
+          <td>${escapeHtml(displayName)}</td>
+
+          <td>
+            <small>${escapeHtml(user.id)}</small>
+          </td>
+
+          <td>
+            ${escapeHtml(user.email || "—")}
+          </td>
+
+          <td>
+            ${escapeHtml(providers)}
+          </td>
+
+          <td>
+            ${escapeHtml(
+              formatDate(user.created_at)
+            )}
+          </td>
+
+          <td>
+            ${escapeHtml(
+              formatDate(user.last_sign_in_at)
+            )}
+          </td>
+
+          <td>
+            ${
+              confirmed
+              ? `<span class="badge green">
+                   Confirmado
+                 </span>`
+              : `<span class="badge red">
+                   Pendiente
+                 </span>`
+            }
+          </td>
+
+        </tr>
+      `;
+    });
+
+    html += `
+        </tbody>
+      </table>
+    `;
+
+    container.innerHTML = html;
+
+  }catch(error){
+
+    container.innerHTML =
+      `<div class="empty">
+        No se pudieron cargar los usuarios.
+      </div>`;
+
+    showError(
+      error.message ||
+      "Error al cargar usuarios."
+    );
+  }
+}
+
+async function loadEvents(){
+
+  const container =
+    document.getElementById(
+      "eventsContainer"
+    );
+
+  container.innerHTML =
+    `<div class="loading">Cargando eventos...</div>`;
+
+  try{
+
+    const data =
+      await securityCall(
+        "events",
+        {
+          limit:100
+        }
+      );
+
+    const events =
+      data.events || [];
+
+    if(!events.length){
+
+      container.innerHTML =
+        `<div class="empty">
+          Todavía no existen eventos de seguridad registrados.
+        </div>`;
+
+      return;
+    }
+
+    let html = `
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Evento</th>
+            <th>Usuario</th>
+            <th>Objetivo</th>
+            <th>IP</th>
+            <th>Dispositivo</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    events.forEach(event => {
+
+      html += `
+        <tr>
+
+          <td>
+            ${escapeHtml(
+              formatDate(event.created_at)
+            )}
+          </td>
+
+          <td>
+            <span class="badge blue">
+              ${escapeHtml(event.event_type)}
+            </span>
+          </td>
+
+          <td>
+            ${escapeHtml(
+              event.user_id || "—"
+            )}
+          </td>
+
+          <td>
+            ${escapeHtml(
+              event.target_type ||
+              "—"
+            )}
+          </td>
+
+          <td>
+            ${escapeHtml(
+              event.ip_address ||
+              "—"
+            )}
+          </td>
+
+          <td>
+            ${escapeHtml(
+              event.user_agent ||
+              "—"
+            )}
+          </td>
+
+        </tr>
+      `;
+    });
+
+    html += `
+        </tbody>
+      </table>
+    `;
+
+    container.innerHTML = html;
+
+  }catch(error){
+
+    container.innerHTML =
+      `<div class="empty">
+        No se pudieron cargar los eventos.
+      </div>`;
+
+    showError(
+      error.message ||
+      "Error al cargar eventos."
+    );
+  }
+}
+
+async function loadAll(){
+
+  clearError();
+
+  const authorized =
+    await checkAdmin();
+
+  if(!authorized) return;
+
+  try{
+
+    await Promise.all([
+      loadOverview(),
+      loadUsers(),
+      loadEvents()
+    ]);
+
+  }catch(error){
+
+    showError(
+      error.message ||
+      "No se pudo cargar el Security Center."
+    );
+  }
+}
+
+sb.auth.onAuthStateChange(
+  () => {
+    loadAll();
+  }
+);
+
+loadAll();
+</script>
+
+</body>
+</html>
