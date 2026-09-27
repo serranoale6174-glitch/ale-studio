@@ -193,221 +193,47 @@ function history(){return header("Historial")+`<div class="card">${movementTable
 let calc="";function calculator(){return header("Calculadora científica")+`<div class="card" style="max-width:620px"><input id="calc" value="${esc(calc)}" oninput="calc=this.value" style="width:100%;font-size:25px;padding:15px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text)"><div class="toolbar">${["7","8","9","/","sqrt(","4","5","6","*","^","1","2","3","-","(", "0",".",")","+","%","sin(","cos(","tan(","log(","ln(","π","e","!","⌫","="].map(x=>`<button class="btn" onclick="key('${x}')">${x}</button>`).join("")}</div><div class="sub">Parser seguro: solo acepta números, operadores y funciones matemáticas permitidas.</div></div>`}
 function key(k){if(k==="="){try{calc=String(safeEval(calc))}catch{toast("Expresión no válida")}}else if(k==="⌫")calc=calc.slice(0,-1);else calc+=k;render()}
 function safeEval(s){s=s.replaceAll("π","PI").replaceAll("^","**").replace(/\be\b/g,"E");if(!/^[0-9+\-*/().,%\sA-Za-z_*!]+$/.test(s))throw Error();let f=s.replace(/sqrt/g,"Math.sqrt").replace(/sin/g,"Math.sin").replace(/cos/g,"Math.cos").replace(/tan/g,"Math.tan").replace(/log/g,"Math.log10").replace(/ln/g,"Math.log").replace(/\bPI\b/g,"Math.PI").replace(/\bE\b/g,"Math.E");if(!/^(?:[0-9+\-*/().,%\s]|Math\.(?:sqrt|sin|cos|tan|log10|log|PI|E)|Math\.)+$/.test(f))throw Error();if(/Math\.(?!sqrt|sin|cos|tan|log10|log|PI|E)/.test(f))throw Error();return Function('"use strict";return ('+f+')')()}
-function ai(){return header("ALE AI")+`<div class="card chat"><div class="messages" id="messages"><div class="msg"><b>ALE AI</b><br>Hola. Puedo analizar los datos que ya existen en ALE STUDIO. No inventaré cifras.</div></div><div class="chatbar"><input id="aiq" placeholder="Ej.: ¿cuánto he gastado?"><button class="btn primary" onclick="askAI()">Enviar</button></div></div>`}
-async function askAI(){
-  const input=$("#aiq");
-  const messagesBox=$("#messages");
-  const q=input?.value.trim();
 
+/* =========================================================
+   ALE AI — VERSIÓN ANTERIOR RESTAURADA
+   ========================================================= */
+
+function ai(){
+  return header("ALE AI")+`<div class="card chat"><div class="messages" id="messages"><div class="msg"><b>ALE AI</b><br>Hola. Puedo analizar los datos que ya existen en ALE STUDIO. No inventaré cifras.</div></div><div class="chatbar"><input id="aiq" placeholder="Ej.: ¿cuánto he gastado?"><button class="btn primary" onclick="askAI()">Enviar</button></div></div>`;
+}
+
+function askAI(){
+  let q=$("#aiq").value.trim();
   if(!q)return;
 
-  if(!currentUser){
-    toast("Debes iniciar sesión para usar ALE AI");
-    return;
-  }
-
-  input.disabled=true;
-
-  messagesBox.insertAdjacentHTML(
+  $("#messages").insertAdjacentHTML(
     "beforeend",
     `<div class="msg me">${esc(q)}</div>`
   );
 
-  messagesBox.scrollTop=messagesBox.scrollHeight;
+  let t=totals();
+  let l=q.toLowerCase();
 
-  try{
-    /*
-      Obtener o crear la conversación privada del usuario.
-    */
-    let conversationId=window.aleAIConversationId||null;
+  let ans=
+    l.includes("gast")
+      ? `Tus gastos acumulados son ${money(t.expense)}.`
+      : l.includes("ingres")
+        ? `Tus ingresos registrados son ${money(t.income)}.`
+        : l.includes("capital")||l.includes("patrimonio")
+          ? `Tu Capital y Patrimonio Líquido actuales son ${money(t.balance)}.`
+          : l.includes("movimiento")
+            ? `Tienes ${state.movements.length} movimientos registrados.`
+            : `Con los datos actuales: Capital/Patrimonio Líquido ${money(t.balance)}, ingresos ${money(t.income)} y gastos ${money(t.expense)}. Si necesitas un análisis específico, pregúntame por gastos, ingresos, capital, categorías o movimientos.`;
 
-    if(!conversationId){
+  $("#messages").insertAdjacentHTML(
+    "beforeend",
+    `<div class="msg"><b>ALE AI</b><br>${esc(ans)}</div>`
+  );
 
-      const {data:existing,error:existingError}=await sb
-        .from("ai_conversations")
-        .select("id,title")
-        .eq("user_id",currentUser.id)
-        .order("updated_at",{ascending:false})
-        .limit(1)
-        .maybeSingle();
-
-      if(existingError)throw existingError;
-
-      if(existing?.id){
-
-        conversationId=existing.id;
-
-      }else{
-
-        const title=q.length>60
-          ? q.slice(0,57)+"..."
-          : q;
-
-        const {data:newConversation,error:createError}=await sb
-          .from("ai_conversations")
-          .insert({
-            user_id:currentUser.id,
-            title:title||"Nueva conversación"
-          })
-          .select("id")
-          .single();
-
-        if(createError)throw createError;
-
-        conversationId=newConversation.id;
-      }
-
-      window.aleAIConversationId=conversationId;
-    }
-
-    /*
-      Guardar mensaje del usuario.
-    */
-    const {error:userMessageError}=await sb
-      .from("ai_messages")
-      .insert({
-        conversation_id:conversationId,
-        user_id:currentUser.id,
-        role:"user",
-        content:q
-      });
-
-    if(userMessageError)throw userMessageError;
-
-    /*
-      Obtener los últimos mensajes de la conversación.
-    */
-    const {data:history,error:historyError}=await sb
-      .from("ai_messages")
-      .select("role,content,created_at")
-      .eq("conversation_id",conversationId)
-      .eq("user_id",currentUser.id)
-      .order("created_at",{ascending:true})
-      .limit(20);
-
-    if(historyError)throw historyError;
-
-    /*
-      Contexto financiero real de ALE STUDIO.
-    */
-    const t=totals();
-
-    const financialContext={
-      currency:state.settings.currency||"USD",
-      capital:t.balance,
-      patrimonioLiquido:t.balance,
-      disponible:t.balance,
-      ingresos:t.income,
-      gastos:t.expense,
-      movimientos:state.movements.length,
-      budgets:state.budgets,
-      goals:state.goals,
-      accounts:state.accounts,
-      movements:state.movements
-    };
-
-    /*
-      Enviar la conversación al backend seguro.
-      Supabase añade automáticamente la sesión autenticada.
-    */
-    const {data,error:functionError}=await sb.functions.invoke(
-      "ale-ai",
-      {
-        body:{
-          message:q,
-          messages:(history||[]).map(m=>({
-            role:m.role,
-            content:m.content
-          })),
-          financial_context:financialContext
-        }
-      }
-    );
-
-    if(functionError){
-
-      let detail=functionError.message||"Error desconocido";
-
-      try{
-        if(functionError.context){
-          const response=functionError.context;
-
-          if(typeof response.json==="function"){
-            const json=await response.json();
-            if(json?.error)detail=json.error;
-          }
-        }
-      }catch{}
-
-      throw new Error(detail);
-    }
-
-    if(!data?.answer){
-      throw new Error(
-        "ALE AI no devolvió una respuesta."
-      );
-    }
-
-    /*
-      Guardar respuesta de ALE AI.
-    */
-    const {error:assistantMessageError}=await sb
-      .from("ai_messages")
-      .insert({
-        conversation_id:conversationId,
-        user_id:currentUser.id,
-        role:"assistant",
-        content:data.answer
-      });
-
-    if(assistantMessageError)throw assistantMessageError;
-
-    /*
-      Actualizar fecha de la conversación.
-    */
-    await sb
-      .from("ai_conversations")
-      .update({
-        updated_at:new Date().toISOString()
-      })
-      .eq("id",conversationId)
-      .eq("user_id",currentUser.id);
-
-    /*
-      Mostrar respuesta.
-    */
-    messagesBox.insertAdjacentHTML(
-      "beforeend",
-      `<div class="msg"><b>ALE AI</b><br>${esc(data.answer).replace(/\n/g,"<br>")}</div>`
-    );
-
-    input.value="";
-    messagesBox.scrollTop=messagesBox.scrollHeight;
-
-  }catch(error){
-
-    console.error("ALE AI:",error);
-
-    messagesBox.insertAdjacentHTML(
-      "beforeend",
-      `<div class="msg">
-        <b>ALE AI</b><br>
-        No pude procesar tu mensaje en este momento.
-        <div class="sub" style="margin-top:6px">
-          ${esc(error?.message||"Error de conexión")}
-        </div>
-      </div>`
-    );
-
-    messagesBox.scrollTop=messagesBox.scrollHeight;
-
-  }finally{
-
-    input.disabled=false;
-    input.focus();
-
-  }
+  $("#aiq").value="";
+  $("#messages").scrollTop=99999;
 }
+
 function settings(){return header("Configuración")+`<div class="card settings"><div class="field"><label>Tema</label><select onchange="state.settings.theme=this.value;save()"><option ${state.settings.theme==="light"?"selected":""} value="light">Claro</option><option ${state.settings.theme==="dark"?"selected":""} value="dark">Oscuro</option></select></div><br><div class="field"><label>Contraste</label><select onchange="state.settings.contrast=this.value==='high';save()"><option ${!state.settings.contrast?"selected":""}>Normal</option><option value="high" ${state.settings.contrast?"selected":""}>Alto</option></select></div><br><div class="field"><label>Moneda principal</label><select onchange="state.settings.currency=this.value;save()"><option ${state.settings.currency==="USD"?"selected":""}>USD</option><option ${state.settings.currency==="EUR"?"selected":""}>EUR</option><option ${state.settings.currency==="PAB"?"selected":""}>PAB</option></select></div><br><label><input type="checkbox" ${state.settings.notifications?"checked":""} onchange="state.settings.notifications=this.checked;save()"> Notificaciones</label><hr><button class="btn" onclick="exportData()">Exportar datos</button> <label class="btn">Importar<input type="file" accept=".json" hidden onchange="importData(event)"></label> <button class="btn danger" onclick="resetData()">Restablecer datos</button></div>`}
 function exportData(){let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"}));a.download="ale-studio-datos.json";a.click()}
 function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.movements||!x.accounts)throw Error();state=x;save();toast("Datos importados")}catch{toast("Archivo inválido")}};r.readAsText(f)}
