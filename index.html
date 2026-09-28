@@ -1460,55 +1460,7 @@ async function bootAuth(){
     }
   )
 }
-const {data,error}=
-  await sb.functions.invoke(
-    "ale-ai",
-    {
-      body:{
-        message:text,
-        messages:previousMessages,
-        financial_context
-      }
-    }
-  );
 
-if(error){
-
-  console.error(
-    "ALE AI FUNCTION ERROR:",
-    error
-  );
-
-  let detail="";
-
-  try{
-
-    if(error.context){
-
-      const responseBody=
-        await error.context.json();
-
-      detail=
-        responseBody?.error||
-        responseBody?.message||
-        JSON.stringify(responseBody);
-    }
-
-  }catch(e){
-
-    console.error(
-      "No se pudo leer el error:",
-      e
-    );
-
-  }
-
-  throw new Error(
-    detail||
-    error.message||
-    "La Edge Function devolvió un error."
-  );
-}
 /* =========================================================
    FINANZAS
    ========================================================= */
