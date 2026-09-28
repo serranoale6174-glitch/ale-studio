@@ -7,96 +7,384 @@
 <link rel="icon" type="image/png" href="logo-as.png">
 
 <style>
-:root{--bg:#f5f7fb;--panel:#fff;--text:#101522;--muted:#697386;--line:#e5e9f1;--accent:#635bff;--accent2:#8b5cf6;--good:#149447;--bad:#d33b50;--shadow:0 12px 35px #17255412}
-[data-theme=dark]{--bg:#0b0e15;--panel:#121722;--text:#f5f7fb;--muted:#9aa5b5;--line:#252d3c;--shadow:0 12px 35px #0008}
+:root{
+  --bg:#f5f7fb;
+  --panel:#fff;
+  --text:#101522;
+  --muted:#697386;
+  --line:#e5e9f1;
+  --accent:#635bff;
+  --accent2:#8b5cf6;
+  --good:#149447;
+  --bad:#d33b50;
+  --shadow:0 12px 35px #17255412
+}
+
+[data-theme=dark]{
+  --bg:#0b0e15;
+  --panel:#121722;
+  --text:#f5f7fb;
+  --muted:#9aa5b5;
+  --line:#252d3c;
+  --shadow:0 12px 35px #0008
+}
+
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 80% -10%,#8b5cf61a,transparent 35%),var(--bg);color:var(--text);font:14px Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+
+body{
+  margin:0;
+  background:radial-gradient(circle at 80% -10%,#8b5cf61a,transparent 35%),var(--bg);
+  color:var(--text);
+  font:14px Inter,system-ui,-apple-system,Segoe UI,sans-serif
+}
+
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;border:0}
+
 .app{display:flex;min-height:100vh}
-.side{width:245px;padding:22px 16px;border-right:1px solid var(--line);background:color-mix(in srgb,var(--panel) 92%,transparent);position:sticky;top:0;height:100vh}
-.brand{font-size:22px;font-weight:900;letter-spacing:.08em;margin:4px 10px 25px}
+
+.side{
+  width:245px;
+  padding:22px 16px;
+  border-right:1px solid var(--line);
+  background:color-mix(in srgb,var(--panel) 92%,transparent);
+  position:sticky;
+  top:0;
+  height:100vh
+}
+
+.brand{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.08em;
+  margin:4px 10px 25px
+}
+
 .brand span{color:var(--accent)}
-nav button{width:100%;padding:12px 13px;margin:3px 0;border-radius:12px;background:transparent;color:var(--muted);text-align:left}
-nav button.active,nav button:hover{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--text)}
-.main{flex:1;padding:26px;max-width:1500px;margin:auto;width:100%}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.top h1{margin:0;font-size:28px}
-.actions{display:flex;gap:8px}
-.btn{padding:10px 14px;border-radius:11px;background:var(--panel);border:1px solid var(--line);color:var(--text)}
-.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:0;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
-.label{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.value{font-size:27px;font-weight:850;margin-top:8px;letter-spacing:-.02em}
-.card[onclick]:hover .value{transform:translateY(-1px)}
-.sub{color:var(--muted);font-size:12px;margin-top:5px}
-.two{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-top:14px}
+
+nav button{
+  width:100%;
+  padding:12px 13px;
+  margin:3px 0;
+  border-radius:12px;
+  background:transparent;
+  color:var(--muted);
+  text-align:left
+}
+
+nav button.active,
+nav button:hover{
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:var(--text)
+}
+
+.main{
+  flex:1;
+  padding:26px;
+  max-width:1500px;
+  margin:auto;
+  width:100%
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:22px
+}
+
+.top h1{
+  margin:0;
+  font-size:28px
+}
+
+.actions{
+  display:flex;
+  gap:8px
+}
+
+.btn{
+  padding:10px 14px;
+  border-radius:11px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--text)
+}
+
+.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  border:0;
+  font-weight:700
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:var(--shadow)
+}
+
+.label{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em
+}
+
+.value{
+  font-size:27px;
+  font-weight:850;
+  margin-top:8px;
+  letter-spacing:-.02em
+}
+
+.card[onclick]:hover .value{
+  transform:translateY(-1px)
+}
+
+.sub{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:14px;
+  margin-top:14px
+}
+
 .section{margin-top:20px}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.field{display:flex;flex-direction:column;gap:6px}
-.field label{font-size:12px;color:var(--muted);font-weight:700}
-.field input,.field select,.field textarea{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px;outline:none}
+
+.toolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:12px 0
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px
+}
+
+.field label{
+  font-size:12px;
+  color:var(--muted);
+  font-weight:700
+}
+
+.field input,
+.field select,
+.field textarea{
+  background:var(--panel);
+  color:var(--text);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px;
+  outline:none
+}
+
 .tablewrap{overflow:auto}
-.table{width:100%;border-collapse:collapse}
-.table th,.table td{padding:12px 9px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-.table th{color:var(--muted);font-size:12px}
-.empty{text-align:center;padding:45px 20px;color:var(--muted)}
-.pill{padding:5px 8px;border-radius:99px;background:#635bff18;color:var(--accent);font-weight:700;font-size:11px}
+
+.table{
+  width:100%;
+  border-collapse:collapse
+}
+
+.table th,
+.table td{
+  padding:12px 9px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  white-space:nowrap
+}
+
+.table th{
+  color:var(--muted);
+  font-size:12px
+}
+
+.empty{
+  text-align:center;
+  padding:45px 20px;
+  color:var(--muted)
+}
+
+.pill{
+  padding:5px 8px;
+  border-radius:99px;
+  background:#635bff18;
+  color:var(--accent);
+  font-weight:700;
+  font-size:11px
+}
+
 .danger{color:var(--bad)}
 .good{color:var(--good)}
-.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:10px}
-.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}
+
+.progress{
+  height:8px;
+  background:var(--line);
+  border-radius:99px;
+  overflow:hidden;
+  margin-top:10px
+}
+
+.progress i{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2))
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0008;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:10
+}
+
 .modal.open{display:flex}
-.modalbox{width:min(680px,100%);max-height:90vh;overflow:auto;background:var(--panel);border-radius:20px;padding:20px}
-.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+
+.modalbox{
+  width:min(680px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--panel);
+  border-radius:20px;
+  padding:20px
+}
+
+.formgrid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px
+}
+
 .full{grid-column:1/-1}
-.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+
+.modalhead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px
+}
+
 .modalhead h2{margin:0}
-.chart{height:230px;position:relative}
-.chart svg{width:100%;height:100%}
-.legend{display:flex;gap:15px;color:var(--muted);font-size:12px}
-.fab{position:fixed;right:24px;bottom:24px;border-radius:99px;padding:14px 18px;box-shadow:var(--shadow)}
-.chat{display:grid;grid-template-rows:1fr auto;height:calc(100vh - 140px);max-width:850px}
-.messages{overflow:auto;display:flex;flex-direction:column;gap:10px;padding:8px}
-.msg{max-width:80%;padding:12px 14px;border-radius:15px;background:var(--line);white-space:pre-wrap;line-height:1.55}
-.msg.me{align-self:flex-end;background:var(--accent);color:white}
-.chatbar{display:flex;gap:8px;margin-top:10px}
-.chatbar input{flex:1;padding:13px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+
+.chart{
+  height:230px;
+  position:relative
+}
+
+.chart svg{
+  width:100%;
+  height:100%
+}
+
+.legend{
+  display:flex;
+  gap:15px;
+  color:var(--muted);
+  font-size:12px
+}
+
+.fab{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  border-radius:99px;
+  padding:14px 18px;
+  box-shadow:var(--shadow)
+}
+
+.chat{
+  display:grid;
+  grid-template-rows:1fr auto;
+  height:calc(100vh - 140px);
+  max-width:850px
+}
+
+.messages{
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:8px
+}
+
+.msg{
+  max-width:80%;
+  padding:12px 14px;
+  border-radius:15px;
+  background:var(--line);
+  white-space:pre-wrap;
+  line-height:1.5
+}
+
+.msg.me{
+  align-self:flex-end;
+  background:var(--accent);
+  color:white
+}
+
+.chatbar{
+  display:flex;
+  gap:8px;
+  margin-top:10px
+}
+
+.chatbar input{
+  flex:1;
+  padding:13px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--text)
+}
+
 .settings{max-width:700px}
-.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%);background:#111827;color:#fff;padding:11px 15px;border-radius:10px;display:none;z-index:30}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%);
+  background:#111827;
+  color:#fff;
+  padding:11px 15px;
+  border-radius:10px;
+  display:none;
+  z-index:30
+}
+
 .toast.show{display:block}
 
-.authgate{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 80% -10%,#8b5cf633,transparent 35%),var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}
-.authcard{width:min(460px,100%);background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 25px 80px #0003}
-.authbrand{font-size:28px;font-weight:950;letter-spacing:.08em}
-.authbrand span{color:var(--accent)}
-.authsub{color:var(--muted);line-height:1.5;margin:8px 0 22px}
-.authtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px}
-.authtabs button{padding:9px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:10px}
-.authtabs button.active{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--text);font-weight:800}
-.authproviders{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-.authbtn{width:100%;padding:11px 12px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-weight:750}
-.authbtn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:0}
-.authdivider{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin:14px 0}
-.authdivider:before,.authdivider:after{content:"";height:1px;background:var(--line);flex:1}
-.autherror{color:var(--bad);background:#d33b5012;border:1px solid #d33b5030;padding:10px;border-radius:10px;margin-bottom:10px;display:none}
-.authfoot{font-size:11px;color:var(--muted);margin-top:15px}
-.profilechip{display:flex;align-items:center;gap:8px}
-.profilechip button{font-size:11px;padding:7px 9px}
-.authhide{display:none!important}
-
 /* =========================================================
-   ALE AI — NUEVO ESPACIO DE CONVERSACIONES
+   ALE AI — NUEVA INTERFAZ
    ========================================================= */
 
 .ai-layout{
   display:grid;
-  grid-template-columns:270px minmax(0,1fr);
+  grid-template-columns:250px minmax(0,1fr);
   gap:14px;
-  height:calc(100vh - 125px);
-  min-height:560px;
+  height:calc(100vh - 140px);
+  min-height:500px
 }
 
 .ai-sidebar{
@@ -104,265 +392,417 @@ nav button.active,nav button:hover{background:color-mix(in srgb,var(--accent) 12
   border:1px solid var(--line);
   border-radius:18px;
   box-shadow:var(--shadow);
-  padding:12px;
   display:flex;
   flex-direction:column;
-  min-height:0;
+  overflow:hidden
+}
+
+.ai-sidebar-head{
+  padding:14px;
+  border-bottom:1px solid var(--line)
+}
+
+.ai-sidebar-title{
+  font-size:13px;
+  font-weight:850;
+  margin-bottom:10px
 }
 
 .ai-new{
-  width:100%;
-  margin-bottom:12px;
-}
-
-.ai-history-title{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.07em;
-  padding:5px 7px 9px;
+  width:100%
 }
 
 .ai-history{
   overflow:auto;
-  flex:1;
-  min-height:0;
+  padding:8px
 }
 
 .ai-conversation{
   width:100%;
-  display:block;
   text-align:left;
-  padding:10px;
-  margin:3px 0;
+  padding:11px;
   border-radius:11px;
   background:transparent;
   color:var(--text);
-  border:1px solid transparent;
+  margin-bottom:4px;
+  border:1px solid transparent
 }
 
 .ai-conversation:hover{
-  background:color-mix(in srgb,var(--accent) 8%,transparent);
+  background:color-mix(in srgb,var(--accent) 8%,transparent)
 }
 
 .ai-conversation.active{
   background:color-mix(in srgb,var(--accent) 12%,transparent);
-  border-color:color-mix(in srgb,var(--accent) 25%,transparent);
+  border-color:color-mix(in srgb,var(--accent) 25%,transparent)
 }
 
 .ai-conversation-title{
-  display:block;
+  font-weight:750;
   overflow:hidden;
   text-overflow:ellipsis;
-  white-space:nowrap;
-  font-weight:700;
+  white-space:nowrap
 }
 
 .ai-conversation-date{
-  display:block;
-  margin-top:3px;
   color:var(--muted);
   font-size:10px;
+  margin-top:4px
 }
 
 .ai-main{
   min-width:0;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  overflow:hidden
 }
 
-.ai-chat-card{
-  height:100%;
-  max-width:none;
-  min-height:0;
-  padding:0;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-}
-
-.ai-chat-head{
+.ai-head{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:12px;
-  padding:16px 18px;
-  border-bottom:1px solid var(--line);
+  gap:10px;
+  padding:14px 16px;
+  border-bottom:1px solid var(--line)
 }
 
-.ai-chat-title{
-  min-width:0;
+.ai-head-title{
+  font-weight:850;
+  font-size:15px
 }
 
-.ai-chat-title strong{
-  display:block;
-  font-size:16px;
-}
-
-.ai-chat-title span{
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  margin-top:3px;
-}
-
-.ai-chat-actions{
+.ai-head-actions{
   display:flex;
   gap:7px;
-  flex-shrink:0;
+  align-items:center
 }
 
 .ai-messages{
-  flex:1;
   overflow:auto;
   display:flex;
   flex-direction:column;
-  gap:10px;
-  padding:18px;
-  min-height:0;
+  gap:12px;
+  padding:20px
 }
 
-.ai-msg{
-  max-width:min(82%,760px);
-  padding:12px 14px;
-  border-radius:15px;
-  background:var(--line);
-  white-space:pre-wrap;
+.ai-message{
+  max-width:min(780px,82%);
+  padding:13px 15px;
+  border-radius:16px;
   line-height:1.55;
-  word-break:break-word;
+  white-space:pre-wrap;
+  word-break:break-word
 }
 
-.ai-msg.user{
+.ai-message.user{
   align-self:flex-end;
-  background:var(--accent);
-  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff
 }
 
-.ai-msg.assistant{
+.ai-message.assistant{
   align-self:flex-start;
+  background:var(--line);
+  color:var(--text)
 }
 
-.ai-msg-label{
-  display:block;
+.ai-message-name{
   font-size:10px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.06em;
+  font-weight:850;
+  opacity:.7;
   margin-bottom:5px;
-  opacity:.65;
+  text-transform:uppercase;
+  letter-spacing:.05em
 }
 
-.ai-composer{
+.ai-input-area{
+  padding:12px;
+  border-top:1px solid var(--line)
+}
+
+.ai-input-row{
   display:flex;
   gap:8px;
-  padding:12px;
-  border-top:1px solid var(--line);
+  align-items:flex-end
 }
 
-.ai-composer textarea{
+.ai-input{
   flex:1;
-  min-height:48px;
+  min-height:46px;
   max-height:150px;
   resize:none;
-  padding:13px;
-  border-radius:12px;
+  padding:12px 13px;
+  border-radius:13px;
   border:1px solid var(--line);
-  background:var(--panel);
+  background:var(--bg);
   color:var(--text);
-  outline:none;
+  outline:none
 }
 
 .ai-send{
-  min-width:92px;
+  min-width:90px
 }
 
-.ai-loading{
-  opacity:.7;
-  font-style:italic;
+.ai-status{
+  font-size:11px;
+  color:var(--muted);
+  padding:5px 3px 0
 }
 
-.ai-empty-history{
-  padding:20px 10px;
+.ai-empty{
+  margin:auto;
+  max-width:500px;
   text-align:center;
   color:var(--muted);
-  font-size:12px;
+  padding:30px
 }
 
-.ai-mobile-history{
-  display:none;
+.ai-empty-title{
+  color:var(--text);
+  font-size:20px;
+  font-weight:850;
+  margin-bottom:8px
+}
+
+.ai-typing{
+  opacity:.65
+}
+
+.ai-delete{
+  color:var(--bad)
 }
 
 @media(max-width:900px){
-  .side{width:72px;padding:18px 8px}
+  .side{
+    width:72px;
+    padding:18px 8px
+  }
+
   .brand{font-size:0}
   .brand span{font-size:22px}
-  .side nav button{font-size:0;text-align:center}
-  .side nav button::first-letter{font-size:18px}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .two{grid-template-columns:1fr}
+
+  .side nav button{
+    font-size:0;
+    text-align:center
+  }
+
+  .side nav button::first-letter{
+    font-size:18px
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .two{
+    grid-template-columns:1fr
+  }
 
   .ai-layout{
     grid-template-columns:1fr;
-    height:auto;
-    min-height:0;
+    height:auto
   }
 
   .ai-sidebar{
-    max-height:220px;
+    max-height:230px
   }
 
-  .ai-history{
-    max-height:150px;
-  }
-
-  .ai-chat-card{
-    min-height:600px;
+  .ai-main{
+    min-height:600px
   }
 }
 
 @media(max-width:600px){
-  .side{position:fixed;z-index:8;bottom:0;top:auto;width:100%;height:auto;border-right:0;border-top:1px solid var(--line);padding:5px}
+  .side{
+    position:fixed;
+    z-index:8;
+    bottom:0;
+    top:auto;
+    width:100%;
+    height:auto;
+    border-right:0;
+    border-top:1px solid var(--line);
+    padding:5px
+  }
+
   .brand{display:none}
-  nav{display:flex;overflow:auto}
-  nav button{min-width:74px;text-align:center;padding:9px 5px;font-size:10px!important}
-  .main{padding:18px 14px 85px}
-  .grid{grid-template-columns:1fr 1fr}
+
+  nav{
+    display:flex;
+    overflow:auto
+  }
+
+  nav button{
+    min-width:74px;
+    text-align:center;
+    padding:9px 5px;
+    font-size:10px!important
+  }
+
+  .main{
+    padding:18px 14px 85px
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr
+  }
+
   .value{font-size:21px}
-  .formgrid{grid-template-columns:1fr}
+
+  .formgrid{
+    grid-template-columns:1fr
+  }
+
   .full{grid-column:auto}
+
   .top h1{font-size:23px}
+
   .actions .hide-mobile{display:none}
 
-  .ai-layout{
-    margin:0 -2px;
+  .ai-sidebar{
+    max-height:210px
   }
 
-  .ai-chat-head{
-    padding:13px;
+  .ai-main{
+    min-height:620px
   }
 
-  .ai-chat-actions .hide-mobile{
-    display:none;
-  }
-
-  .ai-messages{
-    padding:12px;
-  }
-
-  .ai-msg{
-    max-width:90%;
-  }
-
-  .ai-composer{
-    padding:9px;
+  .ai-message{
+    max-width:90%
   }
 
   .ai-send{
-    min-width:70px;
+    min-width:70px
   }
 }
+
+.authgate{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:radial-gradient(circle at 80% -10%,#8b5cf633,transparent 35%),var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px
+}
+
+.authcard{
+  width:min(460px,100%);
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 25px 80px #0003
+}
+
+.authbrand{
+  font-size:28px;
+  font-weight:950;
+  letter-spacing:.08em
+}
+
+.authbrand span{color:var(--accent)}
+
+.authsub{
+  color:var(--muted);
+  line-height:1.5;
+  margin:8px 0 22px
+}
+
+.authtabs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-bottom:14px
+}
+
+.authtabs button{
+  padding:9px;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--muted);
+  border-radius:10px
+}
+
+.authtabs button.active{
+  background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:var(--text);
+  font-weight:800
+}
+
+.authproviders{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:12px 0
+}
+
+.authbtn{
+  width:100%;
+  padding:11px 12px;
+  border-radius:11px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--text);
+  font-weight:750
+}
+
+.authbtn.primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  border:0
+}
+
+.authdivider{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:12px;
+  margin:14px 0
+}
+
+.authdivider:before,
+.authdivider:after{
+  content:"";
+  height:1px;
+  background:var(--line);
+  flex:1
+}
+
+.autherror{
+  color:var(--bad);
+  background:#d33b5012;
+  border:1px solid #d33b5030;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+  display:none
+}
+
+.authfoot{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:15px
+}
+
+.profilechip{
+  display:flex;
+  align-items:center;
+  gap:8px
+}
+
+.profilechip button{
+  font-size:11px;
+  padding:7px 9px
+}
+
+.authhide{display:none!important}
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -393,12 +833,37 @@ nav button.active,nav button:hover{background:color-mix(in srgb,var(--accent) 12
 <div class="toast" id="toast"></div>
 
 <script>
-const SUPABASE_URL="https://aqrbpwjvsymhcrwwepjm.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY="sb_publishable_yw7_LklXOjEuuz9lEGJF6w_T7yV5ATw";
-const AUTH_READY=SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && SUPABASE_PUBLISHABLE_KEY && !SUPABASE_PUBLISHABLE_KEY.includes("YOUR_");
-const sb=AUTH_READY?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY):null;
 
-let session=null,currentUser=null;
+const SUPABASE_URL="https://aqrbpwjvsymhcrwwepjm.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY="sb_publishable_yw7_LklXOjEuuz9lEGJF6w_T7yV5ATw";
+
+const AUTH_READY=
+  SUPABASE_URL.startsWith("https://") &&
+  !SUPABASE_URL.includes("YOUR_") &&
+  SUPABASE_PUBLISHABLE_KEY &&
+  !SUPABASE_PUBLISHABLE_KEY.includes("YOUR_");
+
+const sb=
+  AUTH_READY
+  ? window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    )
+  : null;
+
+let session=null;
+let currentUser=null;
+
+/* =========================================================
+   ALE AI — ESTADO DE CONVERSACIONES
+   ========================================================= */
+
+let aiConversationId=null;
+let aiConversations=[];
+let aiMessages=[];
+let aiLoading=false;
+let aiInitialized=false;
 
 const BASE_STATE={
   movements:[],
@@ -414,10 +879,22 @@ const BASE_STATE={
   dashboard:{
     period:"all",
     cards:{
-      wealth:{title:"Patrimonio Líquido",desc:"Capital = Disponible"},
-      capital:{title:"Capital",desc:"Indicador principal"},
-      outflow:{title:"Flujo de Salida",desc:"Gastos acumulados"},
-      income:{title:"Ingresos",desc:"Ingresos registrados"}
+      wealth:{
+        title:"Patrimonio Líquido",
+        desc:"Capital = Disponible"
+      },
+      capital:{
+        title:"Capital",
+        desc:"Indicador principal"
+      },
+      outflow:{
+        title:"Flujo de Salida",
+        desc:"Gastos acumulados"
+      },
+      income:{
+        title:"Ingresos",
+        desc:"Ingresos registrados"
+      }
     }
   }
 };
@@ -425,55 +902,93 @@ const BASE_STATE={
 let state=structuredClone(BASE_STATE);
 
 const defaultDash={
-  wealth:{title:"Patrimonio Líquido",desc:"Capital = Disponible"},
-  capital:{title:"Capital",desc:"Indicador principal"},
-  outflow:{title:"Flujo de Salida",desc:"Gastos acumulados"},
-  income:{title:"Ingresos",desc:"Ingresos registrados"}
+  wealth:{
+    title:"Patrimonio Líquido",
+    desc:"Capital = Disponible"
+  },
+  capital:{
+    title:"Capital",
+    desc:"Indicador principal"
+  },
+  outflow:{
+    title:"Flujo de Salida",
+    desc:"Gastos acumulados"
+  },
+  income:{
+    title:"Ingresos",
+    desc:"Ingresos registrados"
+  }
 };
 
-for(const k in defaultDash)
-  state.dashboard.cards[k]=Object.assign({},defaultDash[k],state.dashboard.cards[k]||{});
+for(const k in defaultDash){
+  state.dashboard.cards[k]=Object.assign(
+    {},
+    defaultDash[k],
+    state.dashboard.cards[k]||{}
+  );
+}
 
 let page=location.hash.slice(1)||"dashboard";
 let editing=null;
 
 const $=s=>document.querySelector(s);
 
-const money=n=>new Intl.NumberFormat("en-US",{
-  style:"currency",
-  currency:state.settings.currency||"USD"
-}).format(Number(n)||0);
+const money=n=>
+  new Intl.NumberFormat(
+    "en-US",
+    {
+      style:"currency",
+      currency:state.settings.currency||"USD"
+    }
+  ).format(Number(n)||0);
 
-const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#39;"
-}[m]));
+const esc=s=>
+  String(s??"").replace(
+    /[&<>"']/g,
+    m=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[m])
+  );
 
 function escAuth(v){
-  return String(v??"").replace(/[&<>"]/g,m=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;"
-  }[m]))
+  return String(v??"").replace(
+    /[&<>"]/g,
+    m=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;"
+    }[m])
+  )
 }
+
+/* =========================================================
+   AUTENTICACIÓN
+   ========================================================= */
 
 function authUI(tab="email",msg=""){
   const gate=$("#authgate");
 
   gate.innerHTML=`
   <div class="authcard">
-    <div class="authbrand">ALE <span>STUDIO</span></div>
 
-    <div class="authsub">
-      Tu espacio financiero es privado. Inicia sesión para acceder a Dashboard,
-      Movimientos, Presupuestos, Metas, Cuentas, Patrimonio, Historial y ALE AI.
+    <div class="authbrand">
+      ALE <span>STUDIO</span>
     </div>
 
-    <div class="autherror" id="autherror" style="display:${msg?"block":"none"}">
+    <div class="authsub">
+      Tu espacio financiero es privado.
+      Inicia sesión para acceder a Dashboard,
+      Movimientos, Presupuestos, Metas, Cuentas,
+      Patrimonio, Historial y ALE AI.
+    </div>
+
+    <div class="autherror" id="autherror"
+      style="display:${msg?"block":"none"}">
       ${escAuth(msg)}
     </div>
 
@@ -487,18 +1002,26 @@ function authUI(tab="email",msg=""){
       </button>
     </div>
 
-    <div class="authdivider">o continúa con tu cuenta</div>
+    <div class="authdivider">
+      o continúa con tu cuenta
+    </div>
 
     <div class="authtabs">
-      <button class="${tab==='email'?'active':''}" onclick="authUI('email')">
+      <button
+        class="${tab==='email'?'active':''}"
+        onclick="authUI('email')">
         Correo
       </button>
 
-      <button class="${tab==='username'?'active':''}" onclick="authUI('username')">
+      <button
+        class="${tab==='username'?'active':''}"
+        onclick="authUI('username')">
         Usuario
       </button>
 
-      <button class="${tab==='phone'?'active':''}" onclick="authUI('phone')">
+      <button
+        class="${tab==='phone'?'active':''}"
+        onclick="authUI('phone')">
         Teléfono
       </button>
     </div>
@@ -507,56 +1030,83 @@ function authUI(tab="email",msg=""){
       tab==='phone'
       ?
       `
-      <form onsubmit="phoneLogin(event)" class="formgrid">
+      <form
+        onsubmit="phoneLogin(event)"
+        class="formgrid">
+
         <div class="field full">
           <label>Número de teléfono</label>
-          <input name="phone" placeholder="+507 6000 0000" required>
+          <input
+            name="phone"
+            placeholder="+507 6000 0000"
+            required>
         </div>
 
         <div class="full">
-          <button class="authbtn primary">Enviar código SMS</button>
+          <button class="authbtn primary">
+            Enviar código SMS
+          </button>
         </div>
+
       </form>
       `
       :
       `
-      <form onsubmit="passwordLogin(event,'${tab}')" class="formgrid">
+      <form
+        onsubmit="passwordLogin(event,'${tab}')"
+        class="formgrid">
+
         <div class="field full">
-          <label>${tab==='email'?'Correo electrónico':'Nombre de usuario'}</label>
+          <label>
+            ${tab==='email'
+              ?'Correo electrónico'
+              :'Nombre de usuario'}
+          </label>
+
           <input
             name="identity"
             type="${tab==='email'?'email':'text'}"
             required
-            autocomplete="${tab==='email'?'email':'username'}"
-          >
+            autocomplete="${tab==='email'
+              ?'email'
+              :'username'}">
         </div>
 
         <div class="field full">
           <label>Contraseña</label>
+
           <input
             name="password"
             type="password"
             minlength="8"
             required
-            autocomplete="current-password"
-          >
+            autocomplete="current-password">
         </div>
 
         <div class="full">
-          <button class="authbtn primary">Iniciar sesión</button>
+          <button class="authbtn primary">
+            Iniciar sesión
+          </button>
         </div>
+
       </form>
 
-      <button class="authbtn" style="margin-top:8px" onclick="showSignup('${tab}')">
+      <button
+        class="authbtn"
+        style="margin-top:8px"
+        onclick="showSignup('${tab}')">
         Crear cuenta
       </button>
       `
     }
 
     <div class="authfoot">
-      Sin sesión no hay acceso a la aplicación. Cada usuario recibe un workspace separado.
-      Los datos se guardan vinculados a su cuenta cuando Supabase está configurado.
+      Sin sesión no hay acceso a la aplicación.
+      Cada usuario recibe un workspace separado.
+      Los datos se guardan vinculados a su cuenta
+      cuando Supabase está configurado.
     </div>
+
   </div>`;
 }
 
@@ -575,14 +1125,16 @@ async function passwordLogin(e,mode){
 
   const f=Object.fromEntries(new FormData(e.target));
 
-  const email=mode==='email'
+  const email=
+    mode==='email'
     ? f.identity
     : `${f.identity.toLowerCase().replace(/[^a-z0-9._-]/g,'')}@username.ale-studio.local`;
 
-  const {data,error}=await sb.auth.signInWithPassword({
-    email,
-    password:f.password
-  });
+  const {data,error}=
+    await sb.auth.signInWithPassword({
+      email,
+      password:f.password
+    });
 
   if(error)
     return authError(error.message,mode);
@@ -595,35 +1147,54 @@ async function showSignup(mode){
 
   gate.innerHTML=`
   <div class="authcard">
+
     <div class="authbrand">
-      <img src="logo-as.png" alt="AS Studio" style="width:52px;height:52px;object-fit:contain;vertical-align:middle">
+      <img
+        src="logo-as.png"
+        alt="AS Studio"
+        style="width:52px;height:52px;object-fit:contain;vertical-align:middle">
       <span>ALE STUDIO</span>
     </div>
 
-    <div class="authsub">Crea tu espacio privado.</div>
+    <div class="authsub">
+      Crea tu espacio privado.
+    </div>
 
-    <form onsubmit="signup(event,'${mode}')" class="formgrid">
+    <form
+      onsubmit="signup(event,'${mode}')"
+      class="formgrid">
+
       ${
         mode==='email'
         ?
         `
         <div class="field full">
           <label>Correo electrónico</label>
-          <input name="email" type="email" required>
+          <input
+            name="email"
+            type="email"
+            required>
         </div>
         `
         :
         `
         <div class="field full">
           <label>Nombre de usuario</label>
-          <input name="username" pattern="[A-Za-z0-9._-]{3,30}" required>
+          <input
+            name="username"
+            pattern="[A-Za-z0-9._-]{3,30}"
+            required>
         </div>
         `
       }
 
       <div class="field full">
         <label>Contraseña</label>
-        <input name="password" type="password" minlength="8" required>
+        <input
+          name="password"
+          type="password"
+          minlength="8"
+          required>
       </div>
 
       <div class="field full">
@@ -632,13 +1203,19 @@ async function showSignup(mode){
       </div>
 
       <div class="full">
-        <button class="authbtn primary">Crear mi cuenta</button>
+        <button class="authbtn primary">
+          Crear mi cuenta
+        </button>
       </div>
+
     </form>
 
-    <button class="authbtn" onclick="authUI('${mode}')">
+    <button
+      class="authbtn"
+      onclick="authUI('${mode}')">
       Volver
     </button>
+
   </div>`;
 }
 
@@ -653,20 +1230,22 @@ async function signup(e,mode){
 
   const f=Object.fromEntries(new FormData(e.target));
 
-  const email=mode==='email'
+  const email=
+    mode==='email'
     ? f.email
     : `${f.username.toLowerCase()}@username.ale-studio.local`;
 
-  const {data,error}=await sb.auth.signUp({
-    email,
-    password:f.password,
-    options:{
-      data:{
-        name:f.name,
-        username:mode==='username'?f.username:null
+  const {data,error}=
+    await sb.auth.signUp({
+      email,
+      password:f.password,
+      options:{
+        data:{
+          name:f.name,
+          username:mode==='username'?f.username:null
+        }
       }
-    }
-  });
+    });
 
   if(error)
     return authError(error.message,mode);
@@ -677,7 +1256,7 @@ async function signup(e,mode){
   authError(
     "Cuenta creada. Confirma la cuenta si tu proyecto exige verificación y luego inicia sesión.",
     mode
-  );
+  )
 }
 
 async function phoneLogin(e){
@@ -691,36 +1270,52 @@ async function phoneLogin(e){
 
   const f=Object.fromEntries(new FormData(e.target));
 
-  const {error}=await sb.auth.signInWithOtp({
-    phone:f.phone
-  });
+  const {error}=
+    await sb.auth.signInWithOtp({
+      phone:f.phone
+    });
 
   if(error)
     return authError(error.message,"phone");
 
-  gateOtp(f.phone);
+  gateOtp(f.phone)
 }
 
 function gateOtp(phone){
   $("#authgate").innerHTML=`
   <div class="authcard">
-    <div class="authbrand">ALE <span>STUDIO</span></div>
 
-    <div class="authsub">
-      Introduce el código que enviamos a <b>${escAuth(phone)}</b>.
+    <div class="authbrand">
+      ALE <span>STUDIO</span>
     </div>
 
-    <form onsubmit="verifyPhone(event)" class="formgrid">
+    <div class="authsub">
+      Introduce el código que enviamos a
+      <b>${escAuth(phone)}</b>.
+    </div>
+
+    <form
+      onsubmit="verifyPhone(event)"
+      class="formgrid">
+
       <div class="field full">
         <label>Código SMS</label>
-        <input name="token" inputmode="numeric" autocomplete="one-time-code" required>
+        <input
+          name="token"
+          inputmode="numeric"
+          autocomplete="one-time-code"
+          required>
       </div>
 
       <div class="full">
-        <button class="authbtn primary">Verificar y entrar</button>
+        <button class="authbtn primary">
+          Verificar y entrar
+        </button>
       </div>
+
     </form>
-  </div>`;
+
+  </div>`
 }
 
 async function verifyPhone(e){
@@ -728,39 +1323,48 @@ async function verifyPhone(e){
 
   const f=Object.fromEntries(new FormData(e.target));
 
-  const phone=document.querySelector("#authgate .authsub b")?.textContent;
+  const phone=
+    document.querySelector(
+      "#authgate .authsub b"
+    )?.textContent;
 
-  const {data,error}=await sb.auth.verifyOtp({
-    phone,
-    token:f.token,
-    type:'sms'
-  });
+  const {data,error}=
+    await sb.auth.verifyOtp({
+      phone,
+      token:f.token,
+      type:'sms'
+    });
 
   if(error)
     return authError(error.message,"phone");
 
-  await onSignedIn(data.session);
+  await onSignedIn(data.session)
 }
 
 async function oauth(provider){
+
   if(!AUTH_READY)
     return authError(
       "La autenticación segura todavía no está conectada. Configura Supabase y los proveedores Google/Apple.",
       "email"
     );
 
-  const {error}=await sb.auth.signInWithOAuth({
-    provider,
-    options:{
-      redirectTo:location.origin+location.pathname
-    }
-  });
+  const {error}=
+    await sb.auth.signInWithOAuth({
+      provider,
+      options:{
+        redirectTo:
+          location.origin+
+          location.pathname
+      }
+    });
 
   if(error)
-    authError(error.message,"email");
+    authError(error.message,"email")
 }
 
 async function onSignedIn(s){
+
   session=s;
   currentUser=s.user;
 
@@ -772,54 +1376,74 @@ async function onSignedIn(s){
 }
 
 async function loadWorkspace(){
+
   state=structuredClone(BASE_STATE);
 
   if(sb&&currentUser){
-    const {data,error}=await sb
-      .from("workspaces")
-      .select("data")
-      .eq("user_id",currentUser.id)
-      .maybeSingle();
+
+    const {data,error}=
+      await sb
+        .from("workspaces")
+        .select("data")
+        .eq("user_id",currentUser.id)
+        .maybeSingle();
 
     if(error){
-      toast("No se pudo cargar tu workspace: "+error.message);
-      return;
+      toast(
+        "No se pudo cargar tu workspace: "+
+        error.message
+      );
+      return
     }
 
     if(data?.data)
-      state=Object.assign(structuredClone(BASE_STATE),data.data);
+      state=Object.assign(
+        structuredClone(BASE_STATE),
+        data.data
+      );
 
-    state.dashboard=Object.assign(
-      structuredClone(BASE_STATE.dashboard),
-      state.dashboard||{}
-    );
+    state.dashboard=
+      Object.assign(
+        structuredClone(BASE_STATE.dashboard),
+        state.dashboard||{}
+      );
 
-    state.dashboard.cards=Object.assign(
-      structuredClone(BASE_STATE.dashboard.cards),
-      state.dashboard.cards||{}
-    );
+    state.dashboard.cards=
+      Object.assign(
+        structuredClone(BASE_STATE.dashboard.cards),
+        state.dashboard.cards||{}
+      );
   }
 }
 
 async function logout(){
+
   if(sb)
     await sb.auth.signOut();
 
   session=null;
   currentUser=null;
+
   state=structuredClone(BASE_STATE);
+
+  aiConversationId=null;
+  aiConversations=[];
+  aiMessages=[];
+  aiInitialized=false;
+
   page="dashboard";
   location.hash="dashboard";
 
   $("#authgate").classList.remove("authhide");
 
-  authUI();
+  authUI()
 }
 
 async function bootAuth(){
+
   if(!AUTH_READY){
     authUI();
-    return;
+    return
   }
 
   const {data}=await sb.auth.getSession();
@@ -829,11 +1453,17 @@ async function bootAuth(){
   else
     authUI();
 
-  sb.auth.onAuthStateChange(async(_event,s)=>{
-    if(s&&!currentUser)
-      await onSignedIn(s);
-  });
+  sb.auth.onAuthStateChange(
+    async(_event,s)=>{
+      if(s&&!currentUser)
+        await onSignedIn(s)
+    }
+  )
 }
+
+/* =========================================================
+   FINANZAS
+   ========================================================= */
 
 function recalculateFinancials(){
   const t=totals();
@@ -848,59 +1478,74 @@ function recalculateFinancials(){
 }
 
 async function save(){
-  if(!currentUser){
+
+  if(!currentUser)
     return;
-  }
 
   if(sb){
-    const {error}=await sb
-      .from("workspaces")
-      .upsert({
-        user_id:currentUser.id,
-        data:state,
-        updated_at:new Date().toISOString()
-      },{
-        onConflict:"user_id"
-      });
+
+    const {error}=
+      await sb
+        .from("workspaces")
+        .upsert(
+          {
+            user_id:currentUser.id,
+            data:state,
+            updated_at:new Date().toISOString()
+          },
+          {
+            onConflict:"user_id"
+          }
+        );
 
     if(error){
-      toast("No se pudo guardar: "+error.message);
-      return;
+      toast(
+        "No se pudo guardar: "+
+        error.message
+      );
+      return
     }
   }
 
-  render();
+  render()
 }
 
 function totals(){
-  let income=0,expense=0;
+
+  let income=0;
+  let expense=0;
 
   state.movements.forEach(m=>{
+
     if(m.type==="income")
       income+=+m.amount;
 
-    if(m.type==="expense")
+    else if(m.type==="expense")
       expense+=+m.amount;
+
   });
 
-  return {
+  return{
     income,
     expense,
     balance:income-expense
-  };
+  }
 }
 
 function toast(t){
+
   $("#toast").textContent=t;
+
   $("#toast").classList.add("show");
 
   setTimeout(
     ()=>$("#toast").classList.remove("show"),
     1800
-  );
+  )
 }
 
 function nav(){
+
   let items=[
     ["dashboard","⌂","Dashboard"],
     ["movements","↕","Movimientos"],
@@ -914,58 +1559,85 @@ function nav(){
     ["settings","⚙","Configuración"]
   ];
 
-  $("#nav").innerHTML=items.map(x=>`
-    <button
-      class="${page===x[0]?'active':''}"
-      onclick="go('${x[0]}')"
-    >
-      ${x[1]} <span>${x[2]}</span>
-    </button>
-  `).join("");
+  $("#nav").innerHTML=
+    items.map(x=>
+      `<button
+        class="${page===x[0]?'active':''}"
+        onclick="go('${x[0]}')">
+        ${x[1]}
+        <span>${x[2]}</span>
+      </button>`
+    ).join("")
 }
 
 function go(p){
+
   page=p;
   location.hash=p;
-  render();
+
+  render()
 }
 
 function header(title,actions=""){
-  let u=currentUser?.user_metadata?.name||currentUser?.email||"Cuenta";
+
+  let u=
+    currentUser?.user_metadata?.name||
+    currentUser?.email||
+    "Cuenta";
 
   return `
   <div class="top">
+
     <h1>${title}</h1>
 
     <div class="actions">
+
       <span class="profilechip">
         <span class="sub">${esc(u)}</span>
-        <button class="btn" onclick="logout()">Cerrar sesión</button>
+
+        <button
+          class="btn"
+          onclick="logout()">
+          Cerrar sesión
+        </button>
       </span>
 
       ${actions}
+
     </div>
-  </div>`;
+
+  </div>`
 }
 
 function empty(text,btn){
+
   return `
   <div class="empty">
+
     <b>${text}</b>
 
     <div class="sub">
+
       ${
         btn
         ?
-        `<br><button class="btn primary" onclick="${btn}">+ Registrar</button>`
+        `<br>
+         <button
+           class="btn primary"
+           onclick="${btn}">
+           + Registrar
+         </button>`
         :
         ""
       }
+
     </div>
-  </div>`;
+
+  </div>`
 }
 
 function openFinancialEditor(key){
+
   let t=totals();
 
   let labels={
@@ -977,80 +1649,114 @@ function openFinancialEditor(key){
 
   let current=
     key==="wealth"||key==="capital"
-      ? t.balance
-      : key==="outflow"
-        ? t.expense
-        : t.income;
+    ? t.balance
+    : key==="outflow"
+      ? t.expense
+      : t.income;
 
   let title=labels[key]||"Valor";
 
   let note=
     key==="outflow"
-      ?
-      "Al guardar se registrará un gasto real para que el Dashboard se actualice automáticamente."
-      :
-      "Al guardar se registrará un movimiento real para conservar la fuente única de datos.";
+    ?
+    "Al guardar se registrará un gasto real para que el Dashboard se actualice automáticamente."
+    :
+    "Al guardar se registrará un movimiento real para conservar la fuente única de datos.";
 
   $("#modalbox").innerHTML=`
+
   <div class="modalhead">
     <h2>Editar ${title}</h2>
-    <button class="btn" onclick="closeModal()">×</button>
+    <button
+      class="btn"
+      onclick="closeModal()">×</button>
   </div>
 
-  <div class="card" style="margin-bottom:12px">
-    <div class="label">Valor actual</div>
-    <div class="value">${money(current)}</div>
+  <div
+    class="card"
+    style="margin-bottom:12px">
+
+    <div class="label">
+      Valor actual
+    </div>
+
+    <div class="value">
+      ${money(current)}
+    </div>
+
   </div>
 
   <p class="sub">${note}</p>
 
-  <form onsubmit="saveFinancialDigit(event,'${key}')" class="formgrid">
+  <form
+    onsubmit="saveFinancialDigit(event,'${key}')"
+    class="formgrid">
 
     <div class="field">
+
       <label>Nuevo valor (USD)</label>
+
       <input
         name="amount"
         type="number"
         min="0"
         step="0.01"
         value="${Number(current).toFixed(2)}"
-        required
-      >
+        required>
+
     </div>
 
     <div class="field">
+
       <label>Fecha</label>
+
       <input
         name="date"
         type="date"
         value="${new Date().toISOString().slice(0,10)}"
-        required
-      >
+        required>
+
     </div>
 
     <div class="field full">
+
       <label>Descripción</label>
+
       <input
         name="description"
         value="Ajuste desde Dashboard"
-        required
-      >
+        required>
+
     </div>
 
     <div class="full">
-      <button class="btn" type="button" onclick="closeModal()">Cancelar</button>
-      <button class="btn primary">Guardar cambio</button>
+
+      <button
+        class="btn"
+        type="button"
+        onclick="closeModal()">
+        Cancelar
+      </button>
+
+      <button class="btn primary">
+        Guardar cambio
+      </button>
+
     </div>
 
   </form>`;
-  
+
   $("#modal").classList.add("open");
 }
 
 function saveFinancialDigit(e,key){
+
   e.preventDefault();
 
-  let f=Object.fromEntries(new FormData(e.target));
+  let f=Object.fromEntries(
+    new FormData(e.target)
+  );
+
   let amount=+f.amount;
 
   if(!Number.isFinite(amount)||amount<0)
@@ -1060,17 +1766,17 @@ function saveFinancialDigit(e,key){
 
   let current=
     key==="wealth"||key==="capital"
-      ? t.balance
-      : key==="outflow"
-        ? t.expense
-        : t.income;
+    ? t.balance
+    : key==="outflow"
+      ? t.expense
+      : t.income;
 
   let delta=amount-current;
 
   if(Math.abs(delta)<0.005){
     closeModal();
     toast("El valor ya está actualizado");
-    return;
+    return
   }
 
   let movement={
@@ -1079,81 +1785,115 @@ function saveFinancialDigit(e,key){
     amount:Math.abs(delta),
     date:f.date,
     time:"",
-    category:key==="outflow"?"Ajuste de gastos":"Ajuste de capital",
+    category:
+      key==="outflow"
+      ?"Ajuste de gastos"
+      :"Ajuste de capital",
     sub:"",
     description:f.description,
     account:"",
     method:"Ajuste Dashboard",
     tags:"",
-    notes:"Cambio realizado desde el valor numérico del Dashboard."
+    notes:
+      "Cambio realizado desde el valor numérico del Dashboard."
   };
 
   state.movements.push(movement);
 
   closeModal();
+
   save();
 
   toast("Valor actualizado y guardado");
 }
 
 function dashboard(){
+
   let t=totals();
+
   let period=state.dashboard.period||"all";
+
   let now=new Date();
 
-  let filtered=state.movements.filter(m=>{
-    if(period==="all")
+  let filtered=
+    state.movements.filter(m=>{
+
+      if(period==="all")
+        return true;
+
+      let d=new Date(
+        m.date+"T00:00:00"
+      );
+
+      if(period==="month")
+        return
+          d.getFullYear()===now.getFullYear()&&
+          d.getMonth()===now.getMonth();
+
+      if(period==="year")
+        return
+          d.getFullYear()===now.getFullYear();
+
       return true;
+    });
 
-    let d=new Date(m.date+"T00:00:00");
+  let income=
+    filtered
+      .filter(m=>m.type==="income")
+      .reduce((a,m)=>a+ +m.amount,0);
 
-    if(period==="month")
-      return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth();
-
-    if(period==="year")
-      return d.getFullYear()===now.getFullYear();
-
-    return true;
-  });
-
-  let income=filtered
-    .filter(m=>m.type==="income")
-    .reduce((a,m)=>a+ +m.amount,0);
-
-  let expense=filtered
-    .filter(m=>m.type==="expense")
-    .reduce((a,m)=>a+ +m.amount,0);
+  let expense=
+    filtered
+      .filter(m=>m.type==="expense")
+      .reduce((a,m)=>a+ +m.amount,0);
 
   let balance=income-expense;
+
   let c=state.dashboard.cards;
 
   return header(
     "Dashboard",
-    `<button class="btn primary" onclick="openMove()">+ Movimiento</button>`
+    `<button
+      class="btn primary"
+      onclick="openMove()">
+      + Movimiento
+    </button>`
   )
-
-  +`
+  +
+  `
   <div class="toolbar">
 
     <div class="field">
+
       <label>Periodo</label>
 
       <select onchange="setDashPeriod(this.value)">
-        <option value="all" ${period==="all"?"selected":""}>
+
+        <option
+          value="all"
+          ${period==="all"?"selected":""}>
           Todo el periodo
         </option>
 
-        <option value="month" ${period==="month"?"selected":""}>
+        <option
+          value="month"
+          ${period==="month"?"selected":""}>
           Este mes
         </option>
 
-        <option value="year" ${period==="year"?"selected":""}>
+        <option
+          value="year"
+          ${period==="year"?"selected":""}>
           Este año
         </option>
+
       </select>
+
     </div>
 
-    <span class="sub" style="align-self:end">
+    <span
+      class="sub"
+      style="align-self:end">
       Los dígitos se recalculan automáticamente desde tus movimientos reales.
     </span>
 
@@ -1161,23 +1901,60 @@ function dashboard(){
 
   <div class="grid">
 
-    ${card(c.wealth.title,money(balance),c.wealth.desc,"wealth")}
-    ${card(c.capital.title,money(balance),c.capital.desc,"capital")}
-    ${card(c.outflow.title,money(expense),c.outflow.desc,"outflow")}
-    ${card(c.income.title,money(income),c.income.desc,"income")}
+    ${card(
+      c.wealth.title,
+      money(balance),
+      c.wealth.desc,
+      "wealth"
+    )}
+
+    ${card(
+      c.capital.title,
+      money(balance),
+      c.capital.desc,
+      "capital"
+    )}
+
+    ${card(
+      c.outflow.title,
+      money(expense),
+      c.outflow.desc,
+      "outflow"
+    )}
+
+    ${card(
+      c.income.title,
+      money(income),
+      c.income.desc,
+      "income"
+    )}
 
   </div>
 
   <div class="two">
 
     <div class="card">
-      <div class="label">Evolución del capital</div>
-      <div class="chart">${lineChart(filtered)}</div>
+
+      <div class="label">
+        Evolución del capital
+      </div>
+
+      <div class="chart">
+        ${lineChart(filtered)}
+      </div>
+
     </div>
 
     <div class="card">
-      <div class="label">Ingresos vs. gastos</div>
-      <div class="chart">${barChart(income,expense)}</div>
+
+      <div class="label">
+        Ingresos vs. gastos
+      </div>
+
+      <div class="chart">
+        ${barChart(income,expense)}
+      </div>
+
     </div>
 
   </div>
@@ -1189,113 +1966,163 @@ function dashboard(){
       <div class="value ${balance<0?'danger':'good'}">
         ${money(balance)}
       </div>
-      <div class="sub">Actualización automática</div>
+      <div class="sub">
+        Actualización automática
+      </div>
     </div>
 
     <div class="card">
       <div class="label">Número de movimientos</div>
-      <div class="value">${filtered.length}</div>
-      <div class="sub">Actualizado automáticamente</div>
+      <div class="value">
+        ${filtered.length}
+      </div>
+      <div class="sub">
+        Actualizado automáticamente
+      </div>
     </div>
 
     <div class="card">
       <div class="label">Categoría con mayor gasto</div>
-      <div class="value">${esc(topCategory(filtered))}</div>
-      <div class="sub">Basado en gastos reales</div>
+      <div class="value">
+        ${esc(topCategory(filtered))}
+      </div>
+      <div class="sub">
+        Basado en gastos reales
+      </div>
     </div>
 
     <div class="card">
       <div class="label">Estado</div>
-      <div class="value">${filtered.length?"Activo":"Listo"}</div>
-      <div class="sub">Fuente de verdad sincronizada</div>
+      <div class="value">
+        ${filtered.length?"Activo":"Listo"}
+      </div>
+      <div class="sub">
+        Fuente de verdad sincronizada
+      </div>
     </div>
 
   </div>
 
   <div class="section card">
-    <div class="label">Movimientos recientes</div>
+
+    <div class="label">
+      Movimientos recientes
+    </div>
+
     ${movementTable(
       filtered
-        .slice()
-        .sort((a,b)=>b.date.localeCompare(a.date))
-        .slice(0,6)
+      .slice()
+      .sort(
+        (a,b)=>b.date.localeCompare(a.date)
+      )
+      .slice(0,6)
     )}
+
   </div>
 
   <div class="section card">
-    <div class="label">Accesos rápidos</div>
+
+    <div class="label">
+      Accesos rápidos
+    </div>
 
     <div class="toolbar">
-      <button class="btn primary" onclick="openMove()">
+
+      <button
+        class="btn primary"
+        onclick="openMove()">
         + Registrar movimiento
       </button>
 
-      <button class="btn" onclick="openBudget()">
+      <button
+        class="btn"
+        onclick="openBudget()">
         + Presupuesto
       </button>
 
-      <button class="btn" onclick="openGoal()">
+      <button
+        class="btn"
+        onclick="openGoal()">
         + Meta
       </button>
 
-      <button class="btn" onclick="openAccount()">
+      <button
+        class="btn"
+        onclick="openAccount()">
         + Cuenta
       </button>
 
-      <button class="btn" onclick="go('ai')">
+      <button
+        class="btn"
+        onclick="go('ai')">
         ✦ Consultar ALE AI
       </button>
+
     </div>
+
   </div>`;
 }
 
 function card(a,b,c,key){
+
   return `
   <div
     class="card"
-    onclick="${key?`openFinancialEditor('${key}')`:''}"
+    onclick="openFinancialEditor('${key}')"
     style="cursor:pointer"
-    title="Haz clic para editar este valor"
-  >
+    title="Haz clic para editar este valor">
+
     <div class="label">
+
       ${esc(a)}
-      ${
-        key
-        ?
-        `<span style="float:right;font-size:10px;opacity:.65">EDITAR</span>`
-        :
-        ""
-      }
+
+      <span
+        style="float:right;font-size:10px;opacity:.65">
+        EDITAR
+      </span>
+
     </div>
 
     <div class="value">${b}</div>
-    <div class="sub">${esc(c)}</div>
-  </div>`;
+
+    <div class="sub">
+      ${esc(c)}
+    </div>
+
+  </div>`
 }
 
 function topCategory(ms=state.movements){
+
   let x={};
 
   ms
     .filter(m=>m.type==="expense")
-    .forEach(m=>{
-      x[m.category]=(x[m.category]||0)+ +m.amount;
-    });
+    .forEach(
+      m=>x[m.category]=(x[m.category]||0)+ +m.amount
+    );
 
-  let k=Object.keys(x).sort((a,b)=>x[b]-x[a])[0];
+  let k=
+    Object.keys(x)
+      .sort((a,b)=>x[b]-x[a])[0];
 
-  return k||"—";
+  return k||"—"
 }
 
 function lineChart(input){
-  let ms=(input||state.movements)
-    .slice()
-    .sort((a,b)=>a.date.localeCompare(b.date));
+
+  let ms=
+    (input||state.movements)
+      .slice()
+      .sort((a,b)=>a.date.localeCompare(b.date));
 
   if(!ms.length)
-    return `<div class="empty">Aún no hay datos para mostrar.</div>`;
+    return `<div class="empty">
+      Aún no hay datos para mostrar.
+    </div>`;
 
-  let bal=0,pts=[];
+  let bal=0;
+  let pts=[];
 
   ms.forEach(m=>{
     if(m.type==="income")
@@ -1304,29 +2131,39 @@ function lineChart(input){
     if(m.type==="expense")
       bal-=+m.amount;
 
-    pts.push(bal);
+    pts.push(bal)
   });
 
   let max=Math.max(...pts,0);
   let min=Math.min(...pts,0);
   let range=max-min||1;
 
-  let p=pts.map((v,i)=>
-    `${(
-      i/(Math.max(pts.length-1,1))*96+2
-    ).toFixed(1)},${(
-      94-(v-min)/range*82
-    ).toFixed(1)}`
-  ).join(" ");
+  let p=
+    pts.map(
+      (v,i)=>
+        `${(
+          i/
+          Math.max(pts.length-1,1)*
+          96+
+          2
+        ).toFixed(1)},${
+          (
+            94-
+            (v-min)/range*82
+          ).toFixed(1)
+        }`
+    ).join(" ");
 
   return `
-  <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+  <svg
+    viewBox="0 0 100 100"
+    preserveAspectRatio="none">
+
     <polyline
       fill="none"
       stroke="currentColor"
       stroke-width="1.8"
-      points="${p}"
-    />
+      points="${p}"/>
 
     <line
       x1="2"
@@ -1334,19 +2171,23 @@ function lineChart(input){
       x2="98"
       y2="94"
       stroke="currentColor"
-      opacity=".15"
-    />
-  </svg>`;
+      opacity=".15"/>
+
+  </svg>`
 }
 
 function barChart(i,e){
+
   if(!i&&!e)
-    return `<div class="empty">Sin movimientos.</div>`;
+    return `<div class="empty">
+      Sin movimientos.
+    </div>`;
 
   let mx=Math.max(i,e)||1;
 
   return `
   <svg viewBox="0 0 100 100">
+
     <rect
       x="20"
       y="${95-i/mx*80}"
@@ -1354,8 +2195,7 @@ function barChart(i,e){
       height="${i/mx*80}"
       rx="3"
       fill="currentColor"
-      opacity=".75"
-    />
+      opacity=".75"/>
 
     <rect
       x="58"
@@ -1364,20 +2204,36 @@ function barChart(i,e){
       height="${e/mx*80}"
       rx="3"
       fill="currentColor"
-      opacity=".35"
-    />
+      opacity=".35"/>
 
-    <text x="22" y="99" font-size="6">Ingresos</text>
-    <text x="60" y="99" font-size="6">Gastos</text>
-  </svg>`;
+    <text
+      x="22"
+      y="99"
+      font-size="6">
+      Ingresos
+    </text>
+
+    <text
+      x="60"
+      y="99"
+      font-size="6">
+      Gastos
+    </text>
+
+  </svg>`
 }
 
 function movementTable(ms){
+
   if(!ms.length)
-    return empty("Aún no tienes movimientos","openMove()");
+    return empty(
+      "Aún no tienes movimientos",
+      "openMove()"
+    );
 
   return `
   <div class="tablewrap">
+
     <table class="table">
 
       <thead>
@@ -1393,138 +2249,180 @@ function movementTable(ms){
 
       <tbody>
 
-        ${ms.map(m=>`
-          <tr>
+      ${ms.map(m=>`
 
-            <td>${esc(m.date)}</td>
+        <tr>
 
-            <td>
-              <span class="pill">
-                ${
-                  m.type==="income"
-                  ?"Ingreso"
-                  :
-                  m.type==="expense"
-                  ?"Gasto"
-                  :
-                  "Transferencia"
-                }
-              </span>
-            </td>
+          <td>${esc(m.date)}</td>
 
-            <td>${esc(m.category||"—")}</td>
-
-            <td>
+          <td>
+            <span class="pill">
               ${
-                esc(
-                  m.type==="transfer"
-                  ?
-                  ((m.account||"—")+" → "+(m.destination||"—"))
-                  :
-                  (m.account||"—")
-                )
+                m.type==="income"
+                ?"Ingreso"
+                :
+                m.type==="expense"
+                ?"Gasto"
+                :
+                "Transferencia"
               }
-            </td>
+            </span>
+          </td>
 
-            <td class="${m.type==="expense"?'danger':'good'}">
-              ${m.type==="expense"?"-":"+"}${money(m.amount)}
-            </td>
+          <td>
+            ${esc(m.category||"—")}
+          </td>
 
-            <td>
-              <button class="btn" onclick="openMove('${m.id}')">
-                Editar
-              </button>
+          <td>
+            ${esc(
+              m.type==="transfer"
+              ?
+              (
+                (m.account||"—")+
+                " → "+
+                (m.destination||"—")
+              )
+              :
+              (m.account||"—")
+            )}
+          </td>
 
-              <button class="btn" onclick="delMove('${m.id}')">
-                Eliminar
-              </button>
-            </td>
+          <td
+            class="${m.type==="expense"?'danger':'good'}">
 
-          </tr>
-        `).join("")}
+            ${m.type==="expense"?"-":"+"}
+            ${money(m.amount)}
+
+          </td>
+
+          <td>
+
+            <button
+              class="btn"
+              onclick="openMove('${m.id}')">
+              Editar
+            </button>
+
+            <button
+              class="btn"
+              onclick="delMove('${m.id}')">
+              Eliminar
+            </button>
+
+          </td>
+
+        </tr>
+
+      `).join("")}
 
       </tbody>
+
     </table>
-  </div>`;
+
+  </div>`
 }
 
 function setDashPeriod(v){
+
   state.dashboard.period=v;
+
   save();
-  toast("Periodo del Dashboard guardado");
+
+  toast("Periodo del Dashboard guardado")
 }
 
 function openDashboardEditor(){
+
   let c=state.dashboard.cards;
 
   $("#modalbox").innerHTML=`
+
   <div class="modalhead">
     <h2>Personalizar Dashboard</h2>
-    <button class="btn" onclick="closeModal()">×</button>
+    <button
+      class="btn"
+      onclick="closeModal()">×</button>
   </div>
 
   <p class="sub">
-    Puedes editar los nombres y descripciones de las funciones visuales.
-    Los valores financieros siguen siendo automáticos y nunca se editan manualmente.
+    Puedes editar los nombres y descripciones
+    de las funciones visuales.
+    Los valores financieros siguen siendo automáticos
+    y nunca se editan manualmente.
   </p>
 
-  <form onsubmit="saveDashboard(event)" class="formgrid">
+  <form
+    onsubmit="saveDashboard(event)"
+    class="formgrid">
 
-    ${Object.entries(c).map(([k,v])=>`
-      <div class="field full">
+    ${
+      Object.entries(c).map(
+        ([k,v])=>`
 
-        <label>
-          ${
-            k==="wealth"
-            ?"Patrimonio Líquido"
-            :
-            k==="capital"
-            ?"Capital"
-            :
-            k==="outflow"
-            ?"Flujo de Salida"
-            :
-            "Ingresos"
-          }
-        </label>
+        <div class="field full">
 
-        <input
-          name="${k}_title"
-          value="${esc(v.title)}"
-          required
-        >
+          <label>
+            ${
+              k==="wealth"
+              ?"Patrimonio Líquido"
+              :
+              k==="capital"
+              ?"Capital"
+              :
+              k==="outflow"
+              ?"Flujo de Salida"
+              :
+              "Ingresos"
+            }
+          </label>
 
-        <input
-          name="${k}_desc"
-          value="${esc(v.desc)}"
-          placeholder="Descripción"
-        >
+          <input
+            name="${k}_title"
+            value="${esc(v.title)}"
+            required>
 
-      </div>
-    `).join("")}
+          <input
+            name="${k}_desc"
+            value="${esc(v.desc)}"
+            placeholder="Descripción">
+
+        </div>
+
+      `
+      ).join("")
+    }
 
     <div class="full">
-      <button class="btn" type="button" onclick="closeModal()">
+
+      <button
+        class="btn"
+        type="button"
+        onclick="closeModal()">
         Cancelar
       </button>
 
       <button class="btn primary">
         Guardar cambios
       </button>
+
     </div>
 
   </form>`;
 
-  $("#modal").classList.add("open");
+  $("#modal").classList.add("open")
 }
 
 function openDashCard(key){
+
   let c=state.dashboard.cards[key];
 
   $("#modalbox").innerHTML=`
+
   <div class="modalhead">
     <h2>Editar función del Dashboard</h2>
-    <button class="btn" onclick="closeModal()">×</button>
+    <button
+      class="btn"
+      onclick="closeModal()">×</button>
   </div>
 
   <p class="sub">
@@ -1532,37 +2430,58 @@ function openDashCard(key){
     Solo puedes personalizar la presentación.
   </p>
 
-  <form onsubmit="saveDashCard(event,'${key}')" class="formgrid">
+  <form
+    onsubmit="saveDashCard(event,'${key}')"
+    class="formgrid">
 
     <div class="field full">
+
       <label>Nombre</label>
-      <input name="title" value="${esc(c.title)}" required>
+
+      <input
+        name="title"
+        value="${esc(c.title)}"
+        required>
+
     </div>
 
     <div class="field full">
+
       <label>Descripción</label>
-      <input name="desc" value="${esc(c.desc)}">
+
+      <input
+        name="desc"
+        value="${esc(c.desc)}">
+
     </div>
 
     <div class="full">
-      <button class="btn" type="button" onclick="closeModal()">
+
+      <button
+        class="btn"
+        type="button"
+        onclick="closeModal()">
         Cancelar
       </button>
 
       <button class="btn primary">
         Guardar cambios
       </button>
+
     </div>
 
   </form>`;
 
-  $("#modal").classList.add("open");
+  $("#modal").classList.add("open")
 }
 
 function saveDashCard(e,key){
+
   e.preventDefault();
 
-  let f=Object.fromEntries(new FormData(e.target));
+  let f=Object.fromEntries(
+    new FormData(e.target)
+  );
 
   state.dashboard.cards[key]={
     title:f.title,
@@ -1570,267 +2489,390 @@ function saveDashCard(e,key){
   };
 
   closeModal();
+
   save();
 
-  toast("Cambios guardados en el Dashboard");
+  toast("Cambios guardados en el Dashboard")
 }
 
 function saveDashboard(e){
+
   e.preventDefault();
 
-  let f=Object.fromEntries(new FormData(e.target));
+  let f=Object.fromEntries(
+    new FormData(e.target)
+  );
 
-  for(const k of Object.keys(state.dashboard.cards)){
-    state.dashboard.cards[k].title=f[k+"_title"];
-    state.dashboard.cards[k].desc=f[k+"_desc"];
+  for(
+    const k of Object.keys(state.dashboard.cards)
+  ){
+
+    state.dashboard.cards[k].title=
+      f[k+"_title"];
+
+    state.dashboard.cards[k].desc=
+      f[k+"_desc"];
   }
 
   closeModal();
+
   save();
 
-  toast("Dashboard personalizado y guardado");
+  toast("Dashboard personalizado y guardado")
 }
 
 function movements(){
+
   return header(
     "Movimientos",
-    `<button class="btn primary" onclick="openMove()">+ Movimiento</button>`
+    `<button
+      class="btn primary"
+      onclick="openMove()">
+      + Movimiento
+    </button>`
   )
-
-  +`
+  +
+  `
   <div class="toolbar">
 
     <input
       class="field"
       id="search"
       placeholder="Buscar…"
-      oninput="renderMovements()"
-    >
+      oninput="renderMovements()">
 
-    <select id="typeFilter" onchange="renderMovements()">
-      <option value="">Todos</option>
-      <option value="income">Ingresos</option>
-      <option value="expense">Gastos</option>
+    <select
+      id="typeFilter"
+      onchange="renderMovements()">
+
+      <option value="">
+        Todos
+      </option>
+
+      <option value="income">
+        Ingresos
+      </option>
+
+      <option value="expense">
+        Gastos
+      </option>
+
     </select>
 
     <input
       type="date"
       id="dateFilter"
-      onchange="renderMovements()"
-    >
+      onchange="renderMovements()">
 
   </div>
 
-  <div class="card" id="movetable"></div>`;
+  <div
+    class="card"
+    id="movetable">
+  </div>`
 }
 
 function renderMovements(){
-  let q=($("#search")?.value||"").toLowerCase();
-  let f=$("#typeFilter")?.value||"";
-  let d=$("#dateFilter")?.value||"";
 
-  let ms=state.movements.filter(m=>
-    (!q||JSON.stringify(m).toLowerCase().includes(q))
-    &&
-    (!f||m.type===f)
-    &&
-    (!d||m.date===d)
-  );
+  let q=
+    ($("#search")?.value||"")
+      .toLowerCase();
 
-  $("#movetable").innerHTML=movementTable(ms);
+  let f=
+    $("#typeFilter")?.value||"";
+
+  let d=
+    $("#dateFilter")?.value||"";
+
+  let ms=
+    state.movements.filter(
+      m=>
+        (!q||
+          JSON.stringify(m)
+            .toLowerCase()
+            .includes(q))
+        &&
+        (!f||m.type===f)
+        &&
+        (!d||m.date===d)
+    );
+
+  $("#movetable").innerHTML=
+    movementTable(ms)
 }
 
 function budgets(){
+
   return header(
     "Presupuestos",
-    `<button class="btn primary" onclick="openBudget()">+ Presupuesto</button>`
+    `<button
+      class="btn primary"
+      onclick="openBudget()">
+      + Presupuesto
+    </button>`
   )
-
-  +`
+  +
+  `
   <div class="grid">
 
-    ${
-      state.budgets.length
-      ?
-      state.budgets.map(b=>{
-        let spent=state.movements
-          .filter(m=>
-            m.type==="expense"
-            &&
-            m.category===b.category
-            &&
-            m.date.slice(0,7)===b.period
+  ${
+    state.budgets.length
+    ?
+    state.budgets.map(b=>{
+
+      let spent=
+        state.movements
+          .filter(
+            m=>
+              m.type==="expense"&&
+              m.category===b.category&&
+              m.date.slice(0,7)===b.period
           )
-          .reduce((s,m)=>s+ +m.amount,0);
+          .reduce(
+            (s,m)=>s+ +m.amount,
+            0
+          );
 
-        let pct=Math.min(100,spent/b.amount*100);
+      let pct=
+        Math.min(
+          100,
+          spent/b.amount*100
+        );
 
-        return `
-        <div class="card">
+      return `
+      <div class="card">
 
-          <b>${esc(b.category)}</b>
+        <b>${esc(b.category)}</b>
 
-          <div class="sub">${esc(b.period)}</div>
+        <div class="sub">
+          ${esc(b.period)}
+        </div>
 
-          <div class="progress">
-            <i style="width:${pct}%"></i>
-          </div>
+        <div class="progress">
+          <i style="width:${pct}%"></i>
+        </div>
 
-          <p>
-            ${money(spent)} de ${money(b.amount)}
-            · ${pct.toFixed(0)}%
-          </p>
+        <p>
+          ${money(spent)}
+          de
+          ${money(b.amount)}
+          ·
+          ${pct.toFixed(0)}%
+        </p>
 
-          <span class="${spent>b.amount?'danger':'good'}">
-            ${
-              spent>b.amount
-              ?"Excedido"
-              :
-              pct>=80
-              ?"Próximo al límite"
-              :
-              "Normal"
-            }
-          </span>
+        <span
+          class="${spent>b.amount?'danger':'good'}">
 
-          <br>
+          ${
+            spent>b.amount
+            ?"Excedido"
+            :
+            pct>=80
+            ?"Próximo al límite"
+            :
+            "Normal"
+          }
 
-          <button
-            class="btn"
-            style="margin-top:10px"
-            onclick="delBudget('${b.id}')"
-          >
-            Eliminar
-          </button>
+        </span>
 
-        </div>`;
-      }).join("")
-      :
-      empty("Aún no tienes presupuestos","openBudget()")
-    }
+        <br>
 
-  </div>`;
+        <button
+          class="btn"
+          style="margin-top:10px"
+          onclick="delBudget('${b.id}')">
+          Eliminar
+        </button>
+
+      </div>`
+
+    }).join("")
+    :
+    empty(
+      "Aún no tienes presupuestos",
+      "openBudget()"
+    )
+  }
+
+  </div>`
 }
 
 function goals(){
+
   return header(
     "Metas",
-    `<button class="btn primary" onclick="openGoal()">+ Meta</button>`
+    `<button
+      class="btn primary"
+      onclick="openGoal()">
+      + Meta
+    </button>`
   )
-
-  +`
+  +
+  `
   <div class="grid">
 
-    ${
-      state.goals.length
-      ?
-      state.goals.map(g=>{
-        let pct=Math.min(100,g.current/g.target*100);
+  ${
+    state.goals.length
+    ?
+    state.goals.map(g=>{
 
-        return `
-        <div class="card">
+      let pct=
+        Math.min(
+          100,
+          g.current/g.target*100
+        );
 
-          <b>${esc(g.name)}</b>
+      return `
+      <div class="card">
 
-          <div class="sub">
-            Objetivo ${money(g.target)}
-            · ${esc(g.date||"Sin fecha")}
-          </div>
+        <b>${esc(g.name)}</b>
 
-          <div class="progress">
-            <i style="width:${pct}%"></i>
-          </div>
+        <div class="sub">
+          Objetivo
+          ${money(g.target)}
+          ·
+          ${esc(g.date||"Sin fecha")}
+        </div>
 
-          <p>
-            ${money(g.current)}
-            · ${pct.toFixed(0)}%
-            · Restante ${money(Math.max(0,g.target-g.current))}
-          </p>
+        <div class="progress">
+          <i style="width:${pct}%"></i>
+        </div>
 
-          <button
-            class="btn"
-            onclick="delGoal('${g.id}')"
-          >
-            Eliminar
-          </button>
+        <p>
+          ${money(g.current)}
+          ·
+          ${pct.toFixed(0)}%
+          ·
+          Restante
+          ${money(
+            Math.max(
+              0,
+              g.target-g.current
+            )
+          )}
+        </p>
 
-        </div>`;
-      }).join("")
-      :
-      empty("Aún no tienes metas","openGoal()")
-    }
+        <button
+          class="btn"
+          onclick="delGoal('${g.id}')">
+          Eliminar
+        </button>
 
-  </div>`;
+      </div>`
+
+    }).join("")
+    :
+    empty(
+      "Aún no tienes metas",
+      "openGoal()"
+    )
+  }
+
+  </div>`
 }
 
 function accounts(){
+
   return header(
     "Cuentas",
-    `<button class="btn primary" onclick="openAccount()">+ Cuenta</button>`
+    `<button
+      class="btn primary"
+      onclick="openAccount()">
+      + Cuenta
+    </button>`
   )
-
-  +`
+  +
+  `
   <div class="grid">
 
-    ${
-      state.accounts.length
-      ?
-      state.accounts.map(a=>{
-        let bal=state.movements.reduce(
+  ${
+    state.accounts.length
+    ?
+    state.accounts.map(a=>{
+
+      let bal=
+        state.movements.reduce(
           (s,m)=>
             m.type==="income"&&m.account===a.name
-              ?s+ +m.amount
-              :
+            ?s+ +m.amount
+            :
             m.type==="expense"&&m.account===a.name
-              ?s- +m.amount
-              :
+            ?s- +m.amount
+            :
             m.type==="transfer"&&m.account===a.name
-              ?s- +m.amount
-              :
+            ?s- +m.amount
+            :
             m.type==="transfer"&&m.destination===a.name
-              ?s+ +m.amount
-              :
+            ?s+ +m.amount
+            :
             s,
           0
         );
 
-        return `
-        <div class="card">
+      return `
+      <div class="card">
 
-          <span class="pill">${esc(a.type)}</span>
+        <span class="pill">
+          ${esc(a.type)}
+        </span>
 
-          <h3>${esc(a.name)}</h3>
+        <h3>${esc(a.name)}</h3>
 
-          <div class="value">${money(bal)}</div>
+        <div class="value">
+          ${money(bal)}
+        </div>
 
-          <button
-            class="btn"
-            onclick="delAccount('${a.id}')"
-          >
-            Eliminar
-          </button>
+        <button
+          class="btn"
+          onclick="delAccount('${a.id}')">
+          Eliminar
+        </button>
 
-        </div>`;
-      }).join("")
-      :
-      empty("Aún no tienes cuentas","openAccount()")
-    }
+      </div>`
 
-  </div>`;
+    }).join("")
+    :
+    empty(
+      "Aún no tienes cuentas",
+      "openAccount()"
+    )
+  }
+
+  </div>`
 }
 
 function wealth(){
+
   let t=totals();
 
   return header("Patrimonio")
-
-  +`
+  +
+  `
   <div class="grid">
 
-    ${card("Patrimonio Líquido",money(t.balance),"Siempre igual a Capital")}
-    ${card("Capital",money(t.balance),"Fuente de verdad")}
-    ${card("Activos",money(t.balance),"Derivado del modelo actual")}
-    ${card("Pasivos",money(0),"No registrados")}
+    ${card(
+      "Patrimonio Líquido",
+      money(t.balance),
+      "Siempre igual a Capital"
+    )}
+
+    ${card(
+      "Capital",
+      money(t.balance),
+      "Fuente de verdad"
+    )}
+
+    ${card(
+      "Activos",
+      money(t.balance),
+      "Derivado del modelo actual"
+    )}
+
+    ${card(
+      "Pasivos",
+      money(0),
+      "No registrados"
+    )}
 
   </div>
 
@@ -1846,261 +2888,344 @@ function wealth(){
       Patrimonio Líquido = Capital = Disponible
     </div>
 
-  </div>`;
+  </div>`
 }
 
 function history(){
+
   return header("Historial")
-  +`
+  +
+  `
   <div class="card">
     ${movementTable(
       state.movements
         .slice()
-        .sort((a,b)=>b.date.localeCompare(a.date))
+        .sort(
+          (a,b)=>b.date.localeCompare(a.date)
+        )
     )}
-  </div>`;
+  </div>`
 }
+
+/* =========================================================
+   CALCULADORA
+   ========================================================= */
 
 let calc="";
 
 function calculator(){
+
   return header("Calculadora científica")
-  +`
-  <div class="card" style="max-width:620px">
+  +
+  `
+  <div
+    class="card"
+    style="max-width:620px">
 
     <input
       id="calc"
       value="${esc(calc)}"
       oninput="calc=this.value"
-      style="width:100%;font-size:25px;padding:15px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text)"
-    >
+      style="
+        width:100%;
+        font-size:25px;
+        padding:15px;
+        border:1px solid var(--line);
+        border-radius:12px;
+        background:var(--bg);
+        color:var(--text)">
 
     <div class="toolbar">
 
       ${
         [
-          "7","8","9","/","sqrt(",
-          "4","5","6","*","^",
-          "1","2","3","-","(",
-          "0",".",")","+","%",
-          "sin(","cos(","tan(","log(","ln(",
-          "π","e","!","⌫","="
+          "7","8","9","/",
+          "sqrt(","4","5","6",
+          "*","^","1","2","3",
+          "-","(","0",".",")",
+          "+","%","sin(","cos(",
+          "tan(","log(","ln(","π",
+          "e","!","⌫","="
         ]
-        .map(x=>`
-          <button class="btn" onclick="key('${x}')">
-            ${x}
-          </button>
-        `)
+        .map(
+          x=>
+            `<button
+              class="btn"
+              onclick="key('${x}')">
+              ${x}
+            </button>`
+        )
         .join("")
       }
 
     </div>
 
     <div class="sub">
-      Parser seguro: solo acepta números, operadores y funciones matemáticas permitidas.
+      Parser seguro: solo acepta números,
+      operadores y funciones matemáticas permitidas.
     </div>
 
-  </div>`;
+  </div>`
 }
 
 function key(k){
-  if(k==="="){
-    try{
-      calc=String(safeEval(calc));
-    }catch{
-      toast("Expresión no válida");
-    }
-  }
-  else if(k==="⌫")
-    calc=calc.slice(0,-1);
-  else
-    calc+=k;
 
-  render();
+  if(k==="="){
+
+    try{
+      calc=String(
+        safeEval(calc)
+      )
+    }catch{
+      toast("Expresión no válida")
+    }
+
+  }else if(k==="⌫"){
+
+    calc=calc.slice(0,-1)
+
+  }else{
+
+    calc+=k
+  }
+
+  render()
 }
 
 function safeEval(s){
-  s=s
-    .replaceAll("π","PI")
-    .replaceAll("^","**")
-    .replace(/\be\b/g,"E");
 
-  if(!/^[0-9+\-*/().,%\sA-Za-z_*!]+$/.test(s))
+  s=
+    s
+      .replaceAll("π","PI")
+      .replaceAll("^","**")
+      .replace(/\be\b/g,"E");
+
+  if(
+    !/^[0-9+\-*/().,%\sA-Za-z_*!]+$/.test(s)
+  )
     throw Error();
 
-  let f=s
-    .replace(/sqrt/g,"Math.sqrt")
-    .replace(/sin/g,"Math.sin")
-    .replace(/cos/g,"Math.cos")
-    .replace(/tan/g,"Math.tan")
-    .replace(/log/g,"Math.log10")
-    .replace(/ln/g,"Math.log")
-    .replace(/\bPI\b/g,"Math.PI")
-    .replace(/\bE\b/g,"Math.E");
+  let f=
+    s
+      .replace(/sqrt/g,"Math.sqrt")
+      .replace(/sin/g,"Math.sin")
+      .replace(/cos/g,"Math.cos")
+      .replace(/tan/g,"Math.tan")
+      .replace(/log/g,"Math.log10")
+      .replace(/ln/g,"Math.log")
+      .replace(/\bPI\b/g,"Math.PI")
+      .replace(/\bE\b/g,"Math.E");
 
-  if(!/^(?:[0-9+\-*/().,%\s]|Math\.(?:sqrt|sin|cos|tan|log10|log|PI|E)|Math\.)+$/.test(f))
+  if(
+    !/^(?:[0-9+\-*/().,%\s]|Math\.(?:sqrt|sin|cos|tan|log10|log|PI|E)|Math\.)+$/.test(f)
+  )
     throw Error();
 
-  if(/Math\.(?!sqrt|sin|cos|tan|log10|log|PI|E)/.test(f))
+  if(
+    /Math\.(?!sqrt|sin|cos|tan|log10|log|PI|E)/.test(f)
+  )
     throw Error();
 
-  return Function('"use strict";return ('+f+')')();
+  return Function(
+    '"use strict";return ('+
+    f+
+    ')'
+  )()
 }
 
 /* =========================================================
-   ALE AI — GEMINI + HISTORIAL SUPABASE
+   ALE AI — GEMINI + SUPABASE
    ========================================================= */
 
-let aiConversationId=null;
-let aiConversations=[];
-let aiMessages=[];
-let aiInitialized=false;
-let aiSending=false;
-
 function ai(){
-  setTimeout(()=>{
-    if(page==="ai")
-      initAI();
-  },0);
 
-  return header("ALE AI")
-
-  +`
+  return header(
+    "ALE AI",
+    `
+    <button
+      class="btn primary"
+      onclick="newAIConversation()">
+      + Nueva conversación
+    </button>
+    `
+  )
+  +
+  `
   <div class="ai-layout">
 
     <aside class="ai-sidebar">
 
-      <button
-        class="btn primary ai-new"
-        onclick="newAIConversation()"
-      >
-        + Nueva conversación
-      </button>
+      <div class="ai-sidebar-head">
 
-      <div class="ai-history-title">
-        Historial
+        <div class="ai-sidebar-title">
+          Conversaciones
+        </div>
+
+        <button
+          class="btn primary ai-new"
+          onclick="newAIConversation()">
+          + Nueva conversación
+        </button>
+
       </div>
 
       <div
-        id="aiHistory"
         class="ai-history"
-      >
-        <div class="ai-empty-history">
-          Cargando conversaciones…
+        id="ai-history">
+
+        <div class="empty">
+          Cargando historial…
         </div>
+
       </div>
 
     </aside>
 
     <section class="ai-main">
 
-      <div class="card ai-chat-card">
+      <div class="ai-head">
 
-        <div class="ai-chat-head">
+        <div>
 
-          <div class="ai-chat-title">
-            <strong id="aiCurrentTitle">
-              ALE AI
-            </strong>
-
-            <span>
-              Asistente inteligente de ALE STUDIO
-            </span>
+          <div
+            class="ai-head-title"
+            id="ai-title">
+            ALE AI
           </div>
 
-          <div class="ai-chat-actions">
-
-            <button
-              class="btn hide-mobile"
-              onclick="newAIConversation()"
-            >
-              Nueva
-            </button>
-
-            <button
-              class="btn danger"
-              onclick="deleteAIConversation()"
-            >
-              Eliminar
-            </button>
-
+          <div
+            class="sub"
+            id="ai-subtitle">
+            Asistente inteligente
           </div>
 
         </div>
 
-        <div
-          id="aiMessages"
-          class="ai-messages"
-        >
-          <div class="empty">
-            Cargando ALE AI…
-          </div>
-        </div>
-
-        <div class="ai-composer">
-
-          <textarea
-            id="aiq"
-            placeholder="Escribe lo que quieras preguntarle a ALE AI…"
-            onkeydown="aiInputKeydown(event)"
-          ></textarea>
+        <div class="ai-head-actions">
 
           <button
-            id="aiSendBtn"
-            class="btn primary ai-send"
-            onclick="sendAI()"
-          >
-            Enviar
+            class="btn ai-delete"
+            onclick="deleteAIConversation()">
+            Eliminar
           </button>
 
         </div>
 
       </div>
 
+      <div
+        class="ai-messages"
+        id="ai-messages">
+
+        <div class="ai-empty">
+
+          <div class="ai-empty-title">
+            Hola, soy ALE AI
+          </div>
+
+          <div>
+            Puedes hablar conmigo normalmente.
+            También puedo analizar los datos de tu
+            ALE STUDIO cuando me preguntes por ellos.
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="ai-input-area">
+
+        <div class="ai-input-row">
+
+          <textarea
+            id="aiq"
+            class="ai-input"
+            rows="1"
+            placeholder="Escribe un mensaje para ALE AI…"
+            onkeydown="aiInputKey(event)"
+            oninput="autoResizeAIInput(this)">
+          </textarea>
+
+          <button
+            id="ai-send"
+            class="btn primary ai-send"
+            onclick="sendAI()">
+            Enviar
+          </button>
+
+        </div>
+
+        <div
+          class="ai-status"
+          id="ai-status">
+          ALE AI puede conversar sobre temas generales
+          y utilizar tus datos financieros cuando sean relevantes.
+        </div>
+
+      </div>
+
     </section>
 
-  </div>`;
+  </div>`
 }
 
+/* =========================================================
+   ALE AI — FUNCIONES DE SUPABASE
+   ========================================================= */
+
 async function initAI(){
-  if(page!=="ai"||!currentUser||!sb)
+
+  if(
+    page!=="ai"||
+    !currentUser||
+    !sb||
+    aiLoading
+  )
     return;
 
   if(aiInitialized)
     return;
 
-  aiInitialized=true;
+  aiLoading=true;
 
   try{
+
     await loadAIConversations();
 
-    if(!aiConversations.length){
-      await createAIConversation();
-    }
-    else{
-      aiConversationId=aiConversations[0].id;
-      await loadAIMessages(aiConversationId);
-    }
-  }
-  catch(error){
+    aiInitialized=true;
+
+  }catch(error){
+
     console.error("ALE AI init:",error);
 
-    const box=$("#aiMessages");
+    const history=$("#ai-history");
 
-    if(box)
-      box.innerHTML=`
+    if(history)
+      history.innerHTML=`
         <div class="empty">
-          No se pudo cargar ALE AI.<br>
-          <span class="sub">${esc(error.message||"Error desconocido")}</span>
+          No se pudo cargar el historial.
+          <br><br>
+          ${esc(error.message||"Error desconocido")}
         </div>`;
+
+  }finally{
+
+    aiLoading=false;
   }
 }
 
 async function loadAIConversations(){
-  const {data,error}=await sb
-    .from("ai_conversations")
-    .select("id,user_id,title,created_at,updated_at")
-    .order("updated_at",{ascending:false});
+
+  const {data,error}=
+    await sb
+      .from("ai_conversations")
+      .select("*")
+      .order(
+        "updated_at",
+        {
+          ascending:false
+        }
+      );
 
   if(error)
     throw error;
@@ -2108,129 +3233,151 @@ async function loadAIConversations(){
   aiConversations=data||[];
 
   renderAIHistory();
-}
-
-function renderAIHistory(){
-  const box=$("#aiHistory");
-
-  if(!box)
-    return;
 
   if(!aiConversations.length){
-    box.innerHTML=`
-      <div class="ai-empty-history">
-        Todavía no tienes conversaciones.
-      </div>`;
-    return;
+
+    await createAIConversation();
+
+  }else{
+
+    if(
+      !aiConversationId||
+      !aiConversations.some(
+        x=>x.id===aiConversationId
+      )
+    ){
+
+      aiConversationId=
+        aiConversations[0].id;
+    }
+
+    await loadAIMessages(
+      aiConversationId
+    );
   }
-
-  box.innerHTML=aiConversations.map(c=>`
-    <button
-      class="ai-conversation ${c.id===aiConversationId?'active':''}"
-      onclick="selectAIConversation('${c.id}')"
-    >
-
-      <span class="ai-conversation-title">
-        ${esc(c.title||"Nueva conversación")}
-      </span>
-
-      <span class="ai-conversation-date">
-        ${formatAIDate(c.updated_at)}
-      </span>
-
-    </button>
-  `).join("");
-}
-
-function formatAIDate(value){
-  if(!value)
-    return "";
-
-  const d=new Date(value);
-
-  if(Number.isNaN(d.getTime()))
-    return "";
-
-  return d.toLocaleDateString("es-PA",{
-    day:"2-digit",
-    month:"short",
-    year:"numeric"
-  });
 }
 
 async function createAIConversation(){
+
   if(!currentUser||!sb)
     return null;
 
-  const {data,error}=await sb
-    .from("ai_conversations")
-    .insert({
-      user_id:currentUser.id,
-      title:"Nueva conversación"
-    })
-    .select("id,user_id,title,created_at,updated_at")
-    .single();
+  const {data,error}=
+    await sb
+      .from("ai_conversations")
+      .insert({
+        user_id:currentUser.id,
+        title:"Nueva conversación"
+      })
+      .select()
+      .single();
 
   if(error)
     throw error;
 
-  aiConversations=[
-    data,
-    ...aiConversations.filter(x=>x.id!==data.id)
-  ];
+  aiConversations.unshift(data);
 
   aiConversationId=data.id;
+
   aiMessages=[];
 
   renderAIHistory();
   renderAIMessages();
 
-  const title=$("#aiCurrentTitle");
-
-  if(title)
-    title.textContent="Nueva conversación";
+  updateAITitle();
 
   return data;
 }
 
 async function newAIConversation(){
-  if(aiSending)
+
+  if(aiLoading)
     return;
 
   try{
+
+    aiLoading=true;
+
     await createAIConversation();
 
     const input=$("#aiq");
 
     if(input)
       input.focus();
-  }
-  catch(error){
+
+    setAIStatus(
+      "Nueva conversación lista."
+    );
+
+  }catch(error){
+
     console.error(error);
-    toast("No se pudo crear la conversación");
+
+    toast(
+      "No se pudo crear la conversación: "+
+      error.message
+    );
+
+  }finally{
+
+    aiLoading=false;
   }
 }
 
 async function selectAIConversation(id){
-  if(aiSending||id===aiConversationId)
+
+  if(
+    !id||
+    aiLoading
+  )
     return;
 
   aiConversationId=id;
 
-  renderAIHistory();
+  try{
 
-  await loadAIMessages(id);
+    aiLoading=true;
+
+    await loadAIMessages(id);
+
+    renderAIHistory();
+
+    const input=$("#aiq");
+
+    if(input)
+      input.focus();
+
+  }catch(error){
+
+    console.error(error);
+
+    toast(
+      "No se pudo abrir la conversación: "+
+      error.message
+    );
+
+  }finally{
+
+    aiLoading=false;
+  }
 }
 
-async function loadAIMessages(conversationId){
-  if(!conversationId)
+async function loadAIMessages(id){
+
+  if(!id)
     return;
 
-  const {data,error}=await sb
-    .from("ai_messages")
-    .select("id,conversation_id,user_id,role,content,created_at")
-    .eq("conversation_id",conversationId)
-    .order("created_at",{ascending:true});
+  const {data,error}=
+    await sb
+      .from("ai_messages")
+      .select("*")
+      .eq("conversation_id",id)
+      .order(
+        "created_at",
+        {
+          ascending:true
+        }
+      );
 
   if(error)
     throw error;
@@ -2239,180 +3386,249 @@ async function loadAIMessages(conversationId){
 
   renderAIMessages();
 
-  const conversation=aiConversations.find(
-    c=>c.id===conversationId
-  );
-
-  const title=$("#aiCurrentTitle");
-
-  if(title)
-    title.textContent=
-      conversation?.title||"Nueva conversación";
+  updateAITitle();
 }
 
-function renderAIMessages(){
-  const box=$("#aiMessages");
+function renderAIHistory(){
+
+  const box=$("#ai-history");
 
   if(!box)
     return;
 
-  if(!aiMessages.length){
+  if(!aiConversations.length){
+
     box.innerHTML=`
       <div class="empty">
-        <b>Hola, soy ALE AI.</b>
-
-        <div class="sub">
-          Puedes hablar conmigo normalmente o preguntarme
-          por los datos de tu ALE STUDIO cuando lo necesites.
-        </div>
+        Aún no tienes conversaciones.
       </div>`;
 
     return;
   }
 
-  box.innerHTML=aiMessages.map(m=>`
-    <div class="ai-msg ${m.role==="user"?"user":"assistant"}">
+  box.innerHTML=
+    aiConversations
+      .map(c=>{
 
-      <span class="ai-msg-label">
-        ${m.role==="user"?"Tú":"ALE AI"}
-      </span>
+        const date=
+          c.updated_at
+          ?
+          new Date(
+            c.updated_at
+          ).toLocaleDateString(
+            "es-PA",
+            {
+              day:"2-digit",
+              month:"short"
+            }
+          )
+          :
+          "";
 
-      ${esc(m.content)}
+        return `
+        <button
+          class="ai-conversation ${
+            c.id===aiConversationId
+            ?"active"
+            :""
+          }"
+          onclick="selectAIConversation('${c.id}')">
 
-    </div>
-  `).join("");
+          <div class="ai-conversation-title">
+            ${esc(c.title||"Nueva conversación")}
+          </div>
 
-  requestAnimationFrame(()=>{
-    box.scrollTop=box.scrollHeight;
-  });
+          <div class="ai-conversation-date">
+            ${esc(date)}
+          </div>
+
+        </button>`
+
+      })
+      .join("");
 }
 
-function aiInputKeydown(e){
-  if(e.key==="Enter"&&!e.shiftKey){
-    e.preventDefault();
-    sendAI();
+function renderAIMessages(){
+
+  const box=$("#ai-messages");
+
+  if(!box)
+    return;
+
+  if(!aiMessages.length){
+
+    box.innerHTML=`
+      <div class="ai-empty">
+
+        <div class="ai-empty-title">
+          Hola, soy ALE AI
+        </div>
+
+        <div>
+          Pregúntame lo que quieras.
+          Puedo mantener una conversación normal
+          y también analizar tus datos de ALE STUDIO
+          cuando sea necesario.
+        </div>
+
+      </div>`;
+
+    return;
   }
+
+  box.innerHTML=
+    aiMessages
+      .map(m=>`
+
+        <div
+          class="ai-message ${
+            m.role==="user"
+            ?"user"
+            :"assistant"
+          }">
+
+          <div class="ai-message-name">
+            ${
+              m.role==="user"
+              ?"Tú"
+              :"ALE AI"
+            }
+          </div>
+
+          ${esc(m.content)}
+
+        </div>
+
+      `)
+      .join("");
+
+  box.scrollTop=box.scrollHeight;
+}
+
+function updateAITitle(){
+
+  const title=$("#ai-title");
+
+  if(!title)
+    return;
+
+  const conversation=
+    aiConversations.find(
+      c=>c.id===aiConversationId
+    );
+
+  title.textContent=
+    conversation?.title||
+    "ALE AI";
+}
+
+function setAIStatus(text){
+
+  const el=$("#ai-status");
+
+  if(el)
+    el.textContent=text;
 }
 
 function makeAITitle(text){
-  const clean=String(text||"")
-    .replace(/\s+/g," ")
-    .trim();
+
+  let clean=
+    String(text||"")
+      .replace(/\s+/g," ")
+      .trim();
 
   if(!clean)
     return "Nueva conversación";
 
-  return clean.length>48
-    ? clean.slice(0,48).trim()+"…"
-    : clean;
+  if(clean.length>45)
+    return clean.slice(0,45)+"…";
+
+  return clean;
 }
 
-function buildFinancialContext(){
+function getAIFinancialContext(){
+
   const t=totals();
 
   return {
-    currency:state.settings.currency||"USD",
 
-    summary:{
+    resumen:{
       capital:t.balance,
       patrimonioLiquido:t.balance,
       disponible:t.balance,
       ingresos:t.income,
       gastos:t.expense,
-      movimientos:state.movements.length,
-      cuentas:state.accounts.length,
-      presupuestos:state.budgets.length,
-      metas:state.goals.length
+      movimientosTotales:state.movements.length
     },
 
-    movements:state.movements,
-    accounts:state.accounts,
-    budgets:state.budgets,
-    goals:state.goals
+    movimientos:state.movements,
+
+    cuentas:state.accounts,
+
+    presupuestos:state.budgets,
+
+    metas:state.goals,
+
+    configuracion:{
+      moneda:state.settings.currency
+    }
+
   };
 }
 
-async function saveAIMessage(role,content){
-  const {data,error}=await sb
-    .from("ai_messages")
-    .insert({
-      conversation_id:aiConversationId,
-      user_id:currentUser.id,
-      role,
-      content
-    })
-    .select("id,conversation_id,user_id,role,content,created_at")
-    .single();
+async function updateAIConversationTitle(
+  conversationId,
+  firstMessage
+){
 
-  if(error)
-    throw error;
+  if(!conversationId||!firstMessage)
+    return;
 
-  aiMessages.push(data);
+  const conversation=
+    aiConversations.find(
+      c=>c.id===conversationId
+    );
 
-  return data;
-}
+  if(
+    !conversation||
+    conversation.title!=="Nueva conversación"
+  )
+    return;
 
-async function updateAIConversationTitle(title){
-  const {data,error}=await sb
-    .from("ai_conversations")
-    .update({
-      title,
-      updated_at:new Date().toISOString()
-    })
-    .eq("id",aiConversationId)
-    .eq("user_id",currentUser.id)
-    .select("id,user_id,title,created_at,updated_at")
-    .single();
+  const title=
+    makeAITitle(firstMessage);
 
-  if(error)
-    throw error;
+  const {error}=
+    await sb
+      .from("ai_conversations")
+      .update({
+        title,
+        updated_at:new Date().toISOString()
+      })
+      .eq("id",conversationId)
+      .eq("user_id",currentUser.id);
 
-  const index=aiConversations.findIndex(
-    c=>c.id===aiConversationId
-  );
+  if(error){
+    console.warn(
+      "No se pudo actualizar título:",
+      error
+    );
+    return
+  }
 
-  if(index>=0)
-    aiConversations[index]=data;
-
-  renderAIHistory();
-
-  const titleBox=$("#aiCurrentTitle");
-
-  if(titleBox)
-    titleBox.textContent=data.title;
-}
-
-async function touchAIConversation(){
-  const {data,error}=await sb
-    .from("ai_conversations")
-    .update({
-      updated_at:new Date().toISOString()
-    })
-    .eq("id",aiConversationId)
-    .eq("user_id",currentUser.id)
-    .select("id,user_id,title,created_at,updated_at")
-    .single();
-
-  if(error)
-    throw error;
-
-  const index=aiConversations.findIndex(
-    c=>c.id===aiConversationId
-  );
-
-  if(index>=0)
-    aiConversations[index]=data;
-
-  aiConversations.sort(
-    (a,b)=>
-      new Date(b.updated_at)-new Date(a.updated_at)
-  );
+  conversation.title=title;
 
   renderAIHistory();
+  updateAITitle();
 }
 
 async function sendAI(){
-  if(aiSending)
+
+  if(
+    aiLoading||
+    !currentUser||
+    !sb
+  )
     return;
 
   const input=$("#aiq");
@@ -2420,151 +3636,215 @@ async function sendAI(){
   if(!input)
     return;
 
-  const message=input.value.trim();
+  const text=input.value.trim();
 
-  if(!message)
+  if(!text)
     return;
-
-  if(!currentUser||!sb){
-    toast("Debes iniciar sesión");
-    return;
-  }
-
-  aiSending=true;
-
-  const sendBtn=$("#aiSendBtn");
-
-  if(sendBtn){
-    sendBtn.disabled=true;
-    sendBtn.textContent="Enviando…";
-  }
 
   try{
 
+    aiLoading=true;
+
+    const sendButton=$("#ai-send");
+
+    if(sendButton){
+
+      sendButton.disabled=true;
+      sendButton.textContent="…";
+    }
+
     if(!aiConversationId){
+
       await createAIConversation();
     }
 
-    const previousMessages=aiMessages
-      .slice()
-      .map(m=>({
-        role:m.role,
-        content:m.content
-      }))
-      .slice(-30);
+    const conversationId=
+      aiConversationId;
 
-    await saveAIMessage("user",message);
+    const isFirstMessage=
+      aiMessages.length===0;
+
+    /* Guardamos el mensaje del usuario */
+
+    const {data:userMessage,error:userError}=
+      await sb
+        .from("ai_messages")
+        .insert({
+          conversation_id:conversationId,
+          user_id:currentUser.id,
+          role:"user",
+          content:text
+        })
+        .select()
+        .single();
+
+    if(userError)
+      throw userError;
+
+    aiMessages.push(userMessage);
 
     renderAIMessages();
 
     input.value="";
+    autoResizeAIInput(input);
 
-    const loading=document.createElement("div");
-
-    loading.className="ai-msg assistant ai-loading";
-    loading.innerHTML=`
-      <span class="ai-msg-label">ALE AI</span>
-      Pensando…
-    `;
-
-    const messagesBox=$("#aiMessages");
-
-    if(messagesBox){
-      messagesBox.appendChild(loading);
-      messagesBox.scrollTop=messagesBox.scrollHeight;
-    }
-
-    if(aiMessages.length===1){
-      await updateAIConversationTitle(
-        makeAITitle(message)
-      );
-    }
-    else{
-      await touchAIConversation();
-    }
-
-    const financial_context=buildFinancialContext();
-
-    const {data,error}=await sb.functions.invoke(
-      "ale-ai",
-      {
-        body:{
-          message,
-          messages:previousMessages,
-          financial_context
-        }
-      }
+    setAIStatus(
+      "ALE AI está pensando…"
     );
 
-    loading.remove();
+    /* Historial anterior que enviamos a Gemini */
 
-    if(error){
-      console.error("ALE AI Edge Function:",error);
+    const previousMessages=
+      aiMessages
+        .slice(0,-1)
+        .slice(-30)
+        .map(m=>({
+          role:m.role,
+          content:m.content
+        }));
 
-      let detail=error.message||"No se pudo conectar con ALE AI.";
+    /* Contexto financiero actual */
 
-      try{
-        if(error.context){
-          const response=error.context;
+    const financial_context=
+      getAIFinancialContext();
 
-          if(typeof response.json==="function"){
-            const body=await response.json();
+    /* Llamada al Edge Function */
 
-            if(body?.error)
-              detail=body.error;
+    const {data,error}=
+      await sb.functions.invoke(
+        "ale-ai",
+        {
+          body:{
+            message:text,
+            messages:previousMessages,
+            financial_context
           }
         }
-      }catch(_){}
+      );
 
-      throw new Error(detail);
-    }
+    if(error)
+      throw error;
 
     const answer=
-      data?.reply||
-      data?.response||
+      data?.answer||
       data?.text||
-      "";
+      data?.response;
 
     if(!answer)
-      throw new Error("ALE AI no devolvió una respuesta.");
+      throw new Error(
+        "ALE AI no devolvió una respuesta."
+      );
 
-    await saveAIMessage("assistant",String(answer));
+    /* Guardamos la respuesta de ALE AI */
 
-    await touchAIConversation();
+    const {data:assistantMessage,error:assistantError}=
+      await sb
+        .from("ai_messages")
+        .insert({
+          conversation_id:conversationId,
+          user_id:currentUser.id,
+          role:"assistant",
+          content:String(answer)
+        })
+        .select()
+        .single();
+
+    if(assistantError)
+      throw assistantError;
+
+    aiMessages.push(assistantMessage);
+
+    /* Actualizamos fecha de conversación */
+
+    await sb
+      .from("ai_conversations")
+      .update({
+        updated_at:new Date().toISOString()
+      })
+      .eq("id",conversationId)
+      .eq("user_id",currentUser.id);
+
+    if(isFirstMessage){
+
+      await updateAIConversationTitle(
+        conversationId,
+        text
+      );
+
+    }else{
+
+      const c=
+        aiConversations.find(
+          x=>x.id===conversationId
+        );
+
+      if(c)
+        c.updated_at=
+          new Date().toISOString();
+
+      aiConversations.sort(
+        (a,b)=>
+          new Date(b.updated_at)-
+          new Date(a.updated_at)
+      );
+
+      renderAIHistory();
+    }
 
     renderAIMessages();
 
-  }
-  catch(error){
+    setAIStatus(
+      "ALE AI está listo para continuar la conversación."
+    );
 
-    console.error("ALE AI:",error);
+  }catch(error){
 
-    const messagesBox=$("#aiMessages");
+    console.error(
+      "ALE AI error:",
+      error
+    );
 
-    if(messagesBox){
-      const err=document.createElement("div");
+    const message=
+      error?.message||
+      "No se pudo conectar con ALE AI.";
 
-      err.className="ai-msg assistant";
+    const box=$("#ai-messages");
 
-      err.innerHTML=`
-        <span class="ai-msg-label">ALE AI</span>
-        No pude completar la respuesta en este momento.
-        <br><br>
-        <span class="sub">${esc(error.message||"Error desconocido")}</span>
-      `;
+    if(box){
 
-      messagesBox.appendChild(err);
-      messagesBox.scrollTop=messagesBox.scrollHeight;
+      box.insertAdjacentHTML(
+        "beforeend",
+        `
+        <div
+          class="ai-message assistant">
+
+          <div class="ai-message-name">
+            ALE AI
+          </div>
+
+          No pude completar la respuesta.
+          ${esc(message)}
+
+        </div>`
+      );
+
+      box.scrollTop=box.scrollHeight;
     }
 
-  }
-  finally{
+    setAIStatus(
+      "Ocurrió un problema al conectar con ALE AI."
+    );
 
-    aiSending=false;
+  }finally{
 
-    if(sendBtn){
-      sendBtn.disabled=false;
-      sendBtn.textContent="Enviar";
+    aiLoading=false;
+
+    const sendButton=$("#ai-send");
+
+    if(sendButton){
+
+      sendButton.disabled=false;
+      sendButton.textContent="Enviar";
     }
 
     input.focus();
@@ -2572,124 +3852,206 @@ async function sendAI(){
 }
 
 async function deleteAIConversation(){
-  if(aiSending)
+
+  if(
+    !aiConversationId||
+    !currentUser||
+    !sb
+  ){
+
+    toast(
+      "No hay una conversación seleccionada."
+    );
+
     return;
+  }
 
-  if(!aiConversationId)
-    return;
+  const conversation=
+    aiConversations.find(
+      c=>c.id===aiConversationId
+    );
 
-  const conversation=aiConversations.find(
-    c=>c.id===aiConversationId
-  );
+  const title=
+    conversation?.title||
+    "esta conversación";
 
-  const title=conversation?.title||"esta conversación";
-
-  if(!confirm(`¿Eliminar "${title}"? Esta acción no se puede deshacer.`))
+  if(
+    !confirm(
+      `¿Eliminar "${title}"?\n\nEsta acción eliminará la conversación y sus mensajes.`
+    )
+  )
     return;
 
   try{
 
-    const deletingId=aiConversationId;
+    aiLoading=true;
 
-    const {error}=await sb
-      .from("ai_conversations")
-      .delete()
-      .eq("id",deletingId)
-      .eq("user_id",currentUser.id);
+    const id=aiConversationId;
+
+    const {error}=
+      await sb
+        .from("ai_conversations")
+        .delete()
+        .eq("id",id)
+        .eq("user_id",currentUser.id);
 
     if(error)
       throw error;
 
-    aiConversations=aiConversations.filter(
-      c=>c.id!==deletingId
-    );
+    aiConversations=
+      aiConversations.filter(
+        c=>c.id!==id
+      );
 
     aiConversationId=null;
     aiMessages=[];
 
     if(aiConversations.length){
-      aiConversationId=aiConversations[0].id;
 
-      renderAIHistory();
+      aiConversationId=
+        aiConversations[0].id;
 
-      await loadAIMessages(aiConversationId);
-    }
-    else{
-      renderAIHistory();
+      await loadAIMessages(
+        aiConversationId
+      );
+
+    }else{
 
       await createAIConversation();
     }
 
-    toast("Conversación eliminada");
+    renderAIHistory();
+    renderAIMessages();
+    updateAITitle();
 
-  }
-  catch(error){
+    toast(
+      "Conversación eliminada"
+    );
+
+  }catch(error){
+
     console.error(error);
-    toast("No se pudo eliminar la conversación");
+
+    toast(
+      "No se pudo eliminar: "+
+      error.message
+    );
+
+  }finally{
+
+    aiLoading=false;
   }
 }
 
-function settings(){
-  return header("Configuración")
+function aiInputKey(e){
 
-  +`
+  if(
+    e.key==="Enter"&&
+    !e.shiftKey
+  ){
+
+    e.preventDefault();
+
+    sendAI();
+  }
+}
+
+function autoResizeAIInput(el){
+
+  el.style.height="auto";
+
+  el.style.height=
+    Math.min(
+      el.scrollHeight,
+      150
+    )+
+    "px";
+}
+
+/* =========================================================
+   CONFIGURACIÓN
+   ========================================================= */
+
+function settings(){
+
+  return header("Configuración")
+  +
+  `
   <div class="card settings">
 
     <div class="field">
+
       <label>Tema</label>
 
-      <select onchange="state.settings.theme=this.value;save()">
-        <option ${state.settings.theme==="light"?"selected":""} value="light">
+      <select
+        onchange="state.settings.theme=this.value;save()">
+
+        <option
+          ${state.settings.theme==="light"?"selected":""}
+          value="light">
           Claro
         </option>
 
-        <option ${state.settings.theme==="dark"?"selected":""} value="dark">
+        <option
+          ${state.settings.theme==="dark"?"selected":""}
+          value="dark">
           Oscuro
         </option>
+
       </select>
+
     </div>
 
     <br>
 
     <div class="field">
+
       <label>Contraste</label>
 
-      <select onchange="state.settings.contrast=this.value==='high';save()">
+      <select
+        onchange="state.settings.contrast=this.value==='high';save()">
 
-        <option ${!state.settings.contrast?"selected":""}>
+        <option
+          ${!state.settings.contrast?"selected":""}>
           Normal
         </option>
 
         <option
           value="high"
-          ${state.settings.contrast?"selected":""}
-        >
+          ${state.settings.contrast?"selected":""}>
           Alto
         </option>
 
       </select>
+
     </div>
 
     <br>
 
     <div class="field">
+
       <label>Moneda principal</label>
 
-      <select onchange="state.settings.currency=this.value;save()">
+      <select
+        onchange="state.settings.currency=this.value;save()">
 
-        <option ${state.settings.currency==="USD"?"selected":""}>
+        <option
+          ${state.settings.currency==="USD"?"selected":""}>
           USD
         </option>
 
-        <option ${state.settings.currency==="EUR"?"selected":""}>
+        <option
+          ${state.settings.currency==="EUR"?"selected":""}>
           EUR
         </option>
 
-        <option ${state.settings.currency==="PAB"?"selected":""}>
+        <option
+          ${state.settings.currency==="PAB"?"selected":""}>
           PAB
         </option>
 
       </select>
+
     </div>
 
     <br>
@@ -2698,49 +4060,62 @@ function settings(){
       <input
         type="checkbox"
         ${state.settings.notifications?"checked":""}
-        onchange="state.settings.notifications=this.checked;save()"
-      >
+        onchange="state.settings.notifications=this.checked;save()">
       Notificaciones
     </label>
 
     <hr>
 
-    <button class="btn" onclick="exportData()">
+    <button
+      class="btn"
+      onclick="exportData()">
       Exportar datos
     </button>
 
     <label class="btn">
+
       Importar
+
       <input
         type="file"
         accept=".json"
         hidden
-        onchange="importData(event)"
-      >
+        onchange="importData(event)">
+
     </label>
 
-    <button class="btn danger" onclick="resetData()">
+    <button
+      class="btn danger"
+      onclick="resetData()">
       Restablecer datos
     </button>
 
-  </div>`;
+  </div>`
 }
 
 function exportData(){
-  let a=document.createElement("a");
 
-  a.href=URL.createObjectURL(
-    new Blob(
-      [JSON.stringify(state,null,2)],
-      {type:"application/json"}
-    )
-  );
+  let a=
+    document.createElement("a");
 
-  a.download="ale-studio-datos.json";
-  a.click();
+  a.href=
+    URL.createObjectURL(
+      new Blob(
+        [JSON.stringify(state,null,2)],
+        {
+          type:"application/json"
+        }
+      )
+    );
+
+  a.download=
+    "ale-studio-datos.json";
+
+  a.click()
 }
 
 function importData(e){
+
   let f=e.target.files[0];
 
   if(!f)
@@ -2749,8 +4124,11 @@ function importData(e){
   let r=new FileReader();
 
   r.onload=()=>{
+
     try{
-      let x=JSON.parse(r.result);
+
+      let x=
+        JSON.parse(r.result);
 
       if(!x.movements||!x.accounts)
         throw Error();
@@ -2762,15 +4140,22 @@ function importData(e){
       toast("Datos importados");
 
     }catch{
-      toast("Archivo inválido");
+
+      toast("Archivo inválido")
     }
   };
 
-  r.readAsText(f);
+  r.readAsText(f)
 }
 
 function resetData(){
-  if(confirm("¿Eliminar todos los datos? Esta acción no se puede deshacer.")){
+
+  if(
+    confirm(
+      "¿Eliminar todos los datos? Esta acción no se puede deshacer."
+    )
+  ){
+
     state={
       movements:[],
       accounts:[],
@@ -2784,26 +4169,40 @@ function resetData(){
       },
       dashboard:{
         period:"all",
-        cards:JSON.parse(JSON.stringify(defaultDash))
+        cards:
+          JSON.parse(
+            JSON.stringify(defaultDash)
+          )
       }
     };
 
     save();
 
-    toast("Datos restablecidos");
+    toast(
+      "Datos restablecidos"
+    )
   }
 }
 
+/* =========================================================
+   MOVIMIENTOS
+   ========================================================= */
+
 function openMove(id){
+
   editing=id||null;
 
   let m=
-    state.movements.find(x=>x.id===id)
+    state.movements.find(
+      x=>x.id===id
+    )
     ||
     {
       type:"expense",
       amount:"",
-      date:new Date().toISOString().slice(0,10),
+      date:new Date()
+        .toISOString()
+        .slice(0,10),
       category:"",
       sub:"",
       description:"",
@@ -2814,180 +4213,241 @@ function openMove(id){
     };
 
   $("#modalbox").innerHTML=`
+
   <div class="modalhead">
-    <h2>${id?"Editar":"Nuevo"} movimiento</h2>
-    <button class="btn" onclick="closeModal()">×</button>
+
+    <h2>
+      ${id?"Editar":"Nuevo"} movimiento
+    </h2>
+
+    <button
+      class="btn"
+      onclick="closeModal()">×</button>
+
   </div>
 
-  <form onsubmit="submitMove(event)" class="formgrid">
+  <form
+    onsubmit="submitMove(event)"
+    class="formgrid">
 
     <div class="field">
+
       <label>Tipo</label>
 
       <select
         name="type"
-        onchange="toggleTransferFields(this.value)"
-      >
-        <option value="expense" ${m.type==="expense"?"selected":""}>
+        onchange="toggleTransferFields(this.value)">
+
+        <option
+          value="expense"
+          ${m.type==="expense"?"selected":""}>
           Gasto
         </option>
 
-        <option value="income" ${m.type==="income"?"selected":""}>
+        <option
+          value="income"
+          ${m.type==="income"?"selected":""}>
           Ingreso
         </option>
 
-        <option value="transfer" ${m.type==="transfer"?"selected":""}>
+        <option
+          value="transfer"
+          ${m.type==="transfer"?"selected":""}>
           Transferencia
         </option>
+
       </select>
+
     </div>
 
     <div class="field">
+
       <label>Importe</label>
+
       <input
         name="amount"
         type="number"
         min="0.01"
         step="0.01"
         value="${m.amount}"
-        required
-      >
+        required>
+
     </div>
 
     <div class="field">
+
       <label>Fecha</label>
+
       <input
         name="date"
         type="date"
         value="${m.date}"
-        required
-      >
+        required>
+
     </div>
 
     <div class="field">
+
       <label>Hora</label>
+
       <input
         name="time"
         type="time"
-        value="${m.time||""}"
-      >
+        value="${m.time||""}">
+
     </div>
 
     <div class="field">
+
       <label>Categoría</label>
+
       <input
         name="category"
-        value="${esc(m.category)}"
-      >
+        value="${esc(m.category)}">
+
     </div>
 
     <div class="field">
+
       <label>Subcategoría</label>
+
       <input
         name="sub"
-        value="${esc(m.sub)}"
-      >
+        value="${esc(m.sub)}">
+
     </div>
 
     <div class="field">
+
       <label>Cuenta</label>
+
       <input
         name="account"
-        value="${esc(m.account)}"
-      >
+        value="${esc(m.account)}">
+
     </div>
 
     <div class="field">
+
       <label>Método de pago</label>
+
       <input
         name="method"
-        value="${esc(m.method)}"
-      >
+        value="${esc(m.method)}">
+
     </div>
 
     <div
       class="field transfer-only"
-      style="display:${m.type==="transfer"?"flex":"none"}"
-    >
+      style="display:${m.type==="transfer"?"flex":"none"}">
+
       <label>Cuenta de destino</label>
 
       <input
         name="destination"
-        value="${esc(m.destination||"")}"
-      >
+        value="${esc(m.destination||"")}">
+
     </div>
 
     <div class="field full">
+
       <label>Descripción</label>
 
       <input
         name="description"
-        value="${esc(m.description)}"
-      >
+        value="${esc(m.description)}">
+
     </div>
 
     <div class="field full">
+
       <label>Etiquetas</label>
 
       <input
         name="tags"
-        value="${esc(m.tags)}"
-      >
+        value="${esc(m.tags)}">
+
     </div>
 
     <div class="field full">
+
       <label>Notas</label>
 
-      <textarea name="notes">${esc(m.notes)}</textarea>
+      <textarea
+        name="notes">${esc(m.notes)}</textarea>
+
     </div>
 
     <div class="full">
+
       <button
         class="btn"
         type="button"
-        onclick="closeModal()"
-      >
+        onclick="closeModal()">
         Cancelar
       </button>
 
       <button class="btn primary">
         Guardar
       </button>
+
     </div>
 
   </form>`;
 
-  $("#modal").classList.add("open");
+  $("#modal").classList.add("open")
 }
 
 function toggleTransferFields(type){
+
   document
     .querySelectorAll(".transfer-only")
-    .forEach(x=>
-      x.style.display=type==="transfer"?"flex":"none"
+    .forEach(
+      x=>
+        x.style.display=
+          type==="transfer"
+          ?"flex"
+          :"none"
     );
 }
 
 function submitMove(e){
+
   e.preventDefault();
 
-  let f=new FormData(e.target);
-  let o=Object.fromEntries(f);
+  let f=
+    new FormData(e.target);
+
+  let o=
+    Object.fromEntries(f);
 
   o.amount=+o.amount;
-  o.id=editing||crypto.randomUUID();
+
+  o.id=
+    editing||
+    crypto.randomUUID();
 
   if(!o.amount||o.amount<=0)
-    return toast("El importe debe ser mayor que $0");
+    return toast(
+      "El importe debe ser mayor que $0"
+    );
 
   if(
-    o.type==="transfer"
-    &&
-    (!o.account||!o.destination||o.account===o.destination)
+    o.type==="transfer"&&
+    (
+      !o.account||
+      !o.destination||
+      o.account===o.destination
+    )
   )
-    return toast("Indica cuentas de origen y destino diferentes");
+    return toast(
+      "Indica cuentas de origen y destino diferentes"
+    );
 
-  let i=state.movements.findIndex(x=>x.id===o.id);
+  let i=
+    state.movements.findIndex(
+      x=>x.id===o.id
+    );
 
   if(i>=0)
     state.movements[i]=o;
@@ -2995,145 +4455,94 @@ function submitMove(e){
     state.movements.push(o);
 
   closeModal();
+
   save();
 
-  toast("Movimiento guardado. Dashboard actualizado");
+  toast(
+    "Movimiento guardado. Dashboard actualizado"
+  );
 }
 
 function delMove(id){
-  if(confirm("¿Eliminar este movimiento?")){
-    state.movements=state.movements.filter(
-      m=>m.id!==id
-    );
+
+  if(
+    confirm(
+      "¿Eliminar este movimiento?"
+    )
+  ){
+
+    state.movements=
+      state.movements.filter(
+        m=>m.id!==id
+      );
 
     save();
 
-    toast("Movimiento eliminado");
+    toast(
+      "Movimiento eliminado"
+    )
   }
 }
 
+/* =========================================================
+   PRESUPUESTOS
+   ========================================================= */
+
 function openBudget(){
+
   editing=null;
 
   $("#modalbox").innerHTML=`
+
   <div class="modalhead">
+
     <h2>Nuevo presupuesto</h2>
-    <button class="btn" onclick="closeModal()">×</button>
+
+    <button
+      class="btn"
+      onclick="closeModal()">×</button>
+
   </div>
 
-  <form onsubmit="submitBudget(event)" class="formgrid">
+  <form
+    onsubmit="submitBudget(event)"
+    class="formgrid">
 
     <div class="field">
+
       <label>Categoría</label>
-      <input name="category" required>
+
+      <input
+        name="category"
+        required>
+
     </div>
 
     <div class="field">
+
       <label>Importe máximo</label>
+
       <input
         name="amount"
         type="number"
         min=".01"
         step=".01"
-        required
-      >
+        required>
+
     </div>
 
     <div class="field">
+
       <label>Mes</label>
+
       <input
         name="period"
         type="month"
         required
-        value="${new Date().toISOString().slice(0,7)}"
-      >
-    </div>
+        value="${new Date()
+          .toISOString()
+          .slice(0,7)}">
 
-    <div class="full">
-      <button class="btn" type="button" onclick="closeModal()">
-        Cancelar
-      </button>
-
-      <button class="btn primary">
-        Guardar
-      </button>
-    </div>
-
-  </form>`;
-
-  $("#modal").classList.add("open");
-}
-
-function submitBudget(e){
-  e.preventDefault();
-
-  let f=Object.fromEntries(new FormData(e.target));
-
-  f.amount=+f.amount;
-  f.id=crypto.randomUUID();
-
-  state.budgets.push(f);
-
-  closeModal();
-  save();
-}
-
-function delBudget(id){
-  if(confirm("¿Eliminar presupuesto?")){
-    state.budgets=state.budgets.filter(
-      x=>x.id!==id
-    );
-
-    save();
-  }
-}
-
-function openGoal(){
-  editing=null;
-
-  $("#modalbox").innerHTML=`
-  <div class="modalhead">
-    <h2>Nueva meta</h2>
-    <button class="btn" onclick="closeModal()">×</button>
-  </div>
-
-  <form onsubmit="submitGoal(event)" class="formgrid">
-
-    <div class="field">
-      <label>Nombre</label>
-      <input name="name" required>
-    </div>
-
-    <div class="field">
-      <label>Importe objetivo</label>
-      <input
-        name="target"
-        type="number"
-        min=".01"
-        step=".01"
-        required
-      >
-    </div>
-
-    <div class="field">
-      <label>Importe actual</label>
-      <input
-        name="current"
-        type="number"
-        min="0"
-        step=".01"
-        value="0"
-      >
-    </div>
-
-    <div class="field">
-      <label>Fecha objetivo</label>
-      <input name="date" type="date">
-    </div>
-
-    <div class="field full">
-      <label>Descripción</label>
-      <textarea name="description"></textarea>
     </div>
 
     <div class="full">
@@ -3141,8 +4550,7 @@ function openGoal(){
       <button
         class="btn"
         type="button"
-        onclick="closeModal()"
-      >
+        onclick="closeModal()">
         Cancelar
       </button>
 
@@ -3154,13 +4562,152 @@ function openGoal(){
 
   </form>`;
 
-  $("#modal").classList.add("open");
+  $("#modal").classList.add("open")
+}
+
+function submitBudget(e){
+
+  e.preventDefault();
+
+  let f=
+    Object.fromEntries(
+      new FormData(e.target)
+    );
+
+  f.amount=+f.amount;
+  f.id=crypto.randomUUID();
+
+  state.budgets.push(f);
+
+  closeModal();
+
+  save()
+}
+
+function delBudget(id){
+
+  if(
+    confirm(
+      "¿Eliminar presupuesto?"
+    )
+  ){
+
+    state.budgets=
+      state.budgets.filter(
+        x=>x.id!==id
+      );
+
+    save()
+  }
+}
+
+/* =========================================================
+   METAS
+   ========================================================= */
+
+function openGoal(){
+
+  editing=null;
+
+  $("#modalbox").innerHTML=`
+
+  <div class="modalhead">
+
+    <h2>Nueva meta</h2>
+
+    <button
+      class="btn"
+      onclick="closeModal()">×</button>
+
+  </div>
+
+  <form
+    onsubmit="submitGoal(event)"
+    class="formgrid">
+
+    <div class="field">
+
+      <label>Nombre</label>
+
+      <input
+        name="name"
+        required>
+
+    </div>
+
+    <div class="field">
+
+      <label>Importe objetivo</label>
+
+      <input
+        name="target"
+        type="number"
+        min=".01"
+        step=".01"
+        required>
+
+    </div>
+
+    <div class="field">
+
+      <label>Importe actual</label>
+
+      <input
+        name="current"
+        type="number"
+        min="0"
+        step=".01"
+        value="0">
+
+    </div>
+
+    <div class="field">
+
+      <label>Fecha objetivo</label>
+
+      <input
+        name="date"
+        type="date">
+
+    </div>
+
+    <div class="field full">
+
+      <label>Descripción</label>
+
+      <textarea
+        name="description"></textarea>
+
+    </div>
+
+    <div class="full">
+
+      <button
+        class="btn"
+        type="button"
+        onclick="closeModal()">
+        Cancelar
+      </button>
+
+      <button class="btn primary">
+        Guardar
+      </button>
+
+    </div>
+
+  </form>`;
+
+  $("#modal").classList.add("open")
 }
 
 function submitGoal(e){
+
   e.preventDefault();
 
-  let f=Object.fromEntries(new FormData(e.target));
+  let f=
+    Object.fromEntries(
+      new FormData(e.target)
+    );
 
   f.target=+f.target;
   f.current=+f.current;
@@ -3169,45 +4716,75 @@ function submitGoal(e){
   state.goals.push(f);
 
   closeModal();
-  save();
+
+  save()
 }
 
 function delGoal(id){
-  if(confirm("¿Eliminar meta?")){
-    state.goals=state.goals.filter(
-      x=>x.id!==id
-    );
 
-    save();
+  if(
+    confirm(
+      "¿Eliminar meta?"
+    )
+  ){
+
+    state.goals=
+      state.goals.filter(
+        x=>x.id!==id
+      );
+
+    save()
   }
 }
 
+/* =========================================================
+   CUENTAS
+   ========================================================= */
+
 function openAccount(){
+
   editing=null;
 
   $("#modalbox").innerHTML=`
+
   <div class="modalhead">
+
     <h2>Nueva cuenta</h2>
-    <button class="btn" onclick="closeModal()">×</button>
+
+    <button
+      class="btn"
+      onclick="closeModal()">×</button>
+
   </div>
 
-  <form onsubmit="submitAccount(event)" class="formgrid">
+  <form
+    onsubmit="submitAccount(event)"
+    class="formgrid">
 
     <div class="field">
+
       <label>Nombre</label>
-      <input name="name" required>
+
+      <input
+        name="name"
+        required>
+
     </div>
 
     <div class="field">
+
       <label>Tipo</label>
 
       <select name="type">
+
         <option>Efectivo</option>
         <option>Cuenta bancaria</option>
         <option>Tarjeta</option>
         <option>Billetera digital</option>
         <option>Personalizada</option>
+
       </select>
+
     </div>
 
     <div class="full">
@@ -3215,8 +4792,7 @@ function openAccount(){
       <button
         class="btn"
         type="button"
-        onclick="closeModal()"
-      >
+        onclick="closeModal()">
         Cancelar
       </button>
 
@@ -3228,58 +4804,83 @@ function openAccount(){
 
   </form>`;
 
-  $("#modal").classList.add("open");
+  $("#modal").classList.add("open")
 }
 
 function submitAccount(e){
+
   e.preventDefault();
 
-  let f=Object.fromEntries(new FormData(e.target));
+  let f=
+    Object.fromEntries(
+      new FormData(e.target)
+    );
 
   if(
     state.accounts.some(
-      a=>a.name.toLowerCase()===f.name.toLowerCase()
+      a=>
+        a.name.toLowerCase()===
+        f.name.toLowerCase()
     )
   )
-    return toast("Ya existe una cuenta con ese nombre");
+    return toast(
+      "Ya existe una cuenta con ese nombre"
+    );
 
   f.id=crypto.randomUUID();
 
   state.accounts.push(f);
 
   closeModal();
-  save();
+
+  save()
 }
 
 function delAccount(id){
+
   if(
     confirm(
       "¿Eliminar cuenta? Los movimientos asociados se conservarán, pero quedarán sin cuenta."
     )
   ){
-    let n=state.accounts.find(a=>a.id===id)?.name;
 
-    state.accounts=state.accounts.filter(
-      a=>a.id!==id
+    let n=
+      state.accounts.find(
+        a=>a.id===id
+      )?.name;
+
+    state.accounts=
+      state.accounts.filter(
+        a=>a.id!==id
+      );
+
+    state.movements.forEach(
+      m=>{
+        if(m.account===n)
+          m.account=""
+      }
     );
 
-    state.movements.forEach(m=>{
-      if(m.account===n)
-        m.account="";
-    });
-
-    save();
+    save()
   }
 }
 
 function closeModal(){
-  $("#modal").classList.remove("open");
+
+  $("#modal").classList.remove("open")
 }
 
-$("#modal").addEventListener("click",e=>{
-  if(e.target.id==="modal")
-    closeModal();
-});
+$("#modal").addEventListener(
+  "click",
+  e=>{
+    if(e.target.id==="modal")
+      closeModal()
+  }
+);
+
+/* =========================================================
+   RENDER
+   ========================================================= */
 
 function render(){
 
@@ -3288,8 +4889,8 @@ function render(){
 
   document.documentElement.style.filter=
     state.settings.contrast
-      ?"contrast(1.12)"
-      :"";
+    ?"contrast(1.12)"
+    :"";
 
   nav();
 
@@ -3311,21 +4912,32 @@ function render(){
   if(page==="movements")
     renderMovements();
 
-  if(page!=="ai"){
-    aiInitialized=false;
-    aiConversationId=null;
-    aiMessages=[];
-  }
+  if(page==="ai")
+    setTimeout(
+      ()=>initAI(),
+      0
+    );
 }
 
-window.addEventListener("hashchange",()=>{
-  page=location.hash.slice(1)||"dashboard";
+window.addEventListener(
+  "hashchange",
+  ()=>{
+    page=
+      location.hash.slice(1)||
+      "dashboard";
 
-  if(currentUser)
-    render();
-});
+    if(currentUser){
+
+      if(page!=="ai")
+        aiInitialized=false;
+
+      render()
+    }
+  }
+);
 
 bootAuth();
+
 </script>
 
 </body>
