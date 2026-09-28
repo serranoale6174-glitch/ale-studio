@@ -443,7 +443,89 @@ nav button:hover{
   text-overflow:ellipsis;
   white-space:nowrap
 }
+.ai-conversation-row{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-width:0
+}
 
+.ai-conversation-title{
+  flex:1;
+  min-width:0;
+  font-weight:750;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+
+.ai-conversation-edit{
+  flex:0 0 auto;
+  width:25px;
+  height:25px;
+  border-radius:7px;
+  background:transparent;
+  color:var(--muted);
+  opacity:.65;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  cursor:pointer;
+  transition:.15s
+}
+.ai-conversation-row{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-width:0
+}
+
+.ai-conversation-title{
+  flex:1;
+  min-width:0;
+  font-weight:750;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+
+.ai-conversation-edit{
+  flex:0 0 auto;
+  width:25px;
+  height:25px;
+  border-radius:7px;
+  background:transparent;
+  color:var(--muted);
+  opacity:.65;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  cursor:pointer;
+  transition:.15s
+}
+
+.ai-conversation-edit:hover{
+  opacity:1;
+  background:color-mix(
+    in srgb,
+    var(--accent) 12%,
+    transparent
+  );
+  color:var(--accent)
+}
+.ai-conversation-edit:hover{
+  opacity:1;
+  background:color-mix(
+    in srgb,
+    var(--accent) 12%,
+    transparent
+  );
+  color:var(--accent)
+}
 .ai-conversation-date{
   color:var(--muted);
   font-size:10px;
@@ -3426,6 +3508,61 @@ function renderAIHistory(){
           "";
 
         return `
+        <div
+          class="ai-conversation ${
+            c.id===aiConversationId
+            ?"active"
+            :""
+          }"
+          onclick="selectAIConversation('${c.id}')">
+
+          <div class="ai-conversation-row">
+
+            <div class="ai-conversation-title">
+              ${esc(c.title||"Nueva conversación")}
+            </div>
+
+            <button
+              class="ai-conversation-edit"
+              title="Cambiar nombre"
+              onclick="event.stopPropagation(); editAIConversationTitle('${c.id}')">
+
+              ✎
+
+            </button>
+
+          </div>
+
+          <div class="ai-conversation-date">
+            ${esc(date)}
+          </div>
+
+        </div>`
+
+      })
+      .join("");
+}
+
+  box.innerHTML=
+    aiConversations
+      .map(c=>{
+
+        const date=
+          c.updated_at
+          ?
+          new Date(
+            c.updated_at
+          ).toLocaleDateString(
+            "es-PA",
+            {
+              day:"2-digit",
+              month:"short"
+            }
+          )
+          :
+          "";
+
+        return `
         <button
           class="ai-conversation ${
             c.id===aiConversationId
@@ -3529,7 +3666,108 @@ function setAIStatus(text){
   if(el)
     el.textContent=text;
 }
+async function editAIConversationTitle(id){
 
+  if(
+    !id||
+    !currentUser||
+    !sb||
+    aiLoading
+  )
+    return;
+
+  const conversation=
+    aiConversations.find(
+      c=>c.id===id
+    );
+
+  if(!conversation)
+    return;
+
+  const currentTitle=
+    conversation.title||
+    "Nueva conversación";
+
+  const newTitle=
+    prompt(
+      "Nombre de la conversación:",
+      currentTitle
+    );
+
+  if(newTitle===null)
+    return;
+
+  const title=
+    newTitle
+      .replace(/\s+/g," ")
+      .trim();
+
+  if(!title){
+
+    toast(
+      "El nombre no puede estar vacío."
+    );
+
+    return;
+  }
+
+  if(title.length>80){
+
+    toast(
+      "El nombre puede tener máximo 80 caracteres."
+    );
+
+    return;
+  }
+
+  try{
+
+    aiLoading=true;
+
+    const {error}=
+      await sb
+        .from("ai_conversations")
+        .update({
+          title,
+          updated_at:new Date().toISOString()
+        })
+        .eq("id",id)
+        .eq("user_id",currentUser.id);
+
+    if(error)
+      throw error;
+
+    conversation.title=title;
+
+    conversation.updated_at=
+      new Date().toISOString();
+
+    renderAIHistory();
+
+    if(aiConversationId===id)
+      updateAITitle();
+
+    toast(
+      "Nombre de conversación actualizado."
+    );
+
+  }catch(error){
+
+    console.error(
+      "Error actualizando título:",
+      error
+    );
+
+    toast(
+      "No se pudo cambiar el nombre: "+
+      error.message
+    );
+
+  }finally{
+
+    aiLoading=false;
+  }
+}
 function makeAITitle(text){
 
   let clean=
@@ -3540,8 +3778,60 @@ function makeAITitle(text){
   if(!clean)
     return "Nueva conversación";
 
-  if(clean.length>45)
-    return clean.slice(0,45)+"…";
+  clean=
+    clean
+      .replace(
+        /^(hola|hey|oye|buenas|buenos días|buenas tardes|buenas noches)[,!.\s]*/i,
+        ""
+      )
+      .trim();
+
+  clean=
+    clean
+      .replace(
+        /^(ale ai|ale)[,!.\s]*/i,
+        ""
+      )
+      .trim();
+
+  if(!clean)
+    return "Nueva conversación";
+
+  clean=
+    clean
+      .replace(/[¿?¡!]/g,"")
+      .trim();
+
+  if(clean.length>55){
+
+    const words=
+      clean
+        .split(/\s+/);
+
+    let result="";
+
+    for(const word of words){
+
+      if(
+        (result+" "+word)
+          .trim()
+          .length>52
+      )
+        break;
+
+      result=
+        (result+" "+word)
+          .trim();
+    }
+
+    clean=
+      result||
+      clean.slice(0,52);
+  }
+
+  clean=
+    clean.charAt(0).toUpperCase()+
+    clean.slice(1);
 
   return clean;
 }
