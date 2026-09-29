@@ -1642,16 +1642,16 @@ function toast(t){
 function nav(){
 
   let items=[
-    ["dashboard","⌂","Dashboard"],
-    ["movements","↕","Movimientos"],
-    ["budgets","◫","Presupuestos"],
-    ["goals","◎","Metas"],
-    ["accounts","▣","Cuentas"],
-    ["wealth","◇","Patrimonio"],
-    ["history","☷","Historial"],
-    ["calculator","∑","Calculadora"],
-    ["ai","✦","ALE AI"],
-    ["settings","⚙","Configuración"]
+    ["dashboard","⌂","dashboard"],
+    ["movements","↕","movements"],
+    ["budgets","◫","budgets"],
+    ["goals","◎","goals"],
+    ["accounts","▣","accounts"],
+    ["wealth","◇","wealth"],
+    ["history","☷","history"],
+    ["calculator","∑","calculator"],
+    ["ai","✦","ai"],
+    ["settings","⚙","settings"]
   ];
 
   $("#nav").innerHTML=
@@ -1660,7 +1660,7 @@ function nav(){
         class="${page===x[0]?'active':''}"
         onclick="go('${x[0]}')">
         ${x[1]}
-        <span>${x[2]}</span>
+        <span>${t(x[2])}</span>
       </button>`
     ).join("")
 }
@@ -4444,19 +4444,30 @@ function autoResizeAIInput(el){
 const I18N={
 
   es:{
-    language:"Idioma",
-    spanish:"Español",
-    english:"English",
-    french:"Français",
-    portuguese:"Português",
-    german:"Deutsch",
-    italian:"Italiano",
-    japanese:"日本語",
-    korean:"한국어",
-    chinese:"中文",
-    arabic:"العربية",
-    russian:"Русский"
-  },
+  language:"Idioma",
+  spanish:"Español",
+  english:"English",
+  french:"Français",
+  portuguese:"Português",
+  german:"Deutsch",
+  italian:"Italiano",
+  japanese:"日本語",
+  korean:"한국어",
+  chinese:"中文",
+  arabic:"العربية",
+  russian:"Русский",
+
+  dashboard:"Dashboard",
+  movements:"Movimientos",
+  budgets:"Presupuestos",
+  goals:"Metas",
+  accounts:"Cuentas",
+  wealth:"Patrimonio",
+  history:"Historial",
+  calculator:"Calculadora",
+  ai:"ALE AI",
+  settings:"Configuración"
+},
 
   en:{
     language:"Language",
@@ -4471,6 +4482,17 @@ const I18N={
     chinese:"Chinese",
     arabic:"Arabic",
     russian:"Russian"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   fr:{
@@ -4486,6 +4508,17 @@ const I18N={
     chinese:"Chinois",
     arabic:"Arabe",
     russian:"Russe"
+
+  dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   pt:{
@@ -4501,6 +4534,17 @@ const I18N={
     chinese:"Chinês",
     arabic:"Árabe",
     russian:"Russo"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   de:{
@@ -4516,6 +4560,17 @@ const I18N={
     chinese:"Chinesisch",
     arabic:"Arabisch",
     russian:"Russisch"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   it:{
@@ -4531,6 +4586,17 @@ const I18N={
     chinese:"Cinese",
     arabic:"Arabo",
     russian:"Russo"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   ja:{
@@ -4546,6 +4612,17 @@ const I18N={
     chinese:"中国語",
     arabic:"アラビア語",
     russian:"ロシア語"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   ko:{
@@ -4561,6 +4638,17 @@ const I18N={
     chinese:"중국어",
     arabic:"아랍어",
     russian:"러시아어"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   zh:{
@@ -4576,6 +4664,17 @@ const I18N={
     chinese:"中文",
     arabic:"阿拉伯语",
     russian:"俄语"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   ar:{
@@ -4591,6 +4690,17 @@ const I18N={
     chinese:"الصينية",
     arabic:"العربية",
     russian:"الروسية"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   },
 
   ru:{
@@ -4606,6 +4716,17 @@ const I18N={
     chinese:"Китайский",
     arabic:"Арабский",
     russian:"Русский"
+
+    dashboard:"Dashboard",
+movements:"Movimientos",
+budgets:"Presupuestos",
+goals:"Metas",
+accounts:"Cuentas",
+wealth:"Patrimonio",
+history:"Historial",
+calculator:"Calculadora",
+ai:"ALE AI",
+settings:"Configuración",
   }
 
 };
