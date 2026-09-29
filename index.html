@@ -1904,7 +1904,7 @@ function saveFinancialDigit(e,key){
 
 function dashboard(){
 
-  let t=totals();
+  let totalsData=totals();
 
   let period=state.dashboard.period||"all";
 
@@ -1947,11 +1947,11 @@ function dashboard(){
   let c=state.dashboard.cards;
 
   return header(
-    "Dashboard",
+    t("dashboard"),
     `<button
       class="btn primary"
       onclick="openMove()">
-      + Movimiento
+      + ${t("movement")}
     </button>`
   )
   +
@@ -1960,26 +1960,26 @@ function dashboard(){
 
     <div class="field">
 
-      <label>Periodo</label>
+      <label>${t("period")}</label>
 
       <select onchange="setDashPeriod(this.value)">
 
         <option
           value="all"
           ${period==="all"?"selected":""}>
-          Todo el periodo
+          ${t("allPeriod")}
         </option>
 
         <option
           value="month"
           ${period==="month"?"selected":""}>
-          Este mes
+          ${t("thisMonth")}
         </option>
 
         <option
           value="year"
           ${period==="year"?"selected":""}>
-          Este año
+          ${t("thisYear")}
         </option>
 
       </select>
@@ -1989,7 +1989,7 @@ function dashboard(){
     <span
       class="sub"
       style="align-self:end">
-      Los dígitos se recalculan automáticamente desde tus movimientos reales.
+      ${t("autoRecalculated")}
     </span>
 
   </div>
@@ -2031,7 +2031,7 @@ function dashboard(){
     <div class="card">
 
       <div class="label">
-        Evolución del capital
+        ${t("capitalEvolution")}
       </div>
 
       <div class="chart">
@@ -2043,7 +2043,7 @@ function dashboard(){
     <div class="card">
 
       <div class="label">
-        Ingresos vs. gastos
+        ${t("incomeVsExpenses")}
       </div>
 
       <div class="chart">
@@ -2057,43 +2057,67 @@ function dashboard(){
   <div class="section grid">
 
     <div class="card">
-      <div class="label">Balance actual</div>
+
+      <div class="label">
+        ${t("currentBalance")}
+      </div>
+
       <div class="value ${balance<0?'danger':'good'}">
         ${money(balance)}
       </div>
+
       <div class="sub">
-        Actualización automática
+        ${t("automaticUpdate")}
       </div>
+
     </div>
 
     <div class="card">
-      <div class="label">Número de movimientos</div>
+
+      <div class="label">
+        ${t("movementCount")}
+      </div>
+
       <div class="value">
         ${filtered.length}
       </div>
+
       <div class="sub">
-        Actualizado automáticamente
+        ${t("automaticallyUpdated")}
       </div>
+
     </div>
 
     <div class="card">
-      <div class="label">Categoría con mayor gasto</div>
+
+      <div class="label">
+        ${t("topExpenseCategory")}
+      </div>
+
       <div class="value">
         ${esc(topCategory(filtered))}
       </div>
+
       <div class="sub">
-        Basado en gastos reales
+        ${t("basedOnRealExpenses")}
       </div>
+
     </div>
 
     <div class="card">
-      <div class="label">Estado</div>
+
+      <div class="label">
+        ${t("status")}
+      </div>
+
       <div class="value">
-        ${filtered.length?"Activo":"Listo"}
+        ${filtered.length?t("active"):t("ready")}
       </div>
+
       <div class="sub">
-        Fuente de verdad sincronizada
+        ${t("syncedSource")}
       </div>
+
     </div>
 
   </div>
@@ -2101,7 +2125,7 @@ function dashboard(){
   <div class="section card">
 
     <div class="label">
-      Movimientos recientes
+      ${t("recentMovements")}
     </div>
 
     ${movementTable(
@@ -2118,7 +2142,7 @@ function dashboard(){
   <div class="section card">
 
     <div class="label">
-      Accesos rápidos
+      ${t("quickAccess")}
     </div>
 
     <div class="toolbar">
@@ -2126,65 +2150,36 @@ function dashboard(){
       <button
         class="btn primary"
         onclick="openMove()">
-        + Registrar movimiento
+        + ${t("registerMovement")}
       </button>
 
       <button
         class="btn"
         onclick="openBudget()">
-        + Presupuesto
+        + ${t("budget")}
       </button>
 
       <button
         class="btn"
         onclick="openGoal()">
-        + Meta
+        + ${t("goal")}
       </button>
 
       <button
         class="btn"
         onclick="openAccount()">
-        + Cuenta
+        + ${t("account")}
       </button>
 
       <button
         class="btn"
         onclick="go('ai')">
-        ✦ Consultar ALE AI
+        ✦ ${t("askALEAI")}
       </button>
 
     </div>
 
   </div>`;
-}
-
-function card(a,b,c,key){
-
-  return `
-  <div
-    class="card"
-    onclick="openFinancialEditor('${key}')"
-    style="cursor:pointer"
-    title="Haz clic para editar este valor">
-
-    <div class="label">
-
-      ${esc(a)}
-
-      <span
-        style="float:right;font-size:10px;opacity:.65">
-        EDITAR
-      </span>
-
-    </div>
-
-    <div class="value">${b}</div>
-
-    <div class="sub">
-      ${esc(c)}
-    </div>
-
-  </div>`
 }
 
 function topCategory(ms=state.movements){
@@ -4468,8 +4463,7 @@ const I18N={
   ai:"ALE AI",
   settings:"Configuración"
 },
-
- en:{
+en:{
   language:"Language",
   spanish:"Spanish",
   english:"English",
@@ -4492,8 +4486,35 @@ const I18N={
   history:"History",
   calculator:"Calculator",
   ai:"ALE AI",
-  settings:"Settings"
+  settings:"Settings",
+
+  period:"Period",
+  allPeriod:"All time",
+  thisMonth:"This month",
+  thisYear:"This year",
+  autoRecalculated:"Figures are automatically recalculated from your real movements.",
+  capitalEvolution:"Capital evolution",
+  incomeVsExpenses:"Income vs. expenses",
+  currentBalance:"Current balance",
+  automaticUpdate:"Automatic update",
+  movementCount:"Number of movements",
+  automaticallyUpdated:"Automatically updated",
+  topExpenseCategory:"Highest expense category",
+  basedOnRealExpenses:"Based on real expenses",
+  status:"Status",
+  active:"Active",
+  ready:"Ready",
+  syncedSource:"Synchronized source of truth",
+  recentMovements:"Recent movements",
+  quickAccess:"Quick access",
+  registerMovement:"Register movement",
+  budget:"Budget",
+  goal:"Goal",
+  account:"Account",
+  askALEAI:"Ask ALE AI",
+  movement:"Movement"
 },
+
  fr:{
   language:"Langue",
   spanish:"Espagnol",
