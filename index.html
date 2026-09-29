@@ -1902,6 +1902,27 @@ function saveFinancialDigit(e,key){
   toast("Valor actualizado y guardado");
 }
 
+  function card(title,value,desc,type){
+
+  return `
+    <div class="card">
+
+      <div class="label">
+        ${esc(title)}
+      </div>
+
+      <div class="value">
+        ${value}
+      </div>
+
+      <div class="sub">
+        ${esc(desc)}
+      </div>
+
+    </div>
+  `;
+}
+  
 function dashboard(){
 
   let totalsData=totals();
