@@ -965,11 +965,12 @@ const BASE_STATE={
   budgets:[],
   goals:[],
   settings:{
-    theme:"light",
-    contrast:false,
-    currency:"USD",
-    notifications:true
-  },
+  theme:"light",
+  contrast:false,
+  currency:"USD",
+  notifications:true,
+  language:"es"
+},
   dashboard:{
     period:"all",
     cards:{
@@ -4440,7 +4441,206 @@ function autoResizeAIInput(el){
 /* =========================================================
    CONFIGURACIÓN
    ========================================================= */
+const I18N={
 
+  es:{
+    language:"Idioma",
+    spanish:"Español",
+    english:"English",
+    french:"Français",
+    portuguese:"Português",
+    german:"Deutsch",
+    italian:"Italiano",
+    japanese:"日本語",
+    korean:"한국어",
+    chinese:"中文",
+    arabic:"العربية",
+    russian:"Русский"
+  },
+
+  en:{
+    language:"Language",
+    spanish:"Spanish",
+    english:"English",
+    french:"French",
+    portuguese:"Portuguese",
+    german:"German",
+    italian:"Italian",
+    japanese:"Japanese",
+    korean:"Korean",
+    chinese:"Chinese",
+    arabic:"Arabic",
+    russian:"Russian"
+  },
+
+  fr:{
+    language:"Langue",
+    spanish:"Espagnol",
+    english:"Anglais",
+    french:"Français",
+    portuguese:"Portugais",
+    german:"Allemand",
+    italian:"Italien",
+    japanese:"Japonais",
+    korean:"Coréen",
+    chinese:"Chinois",
+    arabic:"Arabe",
+    russian:"Russe"
+  },
+
+  pt:{
+    language:"Idioma",
+    spanish:"Espanhol",
+    english:"Inglês",
+    french:"Francês",
+    portuguese:"Português",
+    german:"Alemão",
+    italian:"Italiano",
+    japanese:"Japonês",
+    korean:"Coreano",
+    chinese:"Chinês",
+    arabic:"Árabe",
+    russian:"Russo"
+  },
+
+  de:{
+    language:"Sprache",
+    spanish:"Spanisch",
+    english:"Englisch",
+    french:"Französisch",
+    portuguese:"Portugiesisch",
+    german:"Deutsch",
+    italian:"Italienisch",
+    japanese:"Japanisch",
+    korean:"Koreanisch",
+    chinese:"Chinesisch",
+    arabic:"Arabisch",
+    russian:"Russisch"
+  },
+
+  it:{
+    language:"Lingua",
+    spanish:"Spagnolo",
+    english:"Inglese",
+    french:"Francese",
+    portuguese:"Portoghese",
+    german:"Tedesco",
+    italian:"Italiano",
+    japanese:"Giapponese",
+    korean:"Coreano",
+    chinese:"Cinese",
+    arabic:"Arabo",
+    russian:"Russo"
+  },
+
+  ja:{
+    language:"言語",
+    spanish:"スペイン語",
+    english:"英語",
+    french:"フランス語",
+    portuguese:"ポルトガル語",
+    german:"ドイツ語",
+    italian:"イタリア語",
+    japanese:"日本語",
+    korean:"韓国語",
+    chinese:"中国語",
+    arabic:"アラビア語",
+    russian:"ロシア語"
+  },
+
+  ko:{
+    language:"언어",
+    spanish:"스페인어",
+    english:"영어",
+    french:"프랑스어",
+    portuguese:"포르투갈어",
+    german:"독일어",
+    italian:"이탈리아어",
+    japanese:"일본어",
+    korean:"한국어",
+    chinese:"중국어",
+    arabic:"아랍어",
+    russian:"러시아어"
+  },
+
+  zh:{
+    language:"语言",
+    spanish:"西班牙语",
+    english:"英语",
+    french:"法语",
+    portuguese:"葡萄牙语",
+    german:"德语",
+    italian:"意大利语",
+    japanese:"日语",
+    korean:"韩语",
+    chinese:"中文",
+    arabic:"阿拉伯语",
+    russian:"俄语"
+  },
+
+  ar:{
+    language:"اللغة",
+    spanish:"الإسبانية",
+    english:"الإنجليزية",
+    french:"الفرنسية",
+    portuguese:"البرتغالية",
+    german:"الألمانية",
+    italian:"الإيطالية",
+    japanese:"اليابانية",
+    korean:"الكورية",
+    chinese:"الصينية",
+    arabic:"العربية",
+    russian:"الروسية"
+  },
+
+  ru:{
+    language:"Язык",
+    spanish:"Испанский",
+    english:"Английский",
+    french:"Французский",
+    portuguese:"Португальский",
+    german:"Немецкий",
+    italian:"Итальянский",
+    japanese:"Японский",
+    korean:"Корейский",
+    chinese:"Китайский",
+    arabic:"Арабский",
+    russian:"Русский"
+  }
+
+};
+
+
+function t(key){
+
+  const lang=
+    state.settings.language||"es";
+
+  return(
+    I18N[lang]?.[key]||
+    I18N.es[key]||
+    key
+  );
+
+}
+
+
+function applyLanguage(){
+
+  const lang=
+    state.settings.language||"es";
+
+  document.documentElement.lang=lang;
+
+  const languageSelect=
+    document.querySelector(
+      '.field select[onchange*="language"]'
+    );
+
+  if(languageSelect)
+    languageSelect.value=lang;
+
+}
 function settings(){
 
   return header("Configuración")
@@ -4524,7 +4724,84 @@ function settings(){
     </div>
 
     <br>
+    <div class="field">
 
+      <label>Idioma</label>
+
+      <select
+        onchange="state.settings.language=this.value;save();applyLanguage()">
+
+        <option
+          value="es"
+          ${state.settings.language==="es"?"selected":""}>
+          🇪🇸 Español
+        </option>
+
+        <option
+          value="en"
+          ${state.settings.language==="en"?"selected":""}>
+          🇺🇸 English
+        </option>
+
+        <option
+          value="fr"
+          ${state.settings.language==="fr"?"selected":""}>
+          🇫🇷 Français
+        </option>
+
+        <option
+          value="pt"
+          ${state.settings.language==="pt"?"selected":""}>
+          🇵🇹 Português
+        </option>
+
+        <option
+          value="de"
+          ${state.settings.language==="de"?"selected":""}>
+          🇩🇪 Deutsch
+        </option>
+
+        <option
+          value="it"
+          ${state.settings.language==="it"?"selected":""}>
+          🇮🇹 Italiano
+        </option>
+
+        <option
+          value="ja"
+          ${state.settings.language==="ja"?"selected":""}>
+          🇯🇵 日本語
+        </option>
+
+        <option
+          value="ko"
+          ${state.settings.language==="ko"?"selected":""}>
+          🇰🇷 한국어
+        </option>
+
+        <option
+          value="zh"
+          ${state.settings.language==="zh"?"selected":""}>
+          🇨🇳 中文
+        </option>
+
+        <option
+          value="ar"
+          ${state.settings.language==="ar"?"selected":""}>
+          🇸🇦 العربية
+        </option>
+
+        <option
+          value="ru"
+          ${state.settings.language==="ru"?"selected":""}>
+          🇷🇺 Русский
+        </option>
+
+      </select>
+
+    </div>
+
+    <br>
     <label>
       <input
         type="checkbox"
@@ -4631,11 +4908,12 @@ function resetData(){
       budgets:[],
       goals:[],
       settings:{
-        theme:"light",
-        contrast:false,
-        currency:"USD",
-        notifications:true
-      },
+  theme:"light",
+  contrast:false,
+  currency:"USD",
+  notifications:true,
+  language:"es"
+},
       dashboard:{
         period:"all",
         cards:
