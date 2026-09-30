@@ -2633,11 +2633,11 @@ function saveDashboard(e){
 function movements(){
 
   return header(
-    "Movimientos",
+    t("movementsTitle"),
     `<button
       class="btn primary"
       onclick="openMove()">
-      + Movimiento
+      + ${t("movement")}
     </button>`
   )
   +
@@ -2647,7 +2647,7 @@ function movements(){
     <input
       class="field"
       id="search"
-      placeholder="Buscar…"
+      placeholder="${t("search")}"
       oninput="renderMovements()">
 
     <select
@@ -2655,15 +2655,15 @@ function movements(){
       onchange="renderMovements()">
 
       <option value="">
-        Todos
+        ${t("all")}
       </option>
 
       <option value="income">
-        Ingresos
+        ${t("incomes")}
       </option>
 
       <option value="expense">
-        Gastos
+        ${t("expenses")}
       </option>
 
     </select>
@@ -2680,7 +2680,6 @@ function movements(){
     id="movetable">
   </div>`
 }
-
 function renderMovements(){
 
   let q=
@@ -2713,11 +2712,11 @@ function renderMovements(){
 function budgets(){
 
   return header(
-    "Presupuestos",
+    t("budgetsTitle"),
     `<button
       class="btn primary"
       onclick="openBudget()">
-      + Presupuesto
+      + ${t("budget")}
     </button>`
   )
   +
@@ -2763,7 +2762,7 @@ function budgets(){
 
         <p>
           ${money(spent)}
-          de
+          ${t("of")}
           ${money(b.amount)}
           ·
           ${pct.toFixed(0)}%
@@ -2774,12 +2773,12 @@ function budgets(){
 
           ${
             spent>b.amount
-            ?"Excedido"
+            ?t("exceeded")
             :
             pct>=80
-            ?"Próximo al límite"
+            ?t("nearLimit")
             :
-            "Normal"
+            t("normal")
           }
 
         </span>
@@ -2790,7 +2789,7 @@ function budgets(){
           class="btn"
           style="margin-top:10px"
           onclick="delBudget('${b.id}')">
-          Eliminar
+          ${t("delete")}
         </button>
 
       </div>`
@@ -2798,7 +2797,7 @@ function budgets(){
     }).join("")
     :
     empty(
-      "Aún no tienes presupuestos",
+      t("noBudgets"),
       "openBudget()"
     )
   }
@@ -4458,109 +4457,540 @@ function autoResizeAIInput(el){
 const I18N={
 
   es:{
-  language:"Idioma",
-  spanish:"Español",
-  english:"English",
-  french:"Français",
-  portuguese:"Português",
-  german:"Deutsch",
-  italian:"Italiano",
-  japanese:"日本語",
-  korean:"한국어",
-  chinese:"中文",
-  arabic:"العربية",
-  russian:"Русский",
 
-  dashboard:"Dashboard",
-  movements:"Movimientos",
-  budgets:"Presupuestos",
-  goals:"Metas",
-  accounts:"Cuentas",
-  wealth:"Patrimonio",
-  history:"Historial",
-  calculator:"Calculadora",
-  ai:"ALE AI",
-  settings:"Configuración"
-},
+    /* IDIOMA */
+    language:"Idioma",
+    spanish:"Español",
+    english:"English",
+    french:"Français",
+    portuguese:"Português",
+    german:"Deutsch",
+    italian:"Italiano",
+    japanese:"日本語",
+    korean:"한국어",
+    chinese:"中文",
+    arabic:"العربية",
+    russian:"Русский",
+
+    /* NAVEGACIÓN */
+    dashboard:"Dashboard",
+    movements:"Movimientos",
+    budgets:"Presupuestos",
+    goals:"Metas",
+    accounts:"Cuentas",
+    wealth:"Patrimonio",
+    history:"Historial",
+    calculator:"Calculadora",
+    ai:"ALE AI",
+    settings:"Configuración",
+
+    /* DASHBOARD */
+    period:"Periodo",
+    allPeriod:"Todo el periodo",
+    thisMonth:"Este mes",
+    thisYear:"Este año",
+    autoRecalculated:"Los dígitos se recalculan automáticamente desde tus movimientos reales.",
+    capitalEvolution:"Evolución del capital",
+    incomeVsExpenses:"Ingresos vs. gastos",
+    currentBalance:"Balance actual",
+    automaticUpdate:"Actualización automática",
+    movementCount:"Número de movimientos",
+    automaticallyUpdated:"Actualizado automáticamente",
+    topExpenseCategory:"Categoría con mayor gasto",
+    basedOnRealExpenses:"Basado en gastos reales",
+    status:"Estado",
+    active:"Activo",
+    ready:"Listo",
+    syncedSource:"Fuente de verdad sincronizada",
+    recentMovements:"Movimientos recientes",
+    quickAccess:"Accesos rápidos",
+    registerMovement:"Registrar movimiento",
+    askALEAI:"Consultar ALE AI",
+
+    /* MOVIMIENTOS */
+    movement:"Movimiento",
+    movementsTitle:"Movimientos",
+    search:"Buscar…",
+    all:"Todos",
+    incomes:"Ingresos",
+    expenses:"Gastos",
+
+    movementNew:"Nuevo",
+    movementEdit:"Editar",
+    type:"Tipo",
+    expense:"Gasto",
+    income:"Ingreso",
+    transfer:"Transferencia",
+    amount:"Importe",
+    date:"Fecha",
+    time:"Hora",
+    category:"Categoría",
+    subcategory:"Subcategoría",
+    account:"Cuenta",
+    paymentMethod:"Método de pago",
+    destinationAccount:"Cuenta de destino",
+    description:"Descripción",
+    tags:"Etiquetas",
+    notes:"Notas",
+
+    /* PRESUPUESTOS */
+    budgetsTitle:"Presupuestos",
+    budget:"Presupuesto",
+    exceeded:"Excedido",
+    nearLimit:"Próximo al límite",
+    normal:"Normal",
+    noBudgets:"Aún no tienes presupuestos",
+
+    /* GENERALES */
+    of:"de",
+    cancel:"Cancelar",
+    save:"Guardar",
+    delete:"Eliminar",
+    edit:"Editar",
+    close:"Cerrar",
+    add:"Agregar",
+    create:"Crear",
+    update:"Actualizar",
+    confirm:"Confirmar",
+    yes:"Sí",
+    no:"No",
+    back:"Volver",
+    next:"Siguiente",
+    previous:"Anterior",
+    loading:"Cargando…",
+    processing:"Procesando…",
+    success:"Operación realizada correctamente",
+    error:"Ha ocurrido un error",
+    required:"Este campo es obligatorio",
+    optional:"Opcional",
+    none:"Ninguno",
+    noData:"No hay datos disponibles",
+
+    /* MENSAJES */
+    saved:"Guardado correctamente",
+    updated:"Actualizado correctamente",
+    deleted:"Eliminado correctamente",
+    changesSaved:"Cambios guardados correctamente",
+    operationFailed:"No se pudo completar la operación",
+    confirmDelete:"¿Deseas eliminar este elemento?",
+    cannotBeEmpty:"Este campo no puede estar vacío",
+
+    /* FECHAS Y FILTROS */
+    today:"Hoy",
+    yesterday:"Ayer",
+    week:"Semana",
+    month:"Mes",
+    year:"Año",
+    allTime:"Todo el tiempo",
+    filter:"Filtrar",
+    clear:"Limpiar",
+
+    /* CONFIGURACIÓN */
+    appearance:"Apariencia",
+    theme:"Tema",
+    light:"Claro",
+    dark:"Oscuro",
+    contrast:"Contraste",
+    currency:"Moneda",
+    notifications:"Notificaciones",
+    privacy:"Privacidad",
+    security:"Seguridad",
+    accountSettings:"Configuración de la cuenta",
+
+    /* CUENTAS */
+    accountName:"Nombre de la cuenta",
+    accountType:"Tipo de cuenta",
+    balance:"Saldo",
+    available:"Disponible",
+
+    /* METAS */
+    goal:"Meta",
+    goalName:"Nombre de la meta",
+    target:"Objetivo",
+    progress:"Progreso",
+    targetAmount:"Cantidad objetivo",
+
+    /* HISTORIAL */
+    historyTitle:"Historial",
+    details:"Detalles",
+    actions:"Acciones",
+
+    /* CALCULADORA */
+    calculatorTitle:"Calculadora",
+    calculate:"Calcular",
+    result:"Resultado",
+    clearCalculator:"Limpiar",
+
+    /* ALE AI */
+    newConversation:"Nueva conversación",
+    conversations:"Conversaciones",
+    conversationName:"Nombre de la conversación",
+    rename:"Cambiar nombre",
+    deleteConversation:"Eliminar conversación",
+    send:"Enviar",
+    message:"Mensaje",
+    askSomething:"Escribe tu mensaje…",
+
+    /* MODALES */
+    confirmAction:"Confirmar acción",
+    areYouSure:"¿Estás seguro?",
+    unsavedChanges:"Tienes cambios sin guardar.",
+    continueAction:"¿Deseas continuar?"
+  },
+
 
   en:{
-  language:"Language",
-  spanish:"Spanish",
-  english:"English",
-  french:"French",
-  portuguese:"Portuguese",
-  german:"German",
-  italian:"Italian",
-  japanese:"Japanese",
-  korean:"Korean",
-  chinese:"Chinese",
-  arabic:"Arabic",
-  russian:"Russian",
 
-  dashboard:"Dashboard",
-  movements:"Movements",
-  budgets:"Budgets",
-  goals:"Goals",
-  accounts:"Accounts",
-  wealth:"Wealth",
-  history:"History",
-  calculator:"Calculator",
-  ai:"ALE AI",
-  settings:"Settings",
+    /* LANGUAGE */
+    language:"Language",
+    spanish:"Spanish",
+    english:"English",
+    french:"French",
+    portuguese:"Portuguese",
+    german:"German",
+    italian:"Italian",
+    japanese:"Japanese",
+    korean:"Korean",
+    chinese:"Chinese",
+    arabic:"Arabic",
+    russian:"Russian",
 
-  period:"Period",
-  allPeriod:"All time",
-  thisMonth:"This month",
-  thisYear:"This year",
-  autoRecalculated:"Figures are automatically recalculated from your real movements.",
-  capitalEvolution:"Capital evolution",
-  incomeVsExpenses:"Income vs. expenses",
-  currentBalance:"Current balance",
-  automaticUpdate:"Automatic update",
-  movementCount:"Number of movements",
-  automaticallyUpdated:"Automatically updated",
-  topExpenseCategory:"Highest expense category",
-  basedOnRealExpenses:"Based on real expenses",
-  status:"Status",
-  active:"Active",
-  ready:"Ready",
-  syncedSource:"Synchronized source of truth",
-  recentMovements:"Recent movements",
-  quickAccess:"Quick access",
-  registerMovement:"Register movement",
-  budget:"Budget",
-  goal:"Goal",
-  account:"Account",
-  askALEAI:"Ask ALE AI",
-  movement:"Movement"
-},
+    /* NAVIGATION */
+    dashboard:"Dashboard",
+    movements:"Movements",
+    budgets:"Budgets",
+    goals:"Goals",
+    accounts:"Accounts",
+    wealth:"Wealth",
+    history:"History",
+    calculator:"Calculator",
+    ai:"ALE AI",
+    settings:"Settings",
 
- fr:{
-  language:"Langue",
-  spanish:"Espagnol",
-  english:"Anglais",
-  french:"Français",
-  portuguese:"Portugais",
-  german:"Allemand",
-  italian:"Italien",
-  japanese:"Japonais",
-  korean:"Coréen",
-  chinese:"Chinois",
-  arabic:"Arabe",
-  russian:"Russe",
+    /* DASHBOARD */
+    period:"Period",
+    allPeriod:"All time",
+    thisMonth:"This month",
+    thisYear:"This year",
+    autoRecalculated:"Figures are automatically recalculated from your real movements.",
+    capitalEvolution:"Capital evolution",
+    incomeVsExpenses:"Income vs. expenses",
+    currentBalance:"Current balance",
+    automaticUpdate:"Automatic update",
+    movementCount:"Number of movements",
+    automaticallyUpdated:"Automatically updated",
+    topExpenseCategory:"Highest expense category",
+    basedOnRealExpenses:"Based on real expenses",
+    status:"Status",
+    active:"Active",
+    ready:"Ready",
+    syncedSource:"Synchronized source of truth",
+    recentMovements:"Recent movements",
+    quickAccess:"Quick access",
+    registerMovement:"Register movement",
+    askALEAI:"Ask ALE AI",
 
-  dashboard:"Tableau de bord",
-  movements:"Mouvements",
-  budgets:"Budgets",
-  goals:"Objectifs",
-  accounts:"Comptes",
-  wealth:"Patrimoine",
-  history:"Historique",
-  calculator:"Calculatrice",
-  ai:"ALE AI",
-  settings:"Paramètres"
-},
+    /* MOVEMENTS */
+    movement:"Movement",
+    movementsTitle:"Movements",
+    search:"Search…",
+    all:"All",
+    incomes:"Income",
+    expenses:"Expenses",
+
+    movementNew:"New",
+    movementEdit:"Edit",
+    type:"Type",
+    expense:"Expense",
+    income:"Income",
+    transfer:"Transfer",
+    amount:"Amount",
+    date:"Date",
+    time:"Time",
+    category:"Category",
+    subcategory:"Subcategory",
+    account:"Account",
+    paymentMethod:"Payment method",
+    destinationAccount:"Destination account",
+    description:"Description",
+    tags:"Tags",
+    notes:"Notes",
+
+    /* BUDGETS */
+    budgetsTitle:"Budgets",
+    budget:"Budget",
+    exceeded:"Exceeded",
+    nearLimit:"Near the limit",
+    normal:"Normal",
+    noBudgets:"You don't have any budgets yet",
+
+    /* GENERAL */
+    of:"of",
+    cancel:"Cancel",
+    save:"Save",
+    delete:"Delete",
+    edit:"Edit",
+    close:"Close",
+    add:"Add",
+    create:"Create",
+    update:"Update",
+    confirm:"Confirm",
+    yes:"Yes",
+    no:"No",
+    back:"Back",
+    next:"Next",
+    previous:"Previous",
+    loading:"Loading…",
+    processing:"Processing…",
+    success:"Operation completed successfully",
+    error:"An error occurred",
+    required:"This field is required",
+    optional:"Optional",
+    none:"None",
+    noData:"No data available",
+
+    /* MESSAGES */
+    saved:"Saved successfully",
+    updated:"Updated successfully",
+    deleted:"Deleted successfully",
+    changesSaved:"Changes saved successfully",
+    operationFailed:"The operation could not be completed",
+    confirmDelete:"Do you want to delete this item?",
+    cannotBeEmpty:"This field cannot be empty",
+
+    /* DATES AND FILTERS */
+    today:"Today",
+    yesterday:"Yesterday",
+    week:"Week",
+    month:"Month",
+    year:"Year",
+    allTime:"All time",
+    filter:"Filter",
+    clear:"Clear",
+
+    /* SETTINGS */
+    appearance:"Appearance",
+    theme:"Theme",
+    light:"Light",
+    dark:"Dark",
+    contrast:"Contrast",
+    currency:"Currency",
+    notifications:"Notifications",
+    privacy:"Privacy",
+    security:"Security",
+    accountSettings:"Account settings",
+
+    /* ACCOUNTS */
+    accountName:"Account name",
+    accountType:"Account type",
+    balance:"Balance",
+    available:"Available",
+
+    /* GOALS */
+    goal:"Goal",
+    goalName:"Goal name",
+    target:"Target",
+    progress:"Progress",
+    targetAmount:"Target amount",
+
+    /* HISTORY */
+    historyTitle:"History",
+    details:"Details",
+    actions:"Actions",
+
+    /* CALCULATOR */
+    calculatorTitle:"Calculator",
+    calculate:"Calculate",
+    result:"Result",
+    clearCalculator:"Clear",
+
+    /* ALE AI */
+    newConversation:"New conversation",
+    conversations:"Conversations",
+    conversationName:"Conversation name",
+    rename:"Rename",
+    deleteConversation:"Delete conversation",
+    send:"Send",
+    message:"Message",
+    askSomething:"Write your message…",
+
+    /* MODALS */
+    confirmAction:"Confirm action",
+    areYouSure:"Are you sure?",
+    unsavedChanges:"You have unsaved changes.",
+    continueAction:"Do you want to continue?"
+  },
+
+
+  fr:{
+
+    language:"Langue",
+    spanish:"Espagnol",
+    english:"Anglais",
+    french:"Français",
+    portuguese:"Portugais",
+    german:"Allemand",
+    italian:"Italien",
+    japanese:"Japonais",
+    korean:"Coréen",
+    chinese:"Chinois",
+    arabic:"Arabe",
+    russian:"Russe",
+
+    dashboard:"Tableau de bord",
+    movements:"Mouvements",
+    budgets:"Budgets",
+    goals:"Objectifs",
+    accounts:"Comptes",
+    wealth:"Patrimoine",
+    history:"Historique",
+    calculator:"Calculatrice",
+    ai:"ALE AI",
+    settings:"Paramètres",
+
+    period:"Période",
+    allPeriod:"Toute la période",
+    thisMonth:"Ce mois-ci",
+    thisYear:"Cette année",
+    autoRecalculated:"Les chiffres sont automatiquement recalculés à partir de vos mouvements réels.",
+    capitalEvolution:"Évolution du capital",
+    incomeVsExpenses:"Revenus vs dépenses",
+    currentBalance:"Solde actuel",
+    automaticUpdate:"Mise à jour automatique",
+    movementCount:"Nombre de mouvements",
+    automaticallyUpdated:"Mis à jour automatiquement",
+    topExpenseCategory:"Catégorie avec les dépenses les plus élevées",
+    basedOnRealExpenses:"Basé sur les dépenses réelles",
+    status:"Statut",
+    active:"Actif",
+    ready:"Prêt",
+    syncedSource:"Source de vérité synchronisée",
+    recentMovements:"Mouvements récents",
+    quickAccess:"Accès rapide",
+    registerMovement:"Enregistrer un mouvement",
+    askALEAI:"Consulter ALE AI",
+
+    movement:"Mouvement",
+    movementsTitle:"Mouvements",
+    search:"Rechercher…",
+    all:"Tous",
+    incomes:"Revenus",
+    expenses:"Dépenses",
+    movementNew:"Nouveau",
+    movementEdit:"Modifier",
+    type:"Type",
+    expense:"Dépense",
+    income:"Revenu",
+    transfer:"Virement",
+    amount:"Montant",
+    date:"Date",
+    time:"Heure",
+    category:"Catégorie",
+    subcategory:"Sous-catégorie",
+    account:"Compte",
+    paymentMethod:"Mode de paiement",
+    destinationAccount:"Compte destinataire",
+    description:"Description",
+    tags:"Étiquettes",
+    notes:"Notes",
+
+    budgetsTitle:"Budgets",
+    budget:"Budget",
+    exceeded:"Dépassé",
+    nearLimit:"Près de la limite",
+    normal:"Normal",
+    noBudgets:"Vous n'avez pas encore de budgets",
+
+    of:"sur",
+    cancel:"Annuler",
+    save:"Enregistrer",
+    delete:"Supprimer",
+    edit:"Modifier",
+    close:"Fermer",
+    add:"Ajouter",
+    create:"Créer",
+    update:"Mettre à jour",
+    confirm:"Confirmer",
+    yes:"Oui",
+    no:"Non",
+    back:"Retour",
+    next:"Suivant",
+    previous:"Précédent",
+    loading:"Chargement…",
+    processing:"Traitement…",
+    success:"Opération effectuée avec succès",
+    error:"Une erreur s'est produite",
+    required:"Ce champ est obligatoire",
+    optional:"Facultatif",
+    none:"Aucun",
+    noData:"Aucune donnée disponible",
+
+    saved:"Enregistré avec succès",
+    updated:"Mis à jour avec succès",
+    deleted:"Supprimé avec succès",
+    changesSaved:"Modifications enregistrées avec succès",
+    operationFailed:"Impossible de terminer l'opération",
+    confirmDelete:"Voulez-vous supprimer cet élément ?",
+    cannotBeEmpty:"Ce champ ne peut pas être vide",
+
+    today:"Aujourd'hui",
+    yesterday:"Hier",
+    week:"Semaine",
+    month:"Mois",
+    year:"Année",
+    allTime:"Tout le temps",
+    filter:"Filtrer",
+    clear:"Effacer",
+
+    appearance:"Apparence",
+    theme:"Thème",
+    light:"Clair",
+    dark:"Sombre",
+    contrast:"Contraste",
+    currency:"Devise",
+    notifications:"Notifications",
+    privacy:"Confidentialité",
+    security:"Sécurité",
+    accountSettings:"Paramètres du compte",
+
+    accountName:"Nom du compte",
+    accountType:"Type de compte",
+    balance:"Solde",
+    available:"Disponible",
+
+    goal:"Objectif",
+    goalName:"Nom de l'objectif",
+    target:"Cible",
+    progress:"Progression",
+    targetAmount:"Montant cible",
+
+    historyTitle:"Historique",
+    details:"Détails",
+    actions:"Actions",
+
+    calculatorTitle:"Calculatrice",
+    calculate:"Calculer",
+    result:"Résultat",
+    clearCalculator:"Effacer",
+
+    newConversation:"Nouvelle conversation",
+    conversations:"Conversations",
+    conversationName:"Nom de la conversation",
+    rename:"Renommer",
+    deleteConversation:"Supprimer la conversation",
+    send:"Envoyer",
+    message:"Message",
+    askSomething:"Écrivez votre message…",
+
+    confirmAction:"Confirmer l'action",
+    areYouSure:"Êtes-vous sûr ?",
+    unsavedChanges:"Vous avez des modifications non enregistrées.",
+    continueAction:"Voulez-vous continuer ?"
+  },
+
+
   pt:{
+
     language:"Idioma",
     spanish:"Espanhol",
     english:"Inglês",
@@ -4574,19 +5004,160 @@ const I18N={
     arabic:"Árabe",
     russian:"Russo",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"Painel",
+    movements:"Movimentos",
+    budgets:"Orçamentos",
+    goals:"Metas",
+    accounts:"Contas",
+    wealth:"Patrimônio",
+    history:"Histórico",
+    calculator:"Calculadora",
+    ai:"ALE AI",
+    settings:"Configurações",
+
+    period:"Período",
+    allPeriod:"Todo o período",
+    thisMonth:"Este mês",
+    thisYear:"Este ano",
+    autoRecalculated:"Os valores são recalculados automaticamente a partir dos seus movimentos reais.",
+    capitalEvolution:"Evolução do capital",
+    incomeVsExpenses:"Receitas vs. despesas",
+    currentBalance:"Saldo atual",
+    automaticUpdate:"Atualização automática",
+    movementCount:"Número de movimentos",
+    automaticallyUpdated:"Atualizado automaticamente",
+    topExpenseCategory:"Categoria com maior despesa",
+    basedOnRealExpenses:"Baseado em despesas reais",
+    status:"Status",
+    active:"Ativo",
+    ready:"Pronto",
+    syncedSource:"Fonte de dados sincronizada",
+    recentMovements:"Movimentos recentes",
+    quickAccess:"Acesso rápido",
+    registerMovement:"Registrar movimento",
+    askALEAI:"Consultar ALE AI",
+
+    movement:"Movimento",
+    movementsTitle:"Movimentos",
+    search:"Pesquisar…",
+    all:"Todos",
+    incomes:"Receitas",
+    expenses:"Despesas",
+    movementNew:"Novo",
+    movementEdit:"Editar",
+    type:"Tipo",
+    expense:"Despesa",
+    income:"Receita",
+    transfer:"Transferência",
+    amount:"Valor",
+    date:"Data",
+    time:"Hora",
+    category:"Categoria",
+    subcategory:"Subcategoria",
+    account:"Conta",
+    paymentMethod:"Método de pagamento",
+    destinationAccount:"Conta de destino",
+    description:"Descrição",
+    tags:"Etiquetas",
+    notes:"Notas",
+
+    budgetsTitle:"Orçamentos",
+    budget:"Orçamento",
+    exceeded:"Excedido",
+    nearLimit:"Próximo do limite",
+    normal:"Normal",
+    noBudgets:"Você ainda não tem orçamentos",
+
+    of:"de",
+    cancel:"Cancelar",
+    save:"Salvar",
+    delete:"Excluir",
+    edit:"Editar",
+    close:"Fechar",
+    add:"Adicionar",
+    create:"Criar",
+    update:"Atualizar",
+    confirm:"Confirmar",
+    yes:"Sim",
+    no:"Não",
+    back:"Voltar",
+    next:"Próximo",
+    previous:"Anterior",
+    loading:"Carregando…",
+    processing:"Processando…",
+    success:"Operação concluída com sucesso",
+    error:"Ocorreu um erro",
+    required:"Este campo é obrigatório",
+    optional:"Opcional",
+    none:"Nenhum",
+    noData:"Nenhum dado disponível",
+
+    saved:"Salvo com sucesso",
+    updated:"Atualizado com sucesso",
+    deleted:"Excluído com sucesso",
+    changesSaved:"Alterações salvas com sucesso",
+    operationFailed:"Não foi possível concluir a operação",
+    confirmDelete:"Deseja excluir este item?",
+    cannotBeEmpty:"Este campo não pode ficar vazio",
+
+    today:"Hoje",
+    yesterday:"Ontem",
+    week:"Semana",
+    month:"Mês",
+    year:"Ano",
+    allTime:"Todo o tempo",
+    filter:"Filtrar",
+    clear:"Limpar",
+
+    appearance:"Aparência",
+    theme:"Tema",
+    light:"Claro",
+    dark:"Escuro",
+    contrast:"Contraste",
+    currency:"Moeda",
+    notifications:"Notificações",
+    privacy:"Privacidade",
+    security:"Segurança",
+    accountSettings:"Configurações da conta",
+
+    accountName:"Nome da conta",
+    accountType:"Tipo de conta",
+    balance:"Saldo",
+    available:"Disponível",
+
+    goal:"Meta",
+    goalName:"Nome da meta",
+    target:"Objetivo",
+    progress:"Progresso",
+    targetAmount:"Valor da meta",
+
+    historyTitle:"Histórico",
+    details:"Detalhes",
+    actions:"Ações",
+
+    calculatorTitle:"Calculadora",
+    calculate:"Calcular",
+    result:"Resultado",
+    clearCalculator:"Limpar",
+
+    newConversation:"Nova conversa",
+    conversations:"Conversas",
+    conversationName:"Nome da conversa",
+    rename:"Renomear",
+    deleteConversation:"Excluir conversa",
+    send:"Enviar",
+    message:"Mensagem",
+    askSomething:"Digite sua mensagem…",
+
+    confirmAction:"Confirmar ação",
+    areYouSure:"Tem certeza?",
+    unsavedChanges:"Você tem alterações não salvas.",
+    continueAction:"Deseja continuar?"
   },
 
+
   de:{
+
     language:"Sprache",
     spanish:"Spanisch",
     english:"Englisch",
@@ -4600,19 +5171,160 @@ const I18N={
     arabic:"Arabisch",
     russian:"Russisch",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"Dashboard",
+    movements:"Bewegungen",
+    budgets:"Budgets",
+    goals:"Ziele",
+    accounts:"Konten",
+    wealth:"Vermögen",
+    history:"Verlauf",
+    calculator:"Rechner",
+    ai:"ALE AI",
+    settings:"Einstellungen",
+
+    period:"Zeitraum",
+    allPeriod:"Gesamter Zeitraum",
+    thisMonth:"Dieser Monat",
+    thisYear:"Dieses Jahr",
+    autoRecalculated:"Die Werte werden automatisch aus Ihren tatsächlichen Bewegungen neu berechnet.",
+    capitalEvolution:"Kapitalentwicklung",
+    incomeVsExpenses:"Einnahmen vs. Ausgaben",
+    currentBalance:"Aktueller Saldo",
+    automaticUpdate:"Automatische Aktualisierung",
+    movementCount:"Anzahl der Bewegungen",
+    automaticallyUpdated:"Automatisch aktualisiert",
+    topExpenseCategory:"Ausgabenkategorie mit den höchsten Ausgaben",
+    basedOnRealExpenses:"Basierend auf tatsächlichen Ausgaben",
+    status:"Status",
+    active:"Aktiv",
+    ready:"Bereit",
+    syncedSource:"Synchronisierte Datenquelle",
+    recentMovements:"Letzte Bewegungen",
+    quickAccess:"Schnellzugriff",
+    registerMovement:"Bewegung erfassen",
+    askALEAI:"ALE AI fragen",
+
+    movement:"Bewegung",
+    movementsTitle:"Bewegungen",
+    search:"Suchen…",
+    all:"Alle",
+    incomes:"Einnahmen",
+    expenses:"Ausgaben",
+    movementNew:"Neu",
+    movementEdit:"Bearbeiten",
+    type:"Typ",
+    expense:"Ausgabe",
+    income:"Einnahme",
+    transfer:"Überweisung",
+    amount:"Betrag",
+    date:"Datum",
+    time:"Uhrzeit",
+    category:"Kategorie",
+    subcategory:"Unterkategorie",
+    account:"Konto",
+    paymentMethod:"Zahlungsmethode",
+    destinationAccount:"Zielkonto",
+    description:"Beschreibung",
+    tags:"Tags",
+    notes:"Notizen",
+
+    budgetsTitle:"Budgets",
+    budget:"Budget",
+    exceeded:"Überschritten",
+    nearLimit:"Nahe am Limit",
+    normal:"Normal",
+    noBudgets:"Sie haben noch keine Budgets",
+
+    of:"von",
+    cancel:"Abbrechen",
+    save:"Speichern",
+    delete:"Löschen",
+    edit:"Bearbeiten",
+    close:"Schließen",
+    add:"Hinzufügen",
+    create:"Erstellen",
+    update:"Aktualisieren",
+    confirm:"Bestätigen",
+    yes:"Ja",
+    no:"Nein",
+    back:"Zurück",
+    next:"Weiter",
+    previous:"Zurück",
+    loading:"Wird geladen…",
+    processing:"Wird verarbeitet…",
+    success:"Vorgang erfolgreich abgeschlossen",
+    error:"Ein Fehler ist aufgetreten",
+    required:"Dieses Feld ist erforderlich",
+    optional:"Optional",
+    none:"Keine",
+    noData:"Keine Daten verfügbar",
+
+    saved:"Erfolgreich gespeichert",
+    updated:"Erfolgreich aktualisiert",
+    deleted:"Erfolgreich gelöscht",
+    changesSaved:"Änderungen erfolgreich gespeichert",
+    operationFailed:"Der Vorgang konnte nicht abgeschlossen werden",
+    confirmDelete:"Möchten Sie dieses Element löschen?",
+    cannotBeEmpty:"Dieses Feld darf nicht leer sein",
+
+    today:"Heute",
+    yesterday:"Gestern",
+    week:"Woche",
+    month:"Monat",
+    year:"Jahr",
+    allTime:"Gesamte Zeit",
+    filter:"Filtern",
+    clear:"Löschen",
+
+    appearance:"Darstellung",
+    theme:"Thema",
+    light:"Hell",
+    dark:"Dunkel",
+    contrast:"Kontrast",
+    currency:"Währung",
+    notifications:"Benachrichtigungen",
+    privacy:"Datenschutz",
+    security:"Sicherheit",
+    accountSettings:"Kontoeinstellungen",
+
+    accountName:"Kontoname",
+    accountType:"Kontotyp",
+    balance:"Saldo",
+    available:"Verfügbar",
+
+    goal:"Ziel",
+    goalName:"Zielname",
+    target:"Ziel",
+    progress:"Fortschritt",
+    targetAmount:"Zielbetrag",
+
+    historyTitle:"Verlauf",
+    details:"Details",
+    actions:"Aktionen",
+
+    calculatorTitle:"Rechner",
+    calculate:"Berechnen",
+    result:"Ergebnis",
+    clearCalculator:"Löschen",
+
+    newConversation:"Neue Unterhaltung",
+    conversations:"Unterhaltungen",
+    conversationName:"Name der Unterhaltung",
+    rename:"Umbenennen",
+    deleteConversation:"Unterhaltung löschen",
+    send:"Senden",
+    message:"Nachricht",
+    askSomething:"Nachricht eingeben…",
+
+    confirmAction:"Aktion bestätigen",
+    areYouSure:"Sind Sie sicher?",
+    unsavedChanges:"Sie haben nicht gespeicherte Änderungen.",
+    continueAction:"Möchten Sie fortfahren?"
   },
 
+
   it:{
+
     language:"Lingua",
     spanish:"Spagnolo",
     english:"Inglese",
@@ -4626,19 +5338,160 @@ const I18N={
     arabic:"Arabo",
     russian:"Russo",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"Dashboard",
+    movements:"Movimenti",
+    budgets:"Budget",
+    goals:"Obiettivi",
+    accounts:"Conti",
+    wealth:"Patrimonio",
+    history:"Cronologia",
+    calculator:"Calcolatrice",
+    ai:"ALE AI",
+    settings:"Impostazioni",
+
+    period:"Periodo",
+    allPeriod:"Tutto il periodo",
+    thisMonth:"Questo mese",
+    thisYear:"Quest'anno",
+    autoRecalculated:"I valori vengono ricalcolati automaticamente dai tuoi movimenti reali.",
+    capitalEvolution:"Evoluzione del capitale",
+    incomeVsExpenses:"Entrate vs. spese",
+    currentBalance:"Saldo attuale",
+    automaticUpdate:"Aggiornamento automatico",
+    movementCount:"Numero di movimenti",
+    automaticallyUpdated:"Aggiornato automaticamente",
+    topExpenseCategory:"Categoria con la spesa più alta",
+    basedOnRealExpenses:"Basato sulle spese reali",
+    status:"Stato",
+    active:"Attivo",
+    ready:"Pronto",
+    syncedSource:"Fonte sincronizzata",
+    recentMovements:"Movimenti recenti",
+    quickAccess:"Accesso rapido",
+    registerMovement:"Registra movimento",
+    askALEAI:"Chiedi ad ALE AI",
+
+    movement:"Movimento",
+    movementsTitle:"Movimenti",
+    search:"Cerca…",
+    all:"Tutti",
+    incomes:"Entrate",
+    expenses:"Spese",
+    movementNew:"Nuovo",
+    movementEdit:"Modifica",
+    type:"Tipo",
+    expense:"Spesa",
+    income:"Entrata",
+    transfer:"Trasferimento",
+    amount:"Importo",
+    date:"Data",
+    time:"Ora",
+    category:"Categoria",
+    subcategory:"Sottocategoria",
+    account:"Conto",
+    paymentMethod:"Metodo di pagamento",
+    destinationAccount:"Conto di destinazione",
+    description:"Descrizione",
+    tags:"Etichette",
+    notes:"Note",
+
+    budgetsTitle:"Budget",
+    budget:"Budget",
+    exceeded:"Superato",
+    nearLimit:"Vicino al limite",
+    normal:"Normale",
+    noBudgets:"Non hai ancora budget",
+
+    of:"di",
+    cancel:"Annulla",
+    save:"Salva",
+    delete:"Elimina",
+    edit:"Modifica",
+    close:"Chiudi",
+    add:"Aggiungi",
+    create:"Crea",
+    update:"Aggiorna",
+    confirm:"Conferma",
+    yes:"Sì",
+    no:"No",
+    back:"Indietro",
+    next:"Avanti",
+    previous:"Precedente",
+    loading:"Caricamento…",
+    processing:"Elaborazione…",
+    success:"Operazione completata correttamente",
+    error:"Si è verificato un errore",
+    required:"Questo campo è obbligatorio",
+    optional:"Opzionale",
+    none:"Nessuno",
+    noData:"Nessun dato disponibile",
+
+    saved:"Salvato correttamente",
+    updated:"Aggiornato correttamente",
+    deleted:"Eliminato correttamente",
+    changesSaved:"Modifiche salvate correttamente",
+    operationFailed:"Impossibile completare l'operazione",
+    confirmDelete:"Vuoi eliminare questo elemento?",
+    cannotBeEmpty:"Questo campo non può essere vuoto",
+
+    today:"Oggi",
+    yesterday:"Ieri",
+    week:"Settimana",
+    month:"Mese",
+    year:"Anno",
+    allTime:"Tutto il tempo",
+    filter:"Filtra",
+    clear:"Cancella",
+
+    appearance:"Aspetto",
+    theme:"Tema",
+    light:"Chiaro",
+    dark:"Scuro",
+    contrast:"Contrasto",
+    currency:"Valuta",
+    notifications:"Notifiche",
+    privacy:"Privacy",
+    security:"Sicurezza",
+    accountSettings:"Impostazioni account",
+
+    accountName:"Nome del conto",
+    accountType:"Tipo di conto",
+    balance:"Saldo",
+    available:"Disponibile",
+
+    goal:"Obiettivo",
+    goalName:"Nome dell'obiettivo",
+    target:"Obiettivo",
+    progress:"Progresso",
+    targetAmount:"Importo obiettivo",
+
+    historyTitle:"Cronologia",
+    details:"Dettagli",
+    actions:"Azioni",
+
+    calculatorTitle:"Calcolatrice",
+    calculate:"Calcola",
+    result:"Risultato",
+    clearCalculator:"Cancella",
+
+    newConversation:"Nuova conversazione",
+    conversations:"Conversazioni",
+    conversationName:"Nome della conversazione",
+    rename:"Rinomina",
+    deleteConversation:"Elimina conversazione",
+    send:"Invia",
+    message:"Messaggio",
+    askSomething:"Scrivi il tuo messaggio…",
+
+    confirmAction:"Conferma azione",
+    areYouSure:"Sei sicuro?",
+    unsavedChanges:"Hai modifiche non salvate.",
+    continueAction:"Vuoi continuare?"
   },
 
+
   ja:{
+
     language:"言語",
     spanish:"スペイン語",
     english:"英語",
@@ -4652,19 +5505,160 @@ const I18N={
     arabic:"アラビア語",
     russian:"ロシア語",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"ダッシュボード",
+    movements:"取引",
+    budgets:"予算",
+    goals:"目標",
+    accounts:"口座",
+    wealth:"資産",
+    history:"履歴",
+    calculator:"計算機",
+    ai:"ALE AI",
+    settings:"設定",
+
+    period:"期間",
+    allPeriod:"全期間",
+    thisMonth:"今月",
+    thisYear:"今年",
+    autoRecalculated:"実際の取引に基づいて数値が自動的に再計算されます。",
+    capitalEvolution:"資本の推移",
+    incomeVsExpenses:"収入と支出",
+    currentBalance:"現在の残高",
+    automaticUpdate:"自動更新",
+    movementCount:"取引件数",
+    automaticallyUpdated:"自動更新済み",
+    topExpenseCategory:"支出が最も多いカテゴリー",
+    basedOnRealExpenses:"実際の支出に基づく",
+    status:"ステータス",
+    active:"有効",
+    ready:"準備完了",
+    syncedSource:"同期されたデータソース",
+    recentMovements:"最近の取引",
+    quickAccess:"クイックアクセス",
+    registerMovement:"取引を登録",
+    askALEAI:"ALE AIに相談",
+
+    movement:"取引",
+    movementsTitle:"取引",
+    search:"検索…",
+    all:"すべて",
+    incomes:"収入",
+    expenses:"支出",
+    movementNew:"新規",
+    movementEdit:"編集",
+    type:"種類",
+    expense:"支出",
+    income:"収入",
+    transfer:"振替",
+    amount:"金額",
+    date:"日付",
+    time:"時刻",
+    category:"カテゴリー",
+    subcategory:"サブカテゴリー",
+    account:"口座",
+    paymentMethod:"支払方法",
+    destinationAccount:"振替先口座",
+    description:"説明",
+    tags:"タグ",
+    notes:"メモ",
+
+    budgetsTitle:"予算",
+    budget:"予算",
+    exceeded:"超過",
+    nearLimit:"上限に近い",
+    normal:"正常",
+    noBudgets:"まだ予算がありません",
+
+    of:"の",
+    cancel:"キャンセル",
+    save:"保存",
+    delete:"削除",
+    edit:"編集",
+    close:"閉じる",
+    add:"追加",
+    create:"作成",
+    update:"更新",
+    confirm:"確認",
+    yes:"はい",
+    no:"いいえ",
+    back:"戻る",
+    next:"次へ",
+    previous:"前へ",
+    loading:"読み込み中…",
+    processing:"処理中…",
+    success:"正常に完了しました",
+    error:"エラーが発生しました",
+    required:"この項目は必須です",
+    optional:"任意",
+    none:"なし",
+    noData:"データがありません",
+
+    saved:"正常に保存されました",
+    updated:"正常に更新されました",
+    deleted:"正常に削除されました",
+    changesSaved:"変更を保存しました",
+    operationFailed:"操作を完了できませんでした",
+    confirmDelete:"この項目を削除しますか？",
+    cannotBeEmpty:"この項目は空にできません",
+
+    today:"今日",
+    yesterday:"昨日",
+    week:"週",
+    month:"月",
+    year:"年",
+    allTime:"全期間",
+    filter:"フィルター",
+    clear:"クリア",
+
+    appearance:"外観",
+    theme:"テーマ",
+    light:"ライト",
+    dark:"ダーク",
+    contrast:"コントラスト",
+    currency:"通貨",
+    notifications:"通知",
+    privacy:"プライバシー",
+    security:"セキュリティ",
+    accountSettings:"アカウント設定",
+
+    accountName:"口座名",
+    accountType:"口座の種類",
+    balance:"残高",
+    available:"利用可能",
+
+    goal:"目標",
+    goalName:"目標名",
+    target:"目標",
+    progress:"進捗",
+    targetAmount:"目標金額",
+
+    historyTitle:"履歴",
+    details:"詳細",
+    actions:"操作",
+
+    calculatorTitle:"計算機",
+    calculate:"計算",
+    result:"結果",
+    clearCalculator:"クリア",
+
+    newConversation:"新しい会話",
+    conversations:"会話",
+    conversationName:"会話名",
+    rename:"名前を変更",
+    deleteConversation:"会話を削除",
+    send:"送信",
+    message:"メッセージ",
+    askSomething:"メッセージを入力…",
+
+    confirmAction:"操作を確認",
+    areYouSure:"よろしいですか？",
+    unsavedChanges:"保存されていない変更があります。",
+    continueAction:"続行しますか？"
   },
 
+
   ko:{
+
     language:"언어",
     spanish:"스페인어",
     english:"영어",
@@ -4678,19 +5672,160 @@ const I18N={
     arabic:"아랍어",
     russian:"러시아어",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"대시보드",
+    movements:"거래",
+    budgets:"예산",
+    goals:"목표",
+    accounts:"계정",
+    wealth:"자산",
+    history:"기록",
+    calculator:"계산기",
+    ai:"ALE AI",
+    settings:"설정",
+
+    period:"기간",
+    allPeriod:"전체 기간",
+    thisMonth:"이번 달",
+    thisYear:"올해",
+    autoRecalculated:"실제 거래를 기준으로 수치가 자동으로 다시 계산됩니다.",
+    capitalEvolution:"자본 변화",
+    incomeVsExpenses:"수입 및 지출",
+    currentBalance:"현재 잔액",
+    automaticUpdate:"자동 업데이트",
+    movementCount:"거래 수",
+    automaticallyUpdated:"자동 업데이트됨",
+    topExpenseCategory:"지출이 가장 많은 카테고리",
+    basedOnRealExpenses:"실제 지출 기준",
+    status:"상태",
+    active:"활성",
+    ready:"준비됨",
+    syncedSource:"동기화된 데이터 소스",
+    recentMovements:"최근 거래",
+    quickAccess:"빠른 실행",
+    registerMovement:"거래 등록",
+    askALEAI:"ALE AI에게 문의",
+
+    movement:"거래",
+    movementsTitle:"거래",
+    search:"검색…",
+    all:"전체",
+    incomes:"수입",
+    expenses:"지출",
+    movementNew:"새로 만들기",
+    movementEdit:"수정",
+    type:"유형",
+    expense:"지출",
+    income:"수입",
+    transfer:"이체",
+    amount:"금액",
+    date:"날짜",
+    time:"시간",
+    category:"카테고리",
+    subcategory:"하위 카테고리",
+    account:"계정",
+    paymentMethod:"결제 방법",
+    destinationAccount:"대상 계정",
+    description:"설명",
+    tags:"태그",
+    notes:"메모",
+
+    budgetsTitle:"예산",
+    budget:"예산",
+    exceeded:"초과",
+    nearLimit:"한도에 가까움",
+    normal:"정상",
+    noBudgets:"아직 예산이 없습니다",
+
+    of:"중",
+    cancel:"취소",
+    save:"저장",
+    delete:"삭제",
+    edit:"수정",
+    close:"닫기",
+    add:"추가",
+    create:"생성",
+    update:"업데이트",
+    confirm:"확인",
+    yes:"예",
+    no:"아니요",
+    back:"뒤로",
+    next:"다음",
+    previous:"이전",
+    loading:"로드 중…",
+    processing:"처리 중…",
+    success:"작업이 성공적으로 완료되었습니다",
+    error:"오류가 발생했습니다",
+    required:"필수 항목입니다",
+    optional:"선택 사항",
+    none:"없음",
+    noData:"사용 가능한 데이터가 없습니다",
+
+    saved:"저장되었습니다",
+    updated:"업데이트되었습니다",
+    deleted:"삭제되었습니다",
+    changesSaved:"변경 사항이 저장되었습니다",
+    operationFailed:"작업을 완료할 수 없습니다",
+    confirmDelete:"이 항목을 삭제하시겠습니까?",
+    cannotBeEmpty:"이 항목은 비워 둘 수 없습니다",
+
+    today:"오늘",
+    yesterday:"어제",
+    week:"주",
+    month:"월",
+    year:"년",
+    allTime:"전체 기간",
+    filter:"필터",
+    clear:"지우기",
+
+    appearance:"모양",
+    theme:"테마",
+    light:"라이트",
+    dark:"다크",
+    contrast:"대비",
+    currency:"통화",
+    notifications:"알림",
+    privacy:"개인정보 보호",
+    security:"보안",
+    accountSettings:"계정 설정",
+
+    accountName:"계정 이름",
+    accountType:"계정 유형",
+    balance:"잔액",
+    available:"사용 가능",
+
+    goal:"목표",
+    goalName:"목표 이름",
+    target:"목표",
+    progress:"진행률",
+    targetAmount:"목표 금액",
+
+    historyTitle:"기록",
+    details:"세부 정보",
+    actions:"작업",
+
+    calculatorTitle:"계산기",
+    calculate:"계산",
+    result:"결과",
+    clearCalculator:"지우기",
+
+    newConversation:"새 대화",
+    conversations:"대화",
+    conversationName:"대화 이름",
+    rename:"이름 변경",
+    deleteConversation:"대화 삭제",
+    send:"보내기",
+    message:"메시지",
+    askSomething:"메시지를 입력하세요…",
+
+    confirmAction:"작업 확인",
+    areYouSure:"확실합니까?",
+    unsavedChanges:"저장하지 않은 변경 사항이 있습니다.",
+    continueAction:"계속하시겠습니까?"
   },
 
+
   zh:{
+
     language:"语言",
     spanish:"西班牙语",
     english:"英语",
@@ -4704,19 +5839,160 @@ const I18N={
     arabic:"阿拉伯语",
     russian:"俄语",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"仪表板",
+    movements:"交易",
+    budgets:"预算",
+    goals:"目标",
+    accounts:"账户",
+    wealth:"资产",
+    history:"历史记录",
+    calculator:"计算器",
+    ai:"ALE AI",
+    settings:"设置",
+
+    period:"期间",
+    allPeriod:"全部期间",
+    thisMonth:"本月",
+    thisYear:"今年",
+    autoRecalculated:"数据会根据您的实际交易自动重新计算。",
+    capitalEvolution:"资本变化",
+    incomeVsExpenses:"收入与支出",
+    currentBalance:"当前余额",
+    automaticUpdate:"自动更新",
+    movementCount:"交易数量",
+    automaticallyUpdated:"自动更新",
+    topExpenseCategory:"支出最多的类别",
+    basedOnRealExpenses:"基于实际支出",
+    status:"状态",
+    active:"活跃",
+    ready:"就绪",
+    syncedSource:"已同步的数据源",
+    recentMovements:"最近交易",
+    quickAccess:"快速访问",
+    registerMovement:"记录交易",
+    askALEAI:"咨询 ALE AI",
+
+    movement:"交易",
+    movementsTitle:"交易",
+    search:"搜索…",
+    all:"全部",
+    incomes:"收入",
+    expenses:"支出",
+    movementNew:"新建",
+    movementEdit:"编辑",
+    type:"类型",
+    expense:"支出",
+    income:"收入",
+    transfer:"转账",
+    amount:"金额",
+    date:"日期",
+    time:"时间",
+    category:"类别",
+    subcategory:"子类别",
+    account:"账户",
+    paymentMethod:"付款方式",
+    destinationAccount:"目标账户",
+    description:"描述",
+    tags:"标签",
+    notes:"备注",
+
+    budgetsTitle:"预算",
+    budget:"预算",
+    exceeded:"已超出",
+    nearLimit:"接近上限",
+    normal:"正常",
+    noBudgets:"您还没有预算",
+
+    of:"其中",
+    cancel:"取消",
+    save:"保存",
+    delete:"删除",
+    edit:"编辑",
+    close:"关闭",
+    add:"添加",
+    create:"创建",
+    update:"更新",
+    confirm:"确认",
+    yes:"是",
+    no:"否",
+    back:"返回",
+    next:"下一步",
+    previous:"上一步",
+    loading:"加载中…",
+    processing:"处理中…",
+    success:"操作成功完成",
+    error:"发生错误",
+    required:"此字段为必填项",
+    optional:"可选",
+    none:"无",
+    noData:"暂无数据",
+
+    saved:"保存成功",
+    updated:"更新成功",
+    deleted:"删除成功",
+    changesSaved:"更改已保存",
+    operationFailed:"无法完成操作",
+    confirmDelete:"确定要删除此项目吗？",
+    cannotBeEmpty:"此字段不能为空",
+
+    today:"今天",
+    yesterday:"昨天",
+    week:"周",
+    month:"月",
+    year:"年",
+    allTime:"全部时间",
+    filter:"筛选",
+    clear:"清除",
+
+    appearance:"外观",
+    theme:"主题",
+    light:"浅色",
+    dark:"深色",
+    contrast:"对比度",
+    currency:"货币",
+    notifications:"通知",
+    privacy:"隐私",
+    security:"安全",
+    accountSettings:"账户设置",
+
+    accountName:"账户名称",
+    accountType:"账户类型",
+    balance:"余额",
+    available:"可用",
+
+    goal:"目标",
+    goalName:"目标名称",
+    target:"目标",
+    progress:"进度",
+    targetAmount:"目标金额",
+
+    historyTitle:"历史记录",
+    details:"详情",
+    actions:"操作",
+
+    calculatorTitle:"计算器",
+    calculate:"计算",
+    result:"结果",
+    clearCalculator:"清除",
+
+    newConversation:"新对话",
+    conversations:"对话",
+    conversationName:"对话名称",
+    rename:"重命名",
+    deleteConversation:"删除对话",
+    send:"发送",
+    message:"消息",
+    askSomething:"输入您的消息…",
+
+    confirmAction:"确认操作",
+    areYouSure:"确定吗？",
+    unsavedChanges:"您有未保存的更改。",
+    continueAction:"要继续吗？"
   },
 
+
   ar:{
+
     language:"اللغة",
     spanish:"الإسبانية",
     english:"الإنجليزية",
@@ -4730,19 +6006,160 @@ const I18N={
     arabic:"العربية",
     russian:"الروسية",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"لوحة التحكم",
+    movements:"المعاملات",
+    budgets:"الميزانيات",
+    goals:"الأهداف",
+    accounts:"الحسابات",
+    wealth:"الثروة",
+    history:"السجل",
+    calculator:"الآلة الحاسبة",
+    ai:"ALE AI",
+    settings:"الإعدادات",
+
+    period:"الفترة",
+    allPeriod:"كل الفترة",
+    thisMonth:"هذا الشهر",
+    thisYear:"هذا العام",
+    autoRecalculated:"يتم إعادة حساب الأرقام تلقائيًا بناءً على معاملاتك الفعلية.",
+    capitalEvolution:"تطور رأس المال",
+    incomeVsExpenses:"الدخل مقابل المصروفات",
+    currentBalance:"الرصيد الحالي",
+    automaticUpdate:"تحديث تلقائي",
+    movementCount:"عدد المعاملات",
+    automaticallyUpdated:"تم التحديث تلقائيًا",
+    topExpenseCategory:"الفئة ذات أعلى إنفاق",
+    basedOnRealExpenses:"بناءً على المصروفات الفعلية",
+    status:"الحالة",
+    active:"نشط",
+    ready:"جاهز",
+    syncedSource:"مصدر بيانات متزامن",
+    recentMovements:"المعاملات الأخيرة",
+    quickAccess:"الوصول السريع",
+    registerMovement:"تسجيل معاملة",
+    askALEAI:"اسأل ALE AI",
+
+    movement:"معاملة",
+    movementsTitle:"المعاملات",
+    search:"بحث…",
+    all:"الكل",
+    incomes:"الدخل",
+    expenses:"المصروفات",
+    movementNew:"جديد",
+    movementEdit:"تعديل",
+    type:"النوع",
+    expense:"مصروف",
+    income:"دخل",
+    transfer:"تحويل",
+    amount:"المبلغ",
+    date:"التاريخ",
+    time:"الوقت",
+    category:"الفئة",
+    subcategory:"الفئة الفرعية",
+    account:"الحساب",
+    paymentMethod:"طريقة الدفع",
+    destinationAccount:"الحساب المستهدف",
+    description:"الوصف",
+    tags:"العلامات",
+    notes:"الملاحظات",
+
+    budgetsTitle:"الميزانيات",
+    budget:"الميزانية",
+    exceeded:"متجاوز",
+    nearLimit:"قريب من الحد",
+    normal:"طبيعي",
+    noBudgets:"لا توجد لديك ميزانيات بعد",
+
+    of:"من",
+    cancel:"إلغاء",
+    save:"حفظ",
+    delete:"حذف",
+    edit:"تعديل",
+    close:"إغلاق",
+    add:"إضافة",
+    create:"إنشاء",
+    update:"تحديث",
+    confirm:"تأكيد",
+    yes:"نعم",
+    no:"لا",
+    back:"رجوع",
+    next:"التالي",
+    previous:"السابق",
+    loading:"جارٍ التحميل…",
+    processing:"جارٍ المعالجة…",
+    success:"تمت العملية بنجاح",
+    error:"حدث خطأ",
+    required:"هذا الحقل مطلوب",
+    optional:"اختياري",
+    none:"لا شيء",
+    noData:"لا توجد بيانات متاحة",
+
+    saved:"تم الحفظ بنجاح",
+    updated:"تم التحديث بنجاح",
+    deleted:"تم الحذف بنجاح",
+    changesSaved:"تم حفظ التغييرات بنجاح",
+    operationFailed:"تعذر إكمال العملية",
+    confirmDelete:"هل تريد حذف هذا العنصر؟",
+    cannotBeEmpty:"لا يمكن أن يكون هذا الحقل فارغًا",
+
+    today:"اليوم",
+    yesterday:"أمس",
+    week:"الأسبوع",
+    month:"الشهر",
+    year:"السنة",
+    allTime:"كل الوقت",
+    filter:"تصفية",
+    clear:"مسح",
+
+    appearance:"المظهر",
+    theme:"السمة",
+    light:"فاتح",
+    dark:"داكن",
+    contrast:"التباين",
+    currency:"العملة",
+    notifications:"الإشعارات",
+    privacy:"الخصوصية",
+    security:"الأمان",
+    accountSettings:"إعدادات الحساب",
+
+    accountName:"اسم الحساب",
+    accountType:"نوع الحساب",
+    balance:"الرصيد",
+    available:"المتاح",
+
+    goal:"الهدف",
+    goalName:"اسم الهدف",
+    target:"الهدف",
+    progress:"التقدم",
+    targetAmount:"المبلغ المستهدف",
+
+    historyTitle:"السجل",
+    details:"التفاصيل",
+    actions:"الإجراءات",
+
+    calculatorTitle:"الآلة الحاسبة",
+    calculate:"حساب",
+    result:"النتيجة",
+    clearCalculator:"مسح",
+
+    newConversation:"محادثة جديدة",
+    conversations:"المحادثات",
+    conversationName:"اسم المحادثة",
+    rename:"إعادة التسمية",
+    deleteConversation:"حذف المحادثة",
+    send:"إرسال",
+    message:"رسالة",
+    askSomething:"اكتب رسالتك…",
+
+    confirmAction:"تأكيد الإجراء",
+    areYouSure:"هل أنت متأكد؟",
+    unsavedChanges:"لديك تغييرات غير محفوظة.",
+    continueAction:"هل تريد المتابعة؟"
   },
 
+
   ru:{
+
     language:"Язык",
     spanish:"Испанский",
     english:"Английский",
@@ -4756,16 +6173,155 @@ const I18N={
     arabic:"Арабский",
     russian:"Русский",
 
-   dashboard:"Dashboard",
-   movements:"Movimientos",
-   budgets:"Presupuestos",
-   goals:"Metas",
-   accounts:"Cuentas",
-   wealth:"Patrimonio",
-   history:"Historial",
-   calculator:"Calculadora",
-   ai:"ALE AI",
-   settings:"Configuración",
+    dashboard:"Панель управления",
+    movements:"Операции",
+    budgets:"Бюджеты",
+    goals:"Цели",
+    accounts:"Счета",
+    wealth:"Капитал",
+    history:"История",
+    calculator:"Калькулятор",
+    ai:"ALE AI",
+    settings:"Настройки",
+
+    period:"Период",
+    allPeriod:"Весь период",
+    thisMonth:"Этот месяц",
+    thisYear:"Этот год",
+    autoRecalculated:"Показатели автоматически пересчитываются на основе ваших реальных операций.",
+    capitalEvolution:"Динамика капитала",
+    incomeVsExpenses:"Доходы и расходы",
+    currentBalance:"Текущий баланс",
+    automaticUpdate:"Автоматическое обновление",
+    movementCount:"Количество операций",
+    automaticallyUpdated:"Обновляется автоматически",
+    topExpenseCategory:"Категория с наибольшими расходами",
+    basedOnRealExpenses:"На основе реальных расходов",
+    status:"Статус",
+    active:"Активен",
+    ready:"Готово",
+    syncedSource:"Синхронизированный источник данных",
+    recentMovements:"Последние операции",
+    quickAccess:"Быстрый доступ",
+    registerMovement:"Добавить операцию",
+    askALEAI:"Спросить ALE AI",
+
+    movement:"Операция",
+    movementsTitle:"Операции",
+    search:"Поиск…",
+    all:"Все",
+    incomes:"Доходы",
+    expenses:"Расходы",
+    movementNew:"Новая",
+    movementEdit:"Редактировать",
+    type:"Тип",
+    expense:"Расход",
+    income:"Доход",
+    transfer:"Перевод",
+    amount:"Сумма",
+    date:"Дата",
+    time:"Время",
+    category:"Категория",
+    subcategory:"Подкатегория",
+    account:"Счет",
+    paymentMethod:"Способ оплаты",
+    destinationAccount:"Счет назначения",
+    description:"Описание",
+    tags:"Теги",
+    notes:"Заметки",
+
+    budgetsTitle:"Бюджеты",
+    budget:"Бюджет",
+    exceeded:"Превышен",
+    nearLimit:"Близко к лимиту",
+    normal:"Нормально",
+    noBudgets:"У вас пока нет бюджетов",
+
+    of:"из",
+    cancel:"Отмена",
+    save:"Сохранить",
+    delete:"Удалить",
+    edit:"Редактировать",
+    close:"Закрыть",
+    add:"Добавить",
+    create:"Создать",
+    update:"Обновить",
+    confirm:"Подтвердить",
+    yes:"Да",
+    no:"Нет",
+    back:"Назад",
+    next:"Далее",
+    previous:"Назад",
+    loading:"Загрузка…",
+    processing:"Обработка…",
+    success:"Операция успешно выполнена",
+    error:"Произошла ошибка",
+    required:"Это поле обязательно",
+    optional:"Необязательно",
+    none:"Нет",
+    noData:"Нет доступных данных",
+
+    saved:"Успешно сохранено",
+    updated:"Успешно обновлено",
+    deleted:"Успешно удалено",
+    changesSaved:"Изменения успешно сохранены",
+    operationFailed:"Не удалось завершить операцию",
+    confirmDelete:"Удалить этот элемент?",
+    cannotBeEmpty:"Это поле не может быть пустым",
+
+    today:"Сегодня",
+    yesterday:"Вчера",
+    week:"Неделя",
+    month:"Месяц",
+    year:"Год",
+    allTime:"Все время",
+    filter:"Фильтр",
+    clear:"Очистить",
+
+    appearance:"Внешний вид",
+    theme:"Тема",
+    light:"Светлая",
+    dark:"Темная",
+    contrast:"Контраст",
+    currency:"Валюта",
+    notifications:"Уведомления",
+    privacy:"Конфиденциальность",
+    security:"Безопасность",
+    accountSettings:"Настройки аккаунта",
+
+    accountName:"Название счета",
+    accountType:"Тип счета",
+    balance:"Баланс",
+    available:"Доступно",
+
+    goal:"Цель",
+    goalName:"Название цели",
+    target:"Цель",
+    progress:"Прогресс",
+    targetAmount:"Целевая сумма",
+
+    historyTitle:"История",
+    details:"Подробности",
+    actions:"Действия",
+
+    calculatorTitle:"Калькулятор",
+    calculate:"Рассчитать",
+    result:"Результат",
+    clearCalculator:"Очистить",
+
+    newConversation:"Новый разговор",
+    conversations:"Разговоры",
+    conversationName:"Название разговора",
+    rename:"Переименовать",
+    deleteConversation:"Удалить разговор",
+    send:"Отправить",
+    message:"Сообщение",
+    askSomething:"Введите сообщение…",
+
+    confirmAction:"Подтвердить действие",
+    areYouSure:"Вы уверены?",
+    unsavedChanges:"У вас есть несохраненные изменения.",
+    continueAction:"Продолжить?"
   }
 
 };
@@ -5126,7 +6682,7 @@ function openMove(id){
   <div class="modalhead">
 
     <h2>
-      ${id?"Editar":"Nuevo"} movimiento
+      ${id?t("movementEdit"):t("movementNew")} ${t("movement")}
     </h2>
 
     <button
@@ -5141,7 +6697,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Tipo</label>
+      <label>${t("type")}</label>
 
       <select
         name="type"
@@ -5150,19 +6706,19 @@ function openMove(id){
         <option
           value="expense"
           ${m.type==="expense"?"selected":""}>
-          Gasto
+          ${t("expense")}
         </option>
 
         <option
           value="income"
           ${m.type==="income"?"selected":""}>
-          Ingreso
+          ${t("income")}
         </option>
 
         <option
           value="transfer"
           ${m.type==="transfer"?"selected":""}>
-          Transferencia
+          ${t("transfer")}
         </option>
 
       </select>
@@ -5171,7 +6727,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Importe</label>
+      <label>${t("amount")}</label>
 
       <input
         name="amount"
@@ -5185,7 +6741,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Fecha</label>
+      <label>${t("date")}</label>
 
       <input
         name="date"
@@ -5197,7 +6753,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Hora</label>
+      <label>${t("time")}</label>
 
       <input
         name="time"
@@ -5208,7 +6764,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Categoría</label>
+      <label>${t("category")}</label>
 
       <input
         name="category"
@@ -5218,7 +6774,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Subcategoría</label>
+      <label>${t("subcategory")}</label>
 
       <input
         name="sub"
@@ -5228,7 +6784,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Cuenta</label>
+      <label>${t("account")}</label>
 
       <input
         name="account"
@@ -5238,7 +6794,7 @@ function openMove(id){
 
     <div class="field">
 
-      <label>Método de pago</label>
+      <label>${t("paymentMethod")}</label>
 
       <input
         name="method"
@@ -5250,7 +6806,7 @@ function openMove(id){
       class="field transfer-only"
       style="display:${m.type==="transfer"?"flex":"none"}">
 
-      <label>Cuenta de destino</label>
+      <label>${t("destinationAccount")}</label>
 
       <input
         name="destination"
@@ -5260,7 +6816,7 @@ function openMove(id){
 
     <div class="field full">
 
-      <label>Descripción</label>
+      <label>${t("description")}</label>
 
       <input
         name="description"
@@ -5270,7 +6826,7 @@ function openMove(id){
 
     <div class="field full">
 
-      <label>Etiquetas</label>
+      <label>${t("tags")}</label>
 
       <input
         name="tags"
@@ -5280,7 +6836,7 @@ function openMove(id){
 
     <div class="field full">
 
-      <label>Notas</label>
+      <label>${t("notes")}</label>
 
       <textarea
         name="notes">${esc(m.notes)}</textarea>
@@ -5293,11 +6849,11 @@ function openMove(id){
         class="btn"
         type="button"
         onclick="closeModal()">
-        Cancelar
+        ${t("cancel")}
       </button>
 
       <button class="btn primary">
-        Guardar
+        ${t("save")}
       </button>
 
     </div>
