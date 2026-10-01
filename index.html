@@ -1901,10 +1901,12 @@ function saveFinancialDigit(e,key){
 
   toast("Valor actualizado y guardado");
 }
- function card(title,value,desc,type){
+function card(title,value,desc,type){
 
   return `
-    <div class="card">
+    <div
+      class="card"
+      ${type ? `onclick="openFinancialEditor('${type}')"` : ""}>
 
       <div class="label">
         ${esc(title)}
@@ -1920,7 +1922,7 @@ function saveFinancialDigit(e,key){
 
     </div>
   `;
-}  
+}
 function dashboard(){
 
   let totalsData=totals();
