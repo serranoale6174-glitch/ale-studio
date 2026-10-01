@@ -2813,14 +2813,15 @@ function budgets(){
   </div>`
 }
 
+```js
 function goals(){
 
   return header(
-    "Metas",
+    t("goals"),
     `<button
       class="btn primary"
       onclick="openGoal()">
-      + Meta
+      + ${t("goal")}
     </button>`
   )
   +
@@ -2844,10 +2845,10 @@ function goals(){
         <b>${esc(g.name)}</b>
 
         <div class="sub">
-          Objetivo
+          ${t("target")}
           ${money(g.target)}
           ·
-          ${esc(g.date||"Sin fecha")}
+          ${esc(g.date||t("noDate"))}
         </div>
 
         <div class="progress">
@@ -2859,7 +2860,7 @@ function goals(){
           ·
           ${pct.toFixed(0)}%
           ·
-          Restante
+          ${t("remaining")}
           ${money(
             Math.max(
               0,
@@ -2871,7 +2872,7 @@ function goals(){
         <button
           class="btn"
           onclick="delGoal('${g.id}')">
-          Eliminar
+          ${t("delete")}
         </button>
 
       </div>`
@@ -2879,13 +2880,15 @@ function goals(){
     }).join("")
     :
     empty(
-      "Aún no tienes metas",
+      t("noGoals"),
       "openGoal()"
     )
   }
 
   </div>`
 }
+```
+
 
 function accounts(){
 
@@ -4464,6 +4467,9 @@ function autoResizeAIInput(el){
    ========================================================= */
 const I18N={
 
+ ```js
+const I18N={
+
   es:{
 
     /* IDIOMA */
@@ -4522,7 +4528,6 @@ const I18N={
     all:"Todos",
     incomes:"Ingresos",
     expenses:"Gastos",
-
     movementNew:"Nuevo",
     movementEdit:"Editar",
     type:"Tipo",
@@ -4574,6 +4579,16 @@ const I18N={
     none:"Ninguno",
     noData:"No hay datos disponibles",
 
+    /* METAS */
+    goal:"Meta",
+    goalName:"Nombre de la meta",
+    target:"Objetivo",
+    progress:"Progreso",
+    targetAmount:"Importe objetivo",
+    noDate:"Sin fecha",
+    remaining:"Restante",
+    noGoals:"Aún no tienes metas",
+
     /* MENSAJES */
     saved:"Guardado correctamente",
     updated:"Actualizado correctamente",
@@ -4610,13 +4625,6 @@ const I18N={
     accountType:"Tipo de cuenta",
     balance:"Saldo",
     available:"Disponible",
-
-    /* METAS */
-    goal:"Meta",
-    goalName:"Nombre de la meta",
-    target:"Objetivo",
-    progress:"Progreso",
-    targetAmount:"Cantidad objetivo",
 
     /* HISTORIAL */
     historyTitle:"Historial",
@@ -4705,7 +4713,6 @@ const I18N={
     all:"All",
     incomes:"Income",
     expenses:"Expenses",
-
     movementNew:"New",
     movementEdit:"Edit",
     type:"Type",
@@ -4757,6 +4764,16 @@ const I18N={
     none:"None",
     noData:"No data available",
 
+    /* GOALS */
+    goal:"Goal",
+    goalName:"Goal name",
+    target:"Target",
+    progress:"Progress",
+    targetAmount:"Target amount",
+    noDate:"No date",
+    remaining:"Remaining",
+    noGoals:"You don't have any goals yet",
+
     /* MESSAGES */
     saved:"Saved successfully",
     updated:"Updated successfully",
@@ -4793,13 +4810,6 @@ const I18N={
     accountType:"Account type",
     balance:"Balance",
     available:"Available",
-
-    /* GOALS */
-    goal:"Goal",
-    goalName:"Goal name",
-    target:"Target",
-    progress:"Progress",
-    targetAmount:"Target amount",
 
     /* HISTORY */
     historyTitle:"History",
@@ -4933,6 +4943,15 @@ const I18N={
     none:"Aucun",
     noData:"Aucune donnée disponible",
 
+    goal:"Objectif",
+    goalName:"Nom de l'objectif",
+    target:"Cible",
+    progress:"Progression",
+    targetAmount:"Montant cible",
+    noDate:"Aucune date",
+    remaining:"Restant",
+    noGoals:"Vous n'avez pas encore d'objectifs",
+
     saved:"Enregistré avec succès",
     updated:"Mis à jour avec succès",
     deleted:"Supprimé avec succès",
@@ -4965,12 +4984,6 @@ const I18N={
     accountType:"Type de compte",
     balance:"Solde",
     available:"Disponible",
-
-    goal:"Objectif",
-    goalName:"Nom de l'objectif",
-    target:"Cible",
-    progress:"Progression",
-    targetAmount:"Montant cible",
 
     historyTitle:"Historique",
     details:"Détails",
@@ -5100,6 +5113,15 @@ const I18N={
     none:"Nenhum",
     noData:"Nenhum dado disponível",
 
+    goal:"Meta",
+    goalName:"Nome da meta",
+    target:"Objetivo",
+    progress:"Progresso",
+    targetAmount:"Valor da meta",
+    noDate:"Sem data",
+    remaining:"Restante",
+    noGoals:"Você ainda não tem metas",
+
     saved:"Salvo com sucesso",
     updated:"Atualizado com sucesso",
     deleted:"Excluído com sucesso",
@@ -5132,12 +5154,6 @@ const I18N={
     accountType:"Tipo de conta",
     balance:"Saldo",
     available:"Disponível",
-
-    goal:"Meta",
-    goalName:"Nome da meta",
-    target:"Objetivo",
-    progress:"Progresso",
-    targetAmount:"Valor da meta",
 
     historyTitle:"Histórico",
     details:"Detalhes",
@@ -5267,6 +5283,15 @@ const I18N={
     none:"Keine",
     noData:"Keine Daten verfügbar",
 
+    goal:"Ziel",
+    goalName:"Zielname",
+    target:"Ziel",
+    progress:"Fortschritt",
+    targetAmount:"Zielbetrag",
+    noDate:"Kein Datum",
+    remaining:"Verbleibend",
+    noGoals:"Sie haben noch keine Ziele",
+
     saved:"Erfolgreich gespeichert",
     updated:"Erfolgreich aktualisiert",
     deleted:"Erfolgreich gelöscht",
@@ -5299,12 +5324,6 @@ const I18N={
     accountType:"Kontotyp",
     balance:"Saldo",
     available:"Verfügbar",
-
-    goal:"Ziel",
-    goalName:"Zielname",
-    target:"Ziel",
-    progress:"Fortschritt",
-    targetAmount:"Zielbetrag",
 
     historyTitle:"Verlauf",
     details:"Details",
@@ -5434,6 +5453,15 @@ const I18N={
     none:"Nessuno",
     noData:"Nessun dato disponibile",
 
+    goal:"Obiettivo",
+    goalName:"Nome dell'obiettivo",
+    target:"Obiettivo",
+    progress:"Progresso",
+    targetAmount:"Importo obiettivo",
+    noDate:"Nessuna data",
+    remaining:"Rimanente",
+    noGoals:"Non hai ancora obiettivi",
+
     saved:"Salvato correttamente",
     updated:"Aggiornato correttamente",
     deleted:"Eliminato correttamente",
@@ -5466,12 +5494,6 @@ const I18N={
     accountType:"Tipo di conto",
     balance:"Saldo",
     available:"Disponibile",
-
-    goal:"Obiettivo",
-    goalName:"Nome dell'obiettivo",
-    target:"Obiettivo",
-    progress:"Progresso",
-    targetAmount:"Importo obiettivo",
 
     historyTitle:"Cronologia",
     details:"Dettagli",
@@ -5601,6 +5623,15 @@ const I18N={
     none:"なし",
     noData:"データがありません",
 
+    goal:"目標",
+    goalName:"目標名",
+    target:"目標",
+    progress:"進捗",
+    targetAmount:"目標金額",
+    noDate:"日付なし",
+    remaining:"残り",
+    noGoals:"まだ目標がありません",
+
     saved:"正常に保存されました",
     updated:"正常に更新されました",
     deleted:"正常に削除されました",
@@ -5633,12 +5664,6 @@ const I18N={
     accountType:"口座の種類",
     balance:"残高",
     available:"利用可能",
-
-    goal:"目標",
-    goalName:"目標名",
-    target:"目標",
-    progress:"進捗",
-    targetAmount:"目標金額",
 
     historyTitle:"履歴",
     details:"詳細",
@@ -5768,6 +5793,15 @@ const I18N={
     none:"없음",
     noData:"사용 가능한 데이터가 없습니다",
 
+    goal:"목표",
+    goalName:"목표 이름",
+    target:"목표",
+    progress:"진행률",
+    targetAmount:"목표 금액",
+    noDate:"날짜 없음",
+    remaining:"남은 금액",
+    noGoals:"아직 목표가 없습니다",
+
     saved:"저장되었습니다",
     updated:"업데이트되었습니다",
     deleted:"삭제되었습니다",
@@ -5800,12 +5834,6 @@ const I18N={
     accountType:"계정 유형",
     balance:"잔액",
     available:"사용 가능",
-
-    goal:"목표",
-    goalName:"목표 이름",
-    target:"목표",
-    progress:"진행률",
-    targetAmount:"목표 금액",
 
     historyTitle:"기록",
     details:"세부 정보",
@@ -5935,6 +5963,15 @@ const I18N={
     none:"无",
     noData:"暂无数据",
 
+    goal:"目标",
+    goalName:"目标名称",
+    target:"目标",
+    progress:"进度",
+    targetAmount:"目标金额",
+    noDate:"无日期",
+    remaining:"剩余",
+    noGoals:"您还没有目标",
+
     saved:"保存成功",
     updated:"更新成功",
     deleted:"删除成功",
@@ -5967,12 +6004,6 @@ const I18N={
     accountType:"账户类型",
     balance:"余额",
     available:"可用",
-
-    goal:"目标",
-    goalName:"目标名称",
-    target:"目标",
-    progress:"进度",
-    targetAmount:"目标金额",
 
     historyTitle:"历史记录",
     details:"详情",
@@ -6102,6 +6133,15 @@ const I18N={
     none:"لا شيء",
     noData:"لا توجد بيانات متاحة",
 
+    goal:"الهدف",
+    goalName:"اسم الهدف",
+    target:"الهدف",
+    progress:"التقدم",
+    targetAmount:"المبلغ المستهدف",
+    noDate:"بدون تاريخ",
+    remaining:"المتبقي",
+    noGoals:"لا توجد أهداف حتى الآن",
+
     saved:"تم الحفظ بنجاح",
     updated:"تم التحديث بنجاح",
     deleted:"تم الحذف بنجاح",
@@ -6134,12 +6174,6 @@ const I18N={
     accountType:"نوع الحساب",
     balance:"الرصيد",
     available:"المتاح",
-
-    goal:"الهدف",
-    goalName:"اسم الهدف",
-    target:"الهدف",
-    progress:"التقدم",
-    targetAmount:"المبلغ المستهدف",
 
     historyTitle:"السجل",
     details:"التفاصيل",
@@ -6269,6 +6303,15 @@ const I18N={
     none:"Нет",
     noData:"Нет доступных данных",
 
+    goal:"Цель",
+    goalName:"Название цели",
+    target:"Цель",
+    progress:"Прогресс",
+    targetAmount:"Целевая сумма",
+    noDate:"Без даты",
+    remaining:"Осталось",
+    noGoals:"У вас пока нет целей",
+
     saved:"Успешно сохранено",
     updated:"Успешно обновлено",
     deleted:"Успешно удалено",
@@ -6302,12 +6345,6 @@ const I18N={
     balance:"Баланс",
     available:"Доступно",
 
-    goal:"Цель",
-    goalName:"Название цели",
-    target:"Цель",
-    progress:"Прогресс",
-    targetAmount:"Целевая сумма",
-
     historyTitle:"История",
     details:"Подробности",
     actions:"Действия",
@@ -6333,6 +6370,7 @@ const I18N={
   }
 
 };
+```
 
 
 function t(key){
