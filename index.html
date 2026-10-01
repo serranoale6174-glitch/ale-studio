@@ -1903,10 +1903,17 @@ function saveFinancialDigit(e,key){
 }
 function card(title,value,desc,type){
 
+  const financialType =
+    ["wealth","capital","outflow","income"].includes(type);
+
   return `
     <div
       class="card"
-      ${type ? `onclick="openFinancialEditor('${type}')"` : ""}>
+      ${financialType
+        ? `onclick="openFinancialEditor('${type}')"
+           style="cursor:pointer"`
+        : ""
+      }>
 
       <div class="label">
         ${esc(title)}
@@ -2017,33 +2024,32 @@ function dashboard(){
 
   <div class="grid">
 
-    ${card(
-      c.wealth.title,
-      money(balance),
-      c.wealth.desc,
-      "wealth"
-    )}
+   ${card(
+  t("wealth"),
+  money(balance),
+  t("capitalAvailable"),
+  "wealth"
+)}
+   ${card(
+  t("capital"),
+  money(balance),
+  t("mainIndicator"),
+  "capital"
+)}
 
     ${card(
-      c.capital.title,
-      money(balance),
-      c.capital.desc,
-      "capital"
-    )}
+  t("outflow"),
+  money(expense),
+  t("accumulatedExpenses"),
+  "outflow"
+)}
 
     ${card(
-      c.outflow.title,
-      money(expense),
-      c.outflow.desc,
-      "outflow"
-    )}
-
-    ${card(
-      c.income.title,
-      money(income),
-      c.income.desc,
-      "income"
-    )}
+  t("income"),
+  money(income),
+  t("registeredIncome"),
+  "income"
+)}
 
   </div>
 
