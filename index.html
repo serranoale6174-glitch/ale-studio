@@ -2887,6 +2887,7 @@ function goals(){
   </div>`
 }
 
+```js
 function accounts(){
 
   return header(
@@ -2900,6 +2901,8 @@ function accounts(){
   +
   `
   <div class="grid">
+
+  ${
     state.accounts.length
     ?
     state.accounts.map(a=>{
