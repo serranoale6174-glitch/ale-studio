@@ -1,541 +1,543 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ALE STUDIO — Política de Privacidad</title>
-<link rel="icon" type="image/png" href="logo-as.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-:root{
-  --bg:#05070c;
-  --panel:rgba(10,14,24,.84);
-  --panel2:rgba(255,255,255,.055);
-  --text:#f5f7fb;
-  --muted:#b4bdcc;
-  --line:rgba(255,255,255,.12);
-  --blue:#1683ff;
-  --gold:#d7a83d;
-  --green:#19b96b;
-}
+  <title>Política de Privacidad | ALE STUDIO</title>
 
-*{
-  box-sizing:border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-html{
-  scroll-behavior:smooth;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body{
-  margin:0;
-  font-family:Inter,Segoe UI,Arial,sans-serif;
-  color:var(--text);
-  background:
-    linear-gradient(
-      rgba(3,6,12,.76),
-      rgba(3,6,12,.88)
-    ),
-    url("ale-studio-bg.png") center center / cover fixed no-repeat;
-  min-height:100vh;
-  line-height:1.7;
-}
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #05060b;
+      color: #e9eaf0;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(
-      circle at 15% 15%,
-      rgba(22,131,255,.16),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 85% 75%,
-      rgba(215,168,61,.10),
-      transparent 28%
-    );
-  z-index:-1;
-}
+    /* =========================================================
+       FONDO PREMIUM ALE STUDIO
+       ========================================================= */
 
-/* HEADER */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image: url("ale-studio-bg.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+    }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:10;
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  background:rgba(3,6,12,.76);
-  border-bottom:1px solid rgba(255,255,255,.10);
-}
+    /* Capa de contraste */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3, 5, 12, 0.76) 0%,
+          rgba(4, 6, 15, 0.72) 45%,
+          rgba(3, 4, 10, 0.86) 100%
+        );
+    }
 
-.header-inner{
-  width:min(1120px,calc(100% - 32px));
-  margin:auto;
-  min-height:78px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
+    /* Brillo tecnológico */
+    .ambient-light {
+      position: fixed;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(110px);
+      opacity: 0.14;
+      background: #1677ff;
+      top: -180px;
+      right: -150px;
+    }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:#fff;
-}
+    .ambient-light-two {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(110px);
+      opacity: 0.10;
+      background: #d4af37;
+      bottom: -180px;
+      left: -140px;
+    }
 
-.brand img{
-  width:44px;
-  height:44px;
-  object-fit:contain;
-  border-radius:12px;
-  filter:
-    drop-shadow(0 0 10px rgba(22,131,255,.35));
-}
+    /* =========================================================
+       HEADER
+       ========================================================= */
 
-.brand-name{
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:.5px;
-}
+    header {
+      color: white;
+      padding: 28px 20px;
+      text-align: center;
+      background: rgba(3, 5, 12, 0.46);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
 
-.brand-name span{
-  color:#4da2ff;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      margin-bottom: 14px;
+    }
 
-/* MAIN */
+    .logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow:
+        0 0 25px rgba(30,120,255,0.18),
+        0 0 35px rgba(212,175,55,0.10);
+    }
 
-main{
-  width:min(1000px,calc(100% - 32px));
-  margin:55px auto 70px;
-}
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-.hero{
-  text-align:center;
-  margin-bottom:30px;
-}
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: 1px;
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #f7f8ff 50%,
+        #e5c75a
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-.hero h1{
-  margin:0 0 10px;
-  font-size:clamp(30px,5vw,48px);
-  line-height:1.15;
-  letter-spacing:-.8px;
-}
+    header p {
+      margin: 0;
+      color: #c6c8d3;
+      opacity: 0.95;
+      font-size: 16px;
+    }
 
-.hero p{
-  margin:0 auto;
-  max-width:700px;
-  color:var(--muted);
-  font-size:15px;
-}
+    /* =========================================================
+       CONTENIDO
+       ========================================================= */
 
-.card{
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.075),
-      rgba(255,255,255,.025)
-    );
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:34px;
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.40),
-    inset 0 1px 0 rgba(255,255,255,.05);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-}
+    main {
+      max-width: 900px;
+      margin: 45px auto;
+      padding: 0 20px;
+    }
 
-section{
-  padding:0 0 28px;
-  margin-bottom:28px;
-  border-bottom:1px solid rgba(255,255,255,.09);
-}
+    .card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.09),
+          rgba(255,255,255,0.045)
+        );
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 22px;
+      padding: 40px;
+      box-shadow:
+        0 25px 70px rgba(0,0,0,0.34),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
 
-section:last-child{
-  border-bottom:0;
-  margin-bottom:0;
-  padding-bottom:0;
-}
+    h2 {
+      color: #e5c75a;
+      margin-top: 32px;
+      margin-bottom: 10px;
+      font-size: 21px;
+      text-shadow: 0 0 20px rgba(212,175,55,0.08);
+    }
 
-h2{
-  margin:0 0 12px;
-  color:#fff;
-  font-size:22px;
-  line-height:1.3;
-}
+    h2:first-of-type {
+      margin-top: 0;
+    }
 
-p{
-  margin:9px 0;
-  color:#d7deea;
-}
+    p {
+      margin: 10px 0;
+      color: #d0d1d9;
+    }
 
-strong{
-  color:#fff;
-}
+    ul {
+      padding-left: 25px;
+    }
 
-ul{
-  margin:12px 0;
-  padding-left:23px;
-  color:#d7deea;
-}
+    li {
+      margin: 7px 0;
+      color: #c9cad3;
+    }
 
-li{
-  margin:7px 0;
-}
+    .date {
+      color: #a9abb7;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
 
-/* CONTACTO */
+    .brand-text {
+      font-weight: bold;
+      color: #e5c75a;
+    }
 
-.contact-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  margin-top:20px;
-}
+    strong {
+      color: #ffffff;
+    }
 
-.contact-button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  padding:14px 21px;
-  border-radius:14px;
-  text-decoration:none;
-  font-weight:800;
-  color:#fff;
-  background:
-    linear-gradient(
-      135deg,
-      #1683ff,
-      #0b4dcc
-    );
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:
-    0 10px 28px rgba(0,0,0,.28),
-    0 0 20px rgba(22,131,255,.10);
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    filter .25s ease;
-}
+    /* =========================================================
+       CONTACTO
+       ========================================================= */
 
-.contact-button:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.08);
-  box-shadow:
-    0 14px 34px rgba(0,0,0,.35),
-    0 0 24px rgba(22,131,255,.18);
-}
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
 
-.contact-button.whatsapp{
-  background:
-    linear-gradient(
-      135deg,
-      #19c873,
-      #087c45
-    );
-  box-shadow:
-    0 10px 28px rgba(0,0,0,.28),
-    0 0 20px rgba(25,200,115,.10);
-}
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #ffffff;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+      transition: all 0.25s ease;
+    }
 
-.contact-button.whatsapp:hover{
-  box-shadow:
-    0 14px 34px rgba(0,0,0,.35),
-    0 0 24px rgba(25,200,115,.18);
-}
+    .contact-button:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.25);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.30);
+    }
 
-/* FOOTER */
+    .contact-button.whatsapp {
+      background: rgba(37,211,102,0.12);
+      border-color: rgba(37,211,102,0.35);
+    }
 
-footer{
-  text-align:center;
-  color:#8e99aa;
-  font-size:13px;
-  margin-top:30px;
-}
+    .contact-button.whatsapp:hover {
+      background: rgba(37,211,102,0.20);
+      border-color: rgba(37,211,102,0.50);
+    }
 
-.footer-brand{
-  color:#d7a83d;
-  font-weight:700;
-}
+    /* =========================================================
+       FOOTER
+       ========================================================= */
 
-/* RESPONSIVE */
+    footer {
+      text-align: center;
+      color: #858694;
+      font-size: 14px;
+      padding: 30px 20px 45px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(2,4,10,0.46);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
 
-@media(max-width:700px){
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
 
-  .header-inner{
-    min-height:70px;
-  }
+    @media (max-width: 600px) {
 
-  .brand-name{
-    font-size:18px;
-  }
+      header {
+        padding: 35px 15px;
+      }
 
-  .brand img{
-    width:40px;
-    height:40px;
-  }
+      header h1 {
+        font-size: 27px;
+      }
 
-  main{
-    margin-top:35px;
-  }
+      .logo {
+        width: 47px;
+        height: 47px;
+        border-radius: 12px;
+      }
 
-  .card{
-    padding:24px 20px;
-    border-radius:20px;
-  }
+      .brand {
+        gap: 10px;
+      }
 
-  section{
-    padding-bottom:24px;
-    margin-bottom:24px;
-  }
+      .card {
+        padding: 25px 20px;
+        border-radius: 18px;
+      }
 
-  h2{
-    font-size:20px;
-  }
+      main {
+        margin: 25px auto;
+      }
 
-  .contact-actions{
-    flex-direction:column;
-  }
+      h2 {
+        font-size: 19px;
+      }
 
-  .contact-button{
-    width:100%;
-    padding:14px 18px;
-  }
-}
+      p,
+      li {
+        font-size: 15px;
+      }
 
-@media(max-width:420px){
+      .contact-actions {
+        flex-direction: column;
+      }
 
-  .header-inner{
-    width:calc(100% - 22px);
-  }
+      .contact-button {
+        width: 100%;
+      }
+    }
 
-  main{
-    width:calc(100% - 22px);
-  }
-
-  .brand-name{
-    font-size:17px;
-  }
-
-  .card{
-    padding:20px 16px;
-  }
-}
-</style>
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="header-inner">
+  <div class="ambient-light"></div>
+  <div class="ambient-light-two"></div>
 
-    <a class="brand" href="inicio.html">
-      <img src="logo-as.png" alt="ALE STUDIO">
-      <div class="brand-name">
-        ALE <span>STUDIO</span>
+  <header>
+
+    <div class="brand">
+
+      <div class="logo">
+        <img src="logo-as.png" alt="Logo ALE STUDIO">
       </div>
-    </a>
 
-  </div>
-</header>
+      <h1>ALE STUDIO</h1>
 
-<main>
+    </div>
 
-  <div class="hero">
-    <h1>Política de Privacidad</h1>
-    <p>
-      Información sobre el tratamiento, protección y gestión
-      de los datos utilizados por ALE STUDIO.
-    </p>
-  </div>
+    <p>Política de Privacidad</p>
 
-  <div class="card">
+  </header>
 
-    <section>
-      <h2>1. Información general</h2>
+  <main>
+    <div class="card">
 
-      <p>
-        ALE STUDIO es una aplicación orientada a la gestión de
-        finanzas personales y herramientas digitales.
+      <p class="date">
+        Última actualización: 17 de septiembre de 2026
       </p>
 
       <p>
-        Esta Política de Privacidad explica cómo se recopila,
-        utiliza, almacena y protege la información de los usuarios
-        que utilizan ALE STUDIO y sus diferentes funciones,
-        incluyendo Serrano Ale AI.
+        <span class="brand-text">ALE STUDIO</span> es una aplicación destinada a ayudar
+        a los usuarios a gestionar y organizar información relacionada con sus
+        finanzas personales. Esta Política de Privacidad explica qué información
+        puede recopilarse, cómo puede utilizarse y qué medidas se aplican para
+        protegerla.
       </p>
-    </section>
 
-    <section>
-      <h2>2. Información que podemos recopilar</h2>
+      <h2>1. Información que podemos recopilar</h2>
 
-      <p>
-        Dependiendo de las funciones utilizadas, ALE STUDIO
-        puede procesar información como:
-      </p>
+      <p>Dependiendo de las funciones que utilices, ALE STUDIO puede procesar:</p>
 
       <ul>
-        <li>Información de cuenta y autenticación.</li>
-        <li>Información proporcionada mediante Google u otros métodos de acceso.</li>
-        <li>Información financiera introducida voluntariamente por el usuario.</li>
-        <li>Movimientos, cuentas, presupuestos y metas registrados en la aplicación.</li>
-        <li>Información relacionada con el uso de las funciones de la aplicación.</li>
-        <li>Mensajes e información proporcionada a Serrano Ale AI.</li>
+        <li>Información de registro e inicio de sesión, como nombre, correo electrónico y datos necesarios para autenticar tu cuenta.</li>
+        <li>Información proporcionada mediante servicios de autenticación, como Google.</li>
+        <li>Información financiera que introduzcas voluntariamente en la aplicación, incluyendo ingresos, gastos, movimientos, presupuestos, metas, cuentas y patrimonio.</li>
+        <li>Información relacionada con el uso de las funciones de ALE STUDIO.</li>
+        <li>Mensajes e información que proporciones al asistente Serrano Ale AI cuando utilices sus funciones.</li>
       </ul>
-    </section>
 
-    <section>
-      <h2>3. Uso de la información</h2>
+      <h2>2. Para qué utilizamos la información</h2>
+
+      <ul>
+        <li>Crear y administrar tu cuenta.</li>
+        <li>Permitir el inicio de sesión y autenticación.</li>
+        <li>Guardar y mostrar tus registros financieros.</li>
+        <li>Calcular y actualizar información financiera dentro de la aplicación.</li>
+        <li>Personalizar determinadas funciones de la aplicación.</li>
+        <li>Proporcionar las funciones del asistente Serrano Ale AI.</li>
+        <li>Mantener, proteger y mejorar el funcionamiento de ALE STUDIO.</li>
+        <li>Detectar y prevenir usos no autorizados o problemas de seguridad.</li>
+      </ul>
+
+      <h2>3. Información financiera</h2>
 
       <p>
-        La información se utiliza principalmente para proporcionar,
-        mantener y mejorar las funciones de ALE STUDIO.
+        Los datos financieros que introduzcas en ALE STUDIO se utilizan para
+        proporcionar las funciones correspondientes de la aplicación.
       </p>
 
       <p>
-        Esto puede incluir la gestión de cuentas, almacenamiento
-        de información financiera, funcionamiento de herramientas,
-        seguridad, soporte y personalización de la experiencia.
-      </p>
-    </section>
-
-    <section>
-      <h2>4. Protección de la información</h2>
-
-      <p>
-        ALE STUDIO implementa medidas técnicas y organizativas
-        destinadas a proteger la información de los usuarios
-        contra accesos no autorizados, pérdida o uso indebido.
+        Estos datos pueden incluir información como ingresos, gastos,
+        movimientos, presupuestos, metas, cuentas y patrimonio.
       </p>
 
       <p>
-        Cada cuenta está diseñada para acceder únicamente a la
-        información correspondiente a ese usuario mediante los
-        controles de acceso establecidos en la plataforma.
+        ALE STUDIO no debe interpretarse como una entidad bancaria ni como un
+        servicio de asesoramiento financiero profesional.
       </p>
-    </section>
 
-    <section>
-      <h2>5. Almacenamiento y proveedores tecnológicos</h2>
+      <h2>4. Inicio de sesión con terceros</h2>
 
       <p>
-        ALE STUDIO puede utilizar proveedores tecnológicos
-        necesarios para autenticación, almacenamiento,
-        infraestructura, seguridad y funcionamiento de
-        determinadas funciones.
+        ALE STUDIO puede permitir el inicio de sesión mediante servicios
+        externos, como Google.
       </p>
 
       <p>
-        Estos servicios pueden procesar información únicamente
-        en la medida necesaria para proporcionar sus respectivas
-        funciones.
+        Cuando utilizas uno de estos servicios, el proveedor puede procesar
+        determinada información de acuerdo con sus propias políticas de
+        privacidad y condiciones de servicio.
       </p>
-    </section>
 
-    <section>
+      <h2>5. Almacenamiento y seguridad</h2>
+
+      <p>
+        ALE STUDIO utiliza servicios tecnológicos de terceros para determinadas
+        funciones de autenticación, almacenamiento y funcionamiento de la
+        aplicación.
+      </p>
+
+      <p>
+        Se aplican medidas técnicas y organizativas destinadas a proteger la
+        información contra accesos no autorizados, pérdida, alteración o
+        divulgación indebida.
+      </p>
+
+      <p>
+        Ningún sistema conectado a Internet puede garantizar una seguridad
+        absoluta.
+      </p>
+
       <h2>6. Serrano Ale AI</h2>
 
       <p>
-        ALE STUDIO puede ofrecer funciones de inteligencia
-        artificial mediante Serrano Ale AI.
+        ALE STUDIO puede incluir Serrano Ale AI, un asistente integrado destinado
+        a proporcionar conversación, análisis y asistencia dentro de las
+        funciones disponibles.
       </p>
 
       <p>
-        La información o mensajes introducidos voluntariamente
-        por el usuario en estas funciones pueden ser procesados
-        para generar respuestas y proporcionar el servicio
-        solicitado.
+        La información enviada al asistente puede ser procesada para generar
+        respuestas y ejecutar las funciones que correspondan.
       </p>
 
       <p>
-        Los usuarios deben evitar introducir información
-        extremadamente sensible que no sea necesaria para
-        utilizar estas funciones.
+        No debes proporcionar al asistente información confidencial que no sea
+        necesaria para utilizar la función.
       </p>
-    </section>
 
-    <section>
       <h2>7. Compartición de información</h2>
 
       <p>
-        ALE STUDIO no tiene como finalidad vender información
-        personal de los usuarios.
+        ALE STUDIO no debe vender información personal de los usuarios.
       </p>
 
       <p>
-        La información puede ser procesada por proveedores
-        tecnológicos necesarios para autenticación, almacenamiento,
-        infraestructura, seguridad y determinadas funciones
-        de la aplicación.
-      </p>
-    </section>
-
-    <section>
-      <h2>8. Seguridad de las cuentas</h2>
-
-      <p>
-        Los usuarios son responsables de mantener protegidas
-        sus credenciales y de utilizar métodos de acceso seguros.
+        La información puede ser procesada por proveedores tecnológicos
+        necesarios para prestar determinadas funciones de la aplicación, como
+        autenticación, almacenamiento, infraestructura y servicios de
+        inteligencia artificial.
       </p>
 
       <p>
-        ALE STUDIO puede implementar controles de seguridad,
-        autenticación y gestión de sesiones destinados a
-        proteger las cuentas.
+        Cuando corresponda, dichos servicios estarán sujetos a sus propias
+        condiciones y políticas de privacidad.
       </p>
-    </section>
 
-    <section>
-      <h2>9. Derechos y control del usuario</h2>
+      <h2>8. Datos de diferentes usuarios</h2>
 
       <p>
-        Los usuarios pueden solicitar información relacionada
-        con sus datos y solicitar la eliminación de su cuenta
-        o información cuando corresponda.
+        Cada cuenta de usuario debe estar configurada para acceder únicamente
+        a la información asociada con esa cuenta.
       </p>
 
       <p>
-        Algunas obligaciones legales, técnicas o de seguridad
-        pueden requerir conservar determinada información
-        durante un período determinado.
+        ALE STUDIO implementa mecanismos de control de acceso destinados a
+        evitar que un usuario pueda acceder a los datos financieros de otro
+        usuario.
       </p>
-    </section>
 
-    <section>
+      <h2>9. Conservación de información</h2>
+
+      <p>
+        La información puede conservarse mientras sea necesaria para
+        proporcionar las funciones de ALE STUDIO, mantener la cuenta del
+        usuario, cumplir obligaciones legales o resolver cuestiones relacionadas
+        con seguridad y funcionamiento.
+      </p>
+
       <h2>10. Eliminación de datos</h2>
 
       <p>
-        Para solicitar asistencia relacionada con tus datos,
-        puedes contactar directamente con ALE STUDIO mediante
-        las opciones disponibles en la sección de contacto.
-      </p>
-    </section>
-
-    <section>
-      <h2>11. Cambios en esta política</h2>
-
-      <p>
-        Esta Política de Privacidad puede actualizarse cuando
-        sea necesario para reflejar cambios en ALE STUDIO,
-        sus funciones, servicios tecnológicos o requisitos
-        legales.
+        Los usuarios podrán solicitar la eliminación de su cuenta y de la
+        información asociada, sujeto a las obligaciones legales o técnicas que
+        puedan requerir determinada conservación.
       </p>
 
       <p>
-        La fecha de actualización se mostrará al final de esta
-        página.
+        Para solicitar asistencia relacionada con tus datos, puedes contactar:
       </p>
-    </section>
 
-    <section>
+      <p>
+        <a
+          href="mailto:serranoale6174@gmail.com"
+          style="color:#e5c75a; font-weight:bold; text-decoration:none;"
+        >
+          Contactar por correo
+        </a>
+      </p>
+
+      <h2>11. Cambios en esta Política</h2>
+
+      <p>
+        Esta Política de Privacidad puede actualizarse cuando se incorporen
+        nuevas funciones, cambios tecnológicos o requisitos legales.
+      </p>
+
+      <p>
+        Cuando se realicen cambios importantes, se procurará proporcionar
+        información adecuada a los usuarios.
+      </p>
+
       <h2>12. Contacto</h2>
 
       <p>
@@ -543,10 +545,8 @@ footer{
       </p>
 
       <p>
-        Si necesitas asistencia, deseas realizar una consulta
-        o necesitas comunicarte con el responsable de ALE STUDIO,
-        puedes hacerlo directamente mediante cualquiera de estas
-        opciones:
+        Si necesitas asistencia, deseas realizar una consulta o necesitas
+        comunicarte con ALE STUDIO, puedes hacerlo directamente:
       </p>
 
       <div class="contact-actions">
@@ -554,7 +554,7 @@ footer{
         <a
           class="contact-button"
           href="mailto:serranoale6174@gmail.com"
-          aria-label="Contactar a ALE STUDIO por correo"
+          aria-label="Contactar por correo"
         >
           📧 Contactar por correo
         </a>
@@ -564,24 +564,19 @@ footer{
           href="https://wa.me/50766210530"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Contactar a ALE STUDIO por WhatsApp"
+          aria-label="Contactar por WhatsApp"
         >
           💬 Contactar por WhatsApp
         </a>
 
       </div>
 
-    </section>
+    </div>
+  </main>
 
-    <footer>
-      <span class="footer-brand">ALE STUDIO</span>
-      <br>
-      Última actualización: 17 de septiembre de 2026
-    </footer>
-
-  </div>
-
-</main>
+  <footer>
+    © 2026 ALE STUDIO. Todos los derechos reservados.
+  </footer>
 
 </body>
 </html>
