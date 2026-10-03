@@ -1,23 +1,587 @@
-<section>
-  <h2>12. Contacto</h2>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALE STUDIO — Política de Privacidad</title>
+<link rel="icon" type="image/png" href="logo-as.png">
 
-  <div class="contact-actions">
-    <a
-      class="contact-button"
-      href="mailto:serranoale6174@gmail.com"
-      aria-label="Contactar a ALE STUDIO por correo"
-    >
-      📧 Contactar por correo
+<style>
+:root{
+  --bg:#05070c;
+  --panel:rgba(10,14,24,.84);
+  --panel2:rgba(255,255,255,.055);
+  --text:#f5f7fb;
+  --muted:#b4bdcc;
+  --line:rgba(255,255,255,.12);
+  --blue:#1683ff;
+  --gold:#d7a83d;
+  --green:#19b96b;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(
+      rgba(3,6,12,.76),
+      rgba(3,6,12,.88)
+    ),
+    url("ale-studio-bg.png") center center / cover fixed no-repeat;
+  min-height:100vh;
+  line-height:1.7;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(22,131,255,.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(215,168,61,.10),
+      transparent 28%
+    );
+  z-index:-1;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  background:rgba(3,6,12,.76);
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+.header-inner{
+  width:min(1120px,calc(100% - 32px));
+  margin:auto;
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:#fff;
+}
+
+.brand img{
+  width:44px;
+  height:44px;
+  object-fit:contain;
+  border-radius:12px;
+  filter:
+    drop-shadow(0 0 10px rgba(22,131,255,.35));
+}
+
+.brand-name{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.brand-name span{
+  color:#4da2ff;
+}
+
+/* MAIN */
+
+main{
+  width:min(1000px,calc(100% - 32px));
+  margin:55px auto 70px;
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.hero h1{
+  margin:0 0 10px;
+  font-size:clamp(30px,5vw,48px);
+  line-height:1.15;
+  letter-spacing:-.8px;
+}
+
+.hero p{
+  margin:0 auto;
+  max-width:700px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.card{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.075),
+      rgba(255,255,255,.025)
+    );
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:34px;
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.40),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+section{
+  padding:0 0 28px;
+  margin-bottom:28px;
+  border-bottom:1px solid rgba(255,255,255,.09);
+}
+
+section:last-child{
+  border-bottom:0;
+  margin-bottom:0;
+  padding-bottom:0;
+}
+
+h2{
+  margin:0 0 12px;
+  color:#fff;
+  font-size:22px;
+  line-height:1.3;
+}
+
+p{
+  margin:9px 0;
+  color:#d7deea;
+}
+
+strong{
+  color:#fff;
+}
+
+ul{
+  margin:12px 0;
+  padding-left:23px;
+  color:#d7deea;
+}
+
+li{
+  margin:7px 0;
+}
+
+/* CONTACTO */
+
+.contact-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:20px;
+}
+
+.contact-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:14px 21px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:800;
+  color:#fff;
+  background:
+    linear-gradient(
+      135deg,
+      #1683ff,
+      #0b4dcc
+    );
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.28),
+    0 0 20px rgba(22,131,255,.10);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+}
+
+.contact-button:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.35),
+    0 0 24px rgba(22,131,255,.18);
+}
+
+.contact-button.whatsapp{
+  background:
+    linear-gradient(
+      135deg,
+      #19c873,
+      #087c45
+    );
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.28),
+    0 0 20px rgba(25,200,115,.10);
+}
+
+.contact-button.whatsapp:hover{
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.35),
+    0 0 24px rgba(25,200,115,.18);
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  color:#8e99aa;
+  font-size:13px;
+  margin-top:30px;
+}
+
+.footer-brand{
+  color:#d7a83d;
+  font-weight:700;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+  .header-inner{
+    min-height:70px;
+  }
+
+  .brand-name{
+    font-size:18px;
+  }
+
+  .brand img{
+    width:40px;
+    height:40px;
+  }
+
+  main{
+    margin-top:35px;
+  }
+
+  .card{
+    padding:24px 20px;
+    border-radius:20px;
+  }
+
+  section{
+    padding-bottom:24px;
+    margin-bottom:24px;
+  }
+
+  h2{
+    font-size:20px;
+  }
+
+  .contact-actions{
+    flex-direction:column;
+  }
+
+  .contact-button{
+    width:100%;
+    padding:14px 18px;
+  }
+}
+
+@media(max-width:420px){
+
+  .header-inner{
+    width:calc(100% - 22px);
+  }
+
+  main{
+    width:calc(100% - 22px);
+  }
+
+  .brand-name{
+    font-size:17px;
+  }
+
+  .card{
+    padding:20px 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <a class="brand" href="inicio.html">
+      <img src="logo-as.png" alt="ALE STUDIO">
+      <div class="brand-name">
+        ALE <span>STUDIO</span>
+      </div>
     </a>
 
-    <a
-      class="contact-button whatsapp"
-      href="https://wa.me/50766210530"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contactar a ALE STUDIO por WhatsApp"
-    >
-      💬 Contactar por WhatsApp
-    </a>
   </div>
-</section>
+</header>
+
+<main>
+
+  <div class="hero">
+    <h1>Política de Privacidad</h1>
+    <p>
+      Información sobre el tratamiento, protección y gestión
+      de los datos utilizados por ALE STUDIO.
+    </p>
+  </div>
+
+  <div class="card">
+
+    <section>
+      <h2>1. Información general</h2>
+
+      <p>
+        ALE STUDIO es una aplicación orientada a la gestión de
+        finanzas personales y herramientas digitales.
+      </p>
+
+      <p>
+        Esta Política de Privacidad explica cómo se recopila,
+        utiliza, almacena y protege la información de los usuarios
+        que utilizan ALE STUDIO y sus diferentes funciones,
+        incluyendo Serrano Ale AI.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Información que podemos recopilar</h2>
+
+      <p>
+        Dependiendo de las funciones utilizadas, ALE STUDIO
+        puede procesar información como:
+      </p>
+
+      <ul>
+        <li>Información de cuenta y autenticación.</li>
+        <li>Información proporcionada mediante Google u otros métodos de acceso.</li>
+        <li>Información financiera introducida voluntariamente por el usuario.</li>
+        <li>Movimientos, cuentas, presupuestos y metas registrados en la aplicación.</li>
+        <li>Información relacionada con el uso de las funciones de la aplicación.</li>
+        <li>Mensajes e información proporcionada a Serrano Ale AI.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Uso de la información</h2>
+
+      <p>
+        La información se utiliza principalmente para proporcionar,
+        mantener y mejorar las funciones de ALE STUDIO.
+      </p>
+
+      <p>
+        Esto puede incluir la gestión de cuentas, almacenamiento
+        de información financiera, funcionamiento de herramientas,
+        seguridad, soporte y personalización de la experiencia.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Protección de la información</h2>
+
+      <p>
+        ALE STUDIO implementa medidas técnicas y organizativas
+        destinadas a proteger la información de los usuarios
+        contra accesos no autorizados, pérdida o uso indebido.
+      </p>
+
+      <p>
+        Cada cuenta está diseñada para acceder únicamente a la
+        información correspondiente a ese usuario mediante los
+        controles de acceso establecidos en la plataforma.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Almacenamiento y proveedores tecnológicos</h2>
+
+      <p>
+        ALE STUDIO puede utilizar proveedores tecnológicos
+        necesarios para autenticación, almacenamiento,
+        infraestructura, seguridad y funcionamiento de
+        determinadas funciones.
+      </p>
+
+      <p>
+        Estos servicios pueden procesar información únicamente
+        en la medida necesaria para proporcionar sus respectivas
+        funciones.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Serrano Ale AI</h2>
+
+      <p>
+        ALE STUDIO puede ofrecer funciones de inteligencia
+        artificial mediante Serrano Ale AI.
+      </p>
+
+      <p>
+        La información o mensajes introducidos voluntariamente
+        por el usuario en estas funciones pueden ser procesados
+        para generar respuestas y proporcionar el servicio
+        solicitado.
+      </p>
+
+      <p>
+        Los usuarios deben evitar introducir información
+        extremadamente sensible que no sea necesaria para
+        utilizar estas funciones.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Compartición de información</h2>
+
+      <p>
+        ALE STUDIO no tiene como finalidad vender información
+        personal de los usuarios.
+      </p>
+
+      <p>
+        La información puede ser procesada por proveedores
+        tecnológicos necesarios para autenticación, almacenamiento,
+        infraestructura, seguridad y determinadas funciones
+        de la aplicación.
+      </p>
+    </section>
+
+    <section>
+      <h2>8. Seguridad de las cuentas</h2>
+
+      <p>
+        Los usuarios son responsables de mantener protegidas
+        sus credenciales y de utilizar métodos de acceso seguros.
+      </p>
+
+      <p>
+        ALE STUDIO puede implementar controles de seguridad,
+        autenticación y gestión de sesiones destinados a
+        proteger las cuentas.
+      </p>
+    </section>
+
+    <section>
+      <h2>9. Derechos y control del usuario</h2>
+
+      <p>
+        Los usuarios pueden solicitar información relacionada
+        con sus datos y solicitar la eliminación de su cuenta
+        o información cuando corresponda.
+      </p>
+
+      <p>
+        Algunas obligaciones legales, técnicas o de seguridad
+        pueden requerir conservar determinada información
+        durante un período determinado.
+      </p>
+    </section>
+
+    <section>
+      <h2>10. Eliminación de datos</h2>
+
+      <p>
+        Para solicitar asistencia relacionada con tus datos,
+        puedes contactar directamente con ALE STUDIO mediante
+        las opciones disponibles en la sección de contacto.
+      </p>
+    </section>
+
+    <section>
+      <h2>11. Cambios en esta política</h2>
+
+      <p>
+        Esta Política de Privacidad puede actualizarse cuando
+        sea necesario para reflejar cambios en ALE STUDIO,
+        sus funciones, servicios tecnológicos o requisitos
+        legales.
+      </p>
+
+      <p>
+        La fecha de actualización se mostrará al final de esta
+        página.
+      </p>
+    </section>
+
+    <section>
+      <h2>12. Contacto</h2>
+
+      <p>
+        <strong>ALE STUDIO</strong>
+      </p>
+
+      <p>
+        Si necesitas asistencia, deseas realizar una consulta
+        o necesitas comunicarte con el responsable de ALE STUDIO,
+        puedes hacerlo directamente mediante cualquiera de estas
+        opciones:
+      </p>
+
+      <div class="contact-actions">
+
+        <a
+          class="contact-button"
+          href="mailto:serranoale6174@gmail.com"
+          aria-label="Contactar a ALE STUDIO por correo"
+        >
+          📧 Contactar por correo
+        </a>
+
+        <a
+          class="contact-button whatsapp"
+          href="https://wa.me/50766210530"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contactar a ALE STUDIO por WhatsApp"
+        >
+          💬 Contactar por WhatsApp
+        </a>
+
+      </div>
+
+    </section>
+
+    <footer>
+      <span class="footer-brand">ALE STUDIO</span>
+      <br>
+      Última actualización: 17 de septiembre de 2026
+    </footer>
+
+  </div>
+
+</main>
+
+</body>
+</html>
