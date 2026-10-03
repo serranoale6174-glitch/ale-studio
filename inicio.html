@@ -16,11 +16,77 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #08070d;
+      background: #05060b;
       color: #ffffff;
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* =========================================================
+       FONDO PREMIUM ALE STUDIO
+       ========================================================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image: url("ale-studio-bg.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+    }
+
+    /* Capa oscura para mantener la lectura */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3, 5, 12, 0.72) 0%,
+          rgba(4, 6, 15, 0.64) 42%,
+          rgba(3, 4, 10, 0.82) 100%
+        );
+    }
+
+    /* Brillo tecnológico ambiental */
+    .ambient-light {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(100px);
+      opacity: 0.18;
+      background: #1677ff;
+      top: -180px;
+      right: -140px;
+    }
+
+    .ambient-light-two {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(110px);
+      opacity: 0.12;
+      background: #d4af37;
+      bottom: -180px;
+      left: -130px;
     }
 
     .container {
@@ -28,64 +94,114 @@
       margin: auto;
     }
 
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
     header {
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      background: rgba(3,5,12,0.42);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
       font-size: 22px;
       font-weight: 700;
       letter-spacing: 1px;
     }
 
     .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #d4af37, #8e6b18);
-      color: #08070d;
-      font-weight: 900;
-      box-shadow: 0 0 25px rgba(212,175,55,0.25);
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow:
+        0 0 25px rgba(30,120,255,0.18),
+        0 0 35px rgba(212,175,55,0.10);
     }
 
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-name {
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffffff 48%,
+        #e5c75a 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* =========================================================
+       MAIN
+       ========================================================= */
+
     main {
-      padding: 90px 0 70px;
+      padding: 90px 0 80px;
       text-align: center;
     }
 
     .badge {
       display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid rgba(212,175,55,0.35);
+      padding: 9px 17px;
+      border: 1px solid rgba(229,199,90,0.35);
       border-radius: 30px;
       color: #e5c75a;
       font-size: 13px;
       margin-bottom: 25px;
+      background: rgba(8,10,18,0.40);
+      box-shadow:
+        0 0 25px rgba(212,175,55,0.07),
+        inset 0 0 20px rgba(255,255,255,0.02);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     h1 {
       font-size: clamp(42px, 7vw, 76px);
       line-height: 1.05;
       margin-bottom: 24px;
-      background: linear-gradient(90deg, #ffffff, #e5c75a);
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #f7f8ff 42%,
+        #e5c75a 100%
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 35px rgba(255,255,255,0.08);
     }
 
     .subtitle {
       max-width: 720px;
       margin: auto;
-      color: #b9b6c5;
+      color: #c7c8d3;
       font-size: 19px;
       line-height: 1.7;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.45);
     }
+
+    /* =========================================================
+       CARDS
+       ========================================================= */
 
     .features {
       margin-top: 60px;
@@ -96,10 +212,47 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.09);
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.085),
+          rgba(255,255,255,0.035)
+        );
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 18px;
       padding: 28px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow:
+        0 18px 50px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      top: -90px;
+      right: -80px;
+      border-radius: 50%;
+      background: rgba(35,120,255,0.18);
+      filter: blur(35px);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(229,199,90,0.25);
+      box-shadow:
+        0 22px 55px rgba(0,0,0,0.35),
+        0 0 30px rgba(30,120,255,0.08);
     }
 
     .card h2 {
@@ -109,10 +262,14 @@
     }
 
     .card p {
-      color: #aaa7b5;
+      color: #b9bac6;
       line-height: 1.6;
       font-size: 15px;
     }
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
 
     .actions {
       margin-top: 55px;
@@ -128,43 +285,149 @@
       padding: 14px 26px;
       border-radius: 12px;
       font-weight: 700;
-      transition: 0.2s;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .primary {
-      background: linear-gradient(135deg, #d4af37, #9f791c);
+      background: linear-gradient(
+        135deg,
+        #e1bd45,
+        #9f791c
+      );
       color: #08070d;
+      box-shadow:
+        0 10px 30px rgba(212,175,55,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.30);
     }
 
     .secondary {
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.17);
       color: #ffffff;
+      background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .button:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
+    .primary:hover {
+      box-shadow:
+        0 14px 35px rgba(212,175,55,0.25),
+        0 0 25px rgba(212,175,55,0.10);
+    }
+
+    .secondary:hover {
+      border-color: rgba(255,255,255,0.30);
+      background: rgba(255,255,255,0.075);
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
     footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.09);
       padding: 28px 0;
       text-align: center;
-      color: #777482;
+      color: #858694;
       font-size: 13px;
+      background: rgba(2,4,10,0.48);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     footer a {
-      color: #bfa64b;
+      color: #d5bb55;
       text-decoration: none;
     }
 
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
     @media (max-width: 750px) {
-      .features {
-        grid-template-columns: 1fr;
+
+      header {
+        padding: 18px 0;
+      }
+
+      .brand {
+        font-size: 19px;
+      }
+
+      .logo {
+        width: 43px;
+        height: 43px;
+        border-radius: 11px;
       }
 
       main {
         padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      .subtitle {
+        font-size: 17px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 45px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .actions {
+        margin-top: 45px;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      .brand {
+        gap: 10px;
+        font-size: 17px;
+      }
+
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .badge {
+        font-size: 11px;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .card,
+      .button {
+        transition: none;
       }
     }
   </style>
@@ -172,11 +435,19 @@
 
 <body>
 
+  <div class="ambient-light"></div>
+  <div class="ambient-light-two"></div>
+
   <header>
     <div class="container">
       <div class="brand">
-        <div class="logo">A</div>
-        <span>ALE STUDIO</span>
+
+        <div class="logo">
+          <img src="logo-as.png" alt="Logo ALE STUDIO">
+        </div>
+
+        <span class="brand-name">ALE STUDIO</span>
+
       </div>
     </div>
   </header>
@@ -246,6 +517,7 @@
       </div>
 
       <div class="actions">
+
         <a class="button primary"
            href="https://serranoale6174-glitch.github.io/ale-studio/">
           Acceder a ALE STUDIO
@@ -255,6 +527,7 @@
            href="privacy.html">
           Política de privacidad
         </a>
+
       </div>
 
     </div>
