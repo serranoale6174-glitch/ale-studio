@@ -2344,7 +2344,7 @@ function movementTable(ms){
 
   if(!ms.length)
     return empty(
-      "Aún no tienes movimientos",
+      t("noMovements"),
       "openMove()"
     );
 
@@ -2355,11 +2355,11 @@ function movementTable(ms){
 
       <thead>
         <tr>
-          <th>Fecha</th>
-          <th>Tipo</th>
-          <th>Categoría</th>
-          <th>Cuenta</th>
-          <th>Importe</th>
+          <th>${t("date")}</th>
+          <th>${t("type")}</th>
+          <th>${t("category")}</th>
+          <th>${t("account")}</th>
+          <th>${t("amount")}</th>
           <th></th>
         </tr>
       </thead>
@@ -2376,12 +2376,12 @@ function movementTable(ms){
             <span class="pill">
               ${
                 m.type==="income"
-                ?"Ingreso"
+                ? t("income")
                 :
                 m.type==="expense"
-                ?"Gasto"
+                ? t("expense")
                 :
-                "Transferencia"
+                t("transfer")
               }
             </span>
           </td>
@@ -2417,13 +2417,13 @@ function movementTable(ms){
             <button
               class="btn"
               onclick="openMove('${m.id}')">
-              Editar
+              ${t("edit")}
             </button>
 
             <button
               class="btn"
               onclick="delMove('${m.id}')">
-              Eliminar
+              ${t("delete")}
             </button>
 
           </td>
@@ -2438,7 +2438,6 @@ function movementTable(ms){
 
   </div>`
 }
-
 function setDashPeriod(v){
 
   state.dashboard.period=v;
@@ -4529,6 +4528,7 @@ function autoResizeAIInput(el){
     expense:"Gasto",
     income:"Ingreso",
     transfer:"Transferencia",
+    noMovements:"Aún no tienes movimientos",
     amount:"Importe",
     date:"Fecha",
     time:"Hora",
@@ -4714,6 +4714,7 @@ function autoResizeAIInput(el){
     expense:"Expense",
     income:"Income",
     transfer:"Transfer",
+    noMovements:"You don't have any movements yet",
     amount:"Amount",
     date:"Date",
     time:"Time",
@@ -4895,6 +4896,7 @@ function autoResizeAIInput(el){
     expense:"Dépense",
     income:"Revenu",
     transfer:"Virement",
+    noMovements:"Vous n'avez pas encore de mouvements",
     amount:"Montant",
     date:"Date",
     time:"Heure",
@@ -5065,6 +5067,7 @@ function autoResizeAIInput(el){
     expense:"Despesa",
     income:"Receita",
     transfer:"Transferência",
+    noMovements:"Você ainda não tem movimentos",
     amount:"Valor",
     date:"Data",
     time:"Hora",
@@ -5235,6 +5238,7 @@ function autoResizeAIInput(el){
     expense:"Ausgabe",
     income:"Einnahme",
     transfer:"Überweisung",
+    noMovements:"Sie haben noch keine Bewegungen",
     amount:"Betrag",
     date:"Datum",
     time:"Uhrzeit",
@@ -5405,6 +5409,7 @@ function autoResizeAIInput(el){
     expense:"Spesa",
     income:"Entrata",
     transfer:"Trasferimento",
+    noMovements:"Non hai ancora movimenti",
     amount:"Importo",
     date:"Data",
     time:"Ora",
@@ -5575,6 +5580,7 @@ function autoResizeAIInput(el){
     expense:"支出",
     income:"収入",
     transfer:"振替",
+    noMovements:"まだ取引がありません",
     amount:"金額",
     date:"日付",
     time:"時刻",
@@ -5745,6 +5751,7 @@ function autoResizeAIInput(el){
     expense:"지출",
     income:"수입",
     transfer:"이체",
+    noMovements:"아직 거래 내역이 없습니다",
     amount:"금액",
     date:"날짜",
     time:"시간",
@@ -5915,6 +5922,7 @@ function autoResizeAIInput(el){
     expense:"支出",
     income:"收入",
     transfer:"转账",
+    noMovements:"您还没有任何交易记录",
     amount:"金额",
     date:"日期",
     time:"时间",
@@ -6085,6 +6093,7 @@ function autoResizeAIInput(el){
     expense:"مصروف",
     income:"دخل",
     transfer:"تحويل",
+    noMovements:"لا توجد معاملات حتى الآن",
     amount:"المبلغ",
     date:"التاريخ",
     time:"الوقت",
@@ -6255,6 +6264,7 @@ function autoResizeAIInput(el){
     expense:"Расход",
     income:"Доход",
     transfer:"Перевод",
+    noMovements:"У вас пока нет операций",
     amount:"Сумма",
     date:"Дата",
     time:"Время",
@@ -6365,7 +6375,6 @@ function autoResizeAIInput(el){
   }
 
 };
-
 
 function t(key){
 
