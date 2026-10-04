@@ -2889,11 +2889,11 @@ function goals(){
 function accounts(){
 
   return header(
-    "Cuentas",
+    t("accounts"),
     `<button
       class="btn primary"
       onclick="openAccount()">
-      + Cuenta
+      + ${t("account")}
     </button>`
   )
   +
@@ -2940,7 +2940,7 @@ function accounts(){
         <button
           class="btn"
           onclick="delAccount('${a.id}')">
-          Eliminar
+          ${t("delete")}
         </button>
 
       </div>`;
@@ -2948,7 +2948,7 @@ function accounts(){
     }).join("")
     :
     empty(
-      "Aún no tienes cuentas",
+      t("noAccounts"),
       "openAccount()"
     )
   }
@@ -2960,47 +2960,47 @@ function wealth(){
 
   let t=totals();
 
-  return header("Patrimonio")
+  return header(t("wealth"))
   +
   `
   <div class="grid">
 
     ${card(
-      "Patrimonio Líquido",
+      t("netWorth"),
       money(t.balance),
-      "Siempre igual a Capital"
+      t("alwaysEqualCapital")
     )}
 
     ${card(
-      "Capital",
+      t("capital"),
       money(t.balance),
-      "Fuente de verdad"
+      t("sourceOfTruth")
     )}
 
     ${card(
-      "Activos",
+      t("assets"),
       money(t.balance),
-      "Derivado del modelo actual"
+      t("derivedCurrentModel")
     )}
 
     ${card(
-      "Pasivos",
+      t("liabilities"),
       money(0),
-      "No registrados"
+      t("notRegistered")
     )}
 
   </div>
 
   <div class="section card">
 
-    <h3>Patrimonio neto</h3>
+    <h3>${t("netWorth")}</h3>
 
     <div class="value">
       ${money(t.balance)}
     </div>
 
     <div class="sub">
-      Patrimonio Líquido = Capital = Disponible
+      ${t("netWorthEqualsCapital")}
     </div>
 
   </div>`
