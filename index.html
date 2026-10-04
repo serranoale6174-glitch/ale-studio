@@ -7263,7 +7263,7 @@ function openAccount(){
 
   <div class="modalhead">
 
-    <h2>Nueva cuenta</h2>
+    <h2>${t("newAccount")}</h2>
 
     <button
       class="btn"
@@ -7277,7 +7277,7 @@ function openAccount(){
 
     <div class="field">
 
-      <label>Nombre</label>
+      <label>${t("name")}</label>
 
       <input
         name="name"
@@ -7287,15 +7287,15 @@ function openAccount(){
 
     <div class="field">
 
-      <label>Tipo</label>
+      <label>${t("type")}</label>
 
       <select name="type">
 
-        <option>Efectivo</option>
-        <option>Cuenta bancaria</option>
-        <option>Tarjeta</option>
-        <option>Billetera digital</option>
-        <option>Personalizada</option>
+        <option>${t("cash")}</option>
+        <option>${t("bankAccount")}</option>
+        <option>${t("card")}</option>
+        <option>${t("digitalWallet")}</option>
+        <option>${t("custom")}</option>
 
       </select>
 
@@ -7307,11 +7307,11 @@ function openAccount(){
         class="btn"
         type="button"
         onclick="closeModal()">
-        Cancelar
+        ${t("cancel")}
       </button>
 
       <button class="btn primary">
-        Guardar
+        ${t("save")}
       </button>
 
     </div>
@@ -7320,7 +7320,6 @@ function openAccount(){
 
   $("#modal").classList.add("open")
 }
-
 function submitAccount(e){
 
   e.preventDefault();
