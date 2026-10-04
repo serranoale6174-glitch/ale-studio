@@ -2958,7 +2958,7 @@ function accounts(){
 
 function wealth(){
 
-  let t=totals();
+  let summary=totals();
 
   return header(t("wealth"))
   +
@@ -2967,19 +2967,19 @@ function wealth(){
 
     ${card(
       t("netWorth"),
-      money(t.balance),
+      money(summary.balance),
       t("alwaysEqualCapital")
     )}
 
     ${card(
       t("capital"),
-      money(t.balance),
+      money(summary.balance),
       t("sourceOfTruth")
     )}
 
     ${card(
       t("assets"),
-      money(t.balance),
+      money(summary.balance),
       t("derivedCurrentModel")
     )}
 
@@ -2996,7 +2996,7 @@ function wealth(){
     <h3>${t("netWorth")}</h3>
 
     <div class="value">
-      ${money(t.balance)}
+      ${money(summary.balance)}
     </div>
 
     <div class="sub">
