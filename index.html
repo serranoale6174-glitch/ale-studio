@@ -6670,24 +6670,23 @@ registeredIncome:"Revenus enregistrés"
     confirmAction:"Подтвердить действие",
     areYouSure:"Вы уверены?",
     unsavedChanges:"У вас есть несохраненные изменения.",
-    continueAction:"Продолжить?"
-
+        continueAction:"Продолжить?"
   }
 
+};
 
 function t(key){
 
-  const lang=
-    state.settings.language||"es";
+  const lang =
+    state.settings.language || "es";
 
-  return(
-    I18N[lang]?.[key]||
-    I18N.es[key]||
+  return (
+    I18N[lang]?.[key] ||
+    I18N.es[key] ||
     key
   );
 
 }
-
 
 function applyLanguage(){
 
