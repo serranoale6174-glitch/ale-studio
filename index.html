@@ -12,20 +12,19 @@
 #authgate:not(.authhide){
   position:fixed;
   inset:0;
+  width:100%;
+  min-height:100vh;
   z-index:9999;
-  display:grid;
-  place-items:center;
-  padding:24px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
   overflow-y:auto;
   background:
     radial-gradient(circle at 15% 15%,#635bff35,transparent 35%),
     radial-gradient(circle at 85% 85%,#2563eb25,transparent 35%),
     linear-gradient(135deg,#070b18,#10172a 55%,#080d19);
   color:#f5f7ff;
-}
-
-#authgate.authhide{
-  display:none;
 }
 
 .authcard{
@@ -36,6 +35,8 @@
   background:linear-gradient(145deg,#151d30ed,#0d1425f5);
   box-shadow:0 25px 80px #0009;
   backdrop-filter:blur(22px);
+  margin:auto;
+  flex-shrink:0;
 }
 
 .authbrand{
