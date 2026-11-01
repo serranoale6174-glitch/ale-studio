@@ -21,9 +21,12 @@
   padding:30px;
   overflow-y:auto;
   background:
-    radial-gradient(circle at 15% 15%,#635bff35,transparent 35%),
-    radial-gradient(circle at 85% 85%,#2563eb25,transparent 35%),
-    linear-gradient(135deg,#070b18,#10172a 55%,#080d19);
+  linear-gradient(
+    90deg,
+    rgba(3,8,20,.48),
+    rgba(3,8,20,.20),
+    rgba(3,8,20,.48)
+   url("ale.png.jpeg") center center / cover no-repeat;
   color:#f5f7ff;
 }
 
@@ -572,7 +575,19 @@ nav button:hover{
 }
 
 .toast.show{display:block}
+@media(max-width:768px){
+  #authgate:not(.authhide){
+    background-position:center center;
+    background-attachment:scroll;
+    padding:16px;
+  }
 
+  .authcard{
+    width:100%;
+    max-width:460px;
+    margin:auto;
+  }
+}
 /* =========================================================
    ALE AI — NUEVA INTERFAZ
    ========================================================= */
