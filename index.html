@@ -549,7 +549,7 @@ nav button:hover{
 .chatbar{
   display:flex;
   gap:8px;
-  margin-top:10px
+  margin-top:10px;
 }
 
 .chatbar input{
@@ -558,10 +558,12 @@ nav button:hover{
   border-radius:12px;
   border:1px solid var(--line);
   background:var(--panel);
-  color:var(--text)
+  color:var(--text);
 }
 
-.settings{max-width:700px}
+.settings{
+  max-width:700px;
+}
 
 .toast{
   position:fixed;
@@ -573,10 +575,14 @@ nav button:hover{
   padding:11px 15px;
   border-radius:10px;
   display:none;
-  z-index:30
+  z-index:30;
 }
 
-.toast.show{display:block}
+.toast.show{
+  display:block;
+}
+
+/* Adaptación del inicio de sesión para móviles */
 @media(max-width:768px){
   #authgate:not(.authhide){
     background-position:center center;
