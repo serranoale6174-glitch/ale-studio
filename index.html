@@ -998,12 +998,21 @@ nav button:hover{
 .authgate{
   position:fixed;
   inset:0;
-  z-index:100;
-  background:radial-gradient(circle at 80% -10%,#8b5cf633,transparent 35%),var(--bg);
+  width:100%;
+  min-height:100vh;
+  z-index:9999;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3,8,20,.48),
+      rgba(3,8,20,.20),
+      rgba(3,8,20,.48)
+    ),
+    url("ale.png.jpeg") center center / cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px
+  padding:20px;
 }
 
 .authcard{
